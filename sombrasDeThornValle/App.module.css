@@ -1,13 +1,10 @@
 .mainContainer {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -15,9 +12,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  z-index: 0;
 }
 
 .title {
@@ -25,10 +23,52 @@
   font-size: 4rem;
   color: #fff;
   text-shadow: 0 0 20px  #000;
-  text-align: center;
   z-index: 1;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-weight: 400;
+  text-shadow: 0 0 10px #fff , 0 0 20px #fff , 0 0 30px #000 , 0 0 40px #000, 0 0 70px #000 , 0 0 80px #000 , 0 0 100px #000 , 0 0 150px #000;
+}
+
+.buttonIntro {
+  position: absolute;
+  bottom: 10%;
+  left: 18%;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
+  width: 300px;
+  height: 80px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.buttonIntro video {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: black 2px solid;
+  object-fit: cover;
+  z-index: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.buttonIntro video:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-in-out;
+  filter: drop-shadow(0 0 10px #fff);
+}
+
+.buttonIntro p {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px #fff , 0 0 20px #fff , 0 0 30px #000 , 0 0 40px #000, 0 0 70px #000 , 0 0 80px #000 , 0 0 100px #000 , 0 0 150px #000;
 }
