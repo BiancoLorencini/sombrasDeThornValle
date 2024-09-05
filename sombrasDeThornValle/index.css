@@ -1,0 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baskervville SC", serif;
+}
+
+@font-face {
+  font-family: 'deadSecretary';
+  src: url('./src/assets/font/DeadSecretary_underscore_version.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
