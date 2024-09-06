@@ -4,18 +4,19 @@
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 0;
   overflow: hidden;
 }
 
-.mainContainer video {
-  position: absolute;
+.backgroundVideo {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out; 
 }
 
 .title {
@@ -35,40 +36,163 @@
   position: absolute;
   bottom: 10%;
   left: 18%;
-  z-index: 1;
+  z-index: 2;
   background-color: transparent;
   cursor: pointer;
   width: 300px;
   height: 80px;
-  border: none;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   border-radius: 10px;
+  will-change: transform;
+  border: black 2px solid;
 }
 
-.buttonIntro video {
+.buttonIntro:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 0 #fff;
+  border: black 2px solid;
+}
+
+.buttomVideo {
   width: 100%;
   height: 100%;
   border-radius: 10px;
   border: black 2px solid;
   object-fit: cover;
   z-index: 0;
-  transition: all 0.5s ease-in-out;
 }
 
-.buttonIntro video:hover {
-  transform: scale(1.1);
-  transition: all 0.5s ease-in-out;
-  filter: drop-shadow(0 0 10px #fff);
-}
-
-.buttonIntro p {
+.buttomText {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 2; 
   color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
-  text-shadow: 0 0 10px #fff , 0 0 20px #fff , 0 0 30px #000 , 0 0 40px #000, 0 0 70px #000 , 0 0 80px #000 , 0 0 100px #000 , 0 0 150px #000;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #000;
+  pointer-events: none;
+}
+
+
+.introScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.introtextBox {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pergaminhoImage {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.titleOpening {
+  font-family: 'deadSecretary';
+  font-size: 1.3rem;
+}
+
+.introText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-shadow: 0 0 20px #000, 0 0 20px #000, 0 0 30px #000;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.orientacoes{
+  text-align: start;
+}
+
+.divirtase{
+  font-family: 'caveat';
+  font-size: 2rem;
+}
+
+.buttonContainer {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  z-index: 8;
+}
+
+.buttonInfo {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px; 
+  border: black 2px solid;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #000;
+  pointer-events: all;
+  z-index: 8;
+
+}
+
+
+
+
+.hidden {
+  opacity: 0; 
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
