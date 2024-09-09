@@ -9,7 +9,7 @@ const SelecaoPersonagem = () => {
           <div className={style.containerInternoPersonagem}>
             <img src={personagem01} alt="" />
             <div className={style.containerInternoPersonagemInfo} >
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consectetur voluptatem modi </p>
+              <p>" Ele aprendeu a caçar e sobreviver em condições extremas. <br /> Resiliente e determinado, ele mantém a calma mesmo diante das maiores adversidades." <br /> -Aldric</p>
               <button  className={style.buttonSelection} >Escolher</button>
             </div>
           </div>
@@ -18,7 +18,7 @@ const SelecaoPersonagem = () => {
       <div className={style.containerInternoPersonagem}>
             <img src={personagem02} alt="" />
             <div className={style.containerInternoPersonagemInfo} >
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consectetur voluptatem modi </p>
+              <p>"Amante da leitura e da natureza, ela encontra beleza e serenidade no que é simples. Sua sabedoria vai além dos livros, e sua conexão com o ambiente reflete em sua presença calma e graciosa" </p>
               <button className={style.buttonSelection}>Escolher</button>
             </div>
           </div>
