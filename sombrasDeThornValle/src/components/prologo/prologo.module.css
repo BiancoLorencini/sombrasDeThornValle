@@ -1,0 +1,41 @@
+.prologoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.title {
+  font-family: 'Caveat', cursive;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+}
+
+.titleSpan {
+  font-family: 'deadSecretary';
+  text-align: center;
+  font-weight: 300;
+  color: #ffcc00;
+}
+
+.fadeOut {
+  animation: slideOut 1.5s ease-out forwards;
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,21 @@
+.selecaoContainer {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* ou a cor de fundo desejada */
+  transition: transform 1s ease;
+}
+
+.selecaoEnter {
+  transform: translateX(-100%);
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
