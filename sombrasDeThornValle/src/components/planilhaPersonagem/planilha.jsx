@@ -46,7 +46,9 @@ const handleMouseLeave = () => {
     <div className={style.sheetMainContainer}>
       <div className={ style.sheet } >
         <div>
-          <img className={style.book} src={bookOfAtributes} alt="livro de atributos" />
+          <div className={style.book}>
+            
+          </div>
           <div className={style.sheetEnemies}>
             <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
           </div>

@@ -28,12 +28,20 @@
 }
 
 .book{
+  background-image: url('../../assets/characterSheet/bookOfAtributes.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 60%;
+  height: 50%;
+  object-fit: contain;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  filter: drop-shadow(0 0 3px #fff);
   position: absolute;
   top: 5%;
-  right: 2%;
-  width: 65%;
-  height: 50%;
-  filter: drop-shadow(0 0 3px #000);
+  right: 5%;
 }
 
 .sheetEnemies{
