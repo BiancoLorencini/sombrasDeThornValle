@@ -14,12 +14,16 @@ const LoginScreen = () => {
   const videoRef2 = useRef(null);
   const [currentVideo, setCurrentVideo] = useState(2);
   const [isFading, setIsFading] = useState(false);
+  const [isFading2, setIsFading2] = useState(false);
   const [audioStarted, setAudioStarted] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const audioRef = useRef(null);
-
+  
   const HadleStartGame = () => {
-    navigate('/prologo');
+    setIsFading2(true);
+    setTimeout(() => {
+      navigate('/prologo');
+    }, 2000);
   };
 
   const handleMouseEnter = () => {
@@ -113,7 +117,7 @@ const LoginScreen = () => {
         </div>
       </div>
     )}
-      <div className={`${style.mainContainer} ${showIntro ? style.hidden : ''}`}>
+      <div className={`${style.mainContainer} ${showIntro ? style.hidden : ''} ${isFading2 ? style.fadeOut : ''} `}>
         <h1 className={style.title}>Sombras de ThornValle</h1>
         <button 
           className={style.buttonIntro} 

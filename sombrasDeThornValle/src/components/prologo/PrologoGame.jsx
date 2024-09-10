@@ -1,26 +1,34 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import style from './prologo.module.css' 
-import { useNavigate } from 'react-router-dom';
-
+import prologoAudio  from '../../assets/sound/chapter01.mp3'
 
 const PrologoGame = () => {
-
-  const [showPrologo, setShowPrologo] = useState(true);
   const navigate = useNavigate();
+  const [isFading, setIsFading] = useState(false);
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      setShowPrologo(false);
+    const fadeOutTimeout = setTimeout(() => {
+      setIsFading(true);
+    }, 4000);
+
+    const navigateTimeout = setTimeout(() => {
       navigate('/playerChoose'); 
-    }, 3000);
+    }, 6000);
+
+    return () => {
+      clearTimeout(fadeOutTimeout);
+      clearTimeout(navigateTimeout);
+    };
   }, [navigate]);
-
-
+  
   return (
     <>
-        <div className={` ${showPrologo ? '' : style.fadeOut} ${style.prologoContainer}`}>
+        <div className={`${isFading ? '' : style.fadeOut} ${style.prologoContainer}`}>
         <div className={style.capitulo}>
+          <audio autoPlay ref={audioRef} src={prologoAudio}></audio>
           <h1 className={style.title}>
             Prólogo: <br />
             <span className={style.titleSpan}>"Ecos da Praga"</span>

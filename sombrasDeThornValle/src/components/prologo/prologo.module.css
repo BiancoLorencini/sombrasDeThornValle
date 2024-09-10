@@ -1,3 +1,8 @@
+body {
+  background-color: #000;
+  z-index: -1;
+}
+
 .prologoContainer {
   position: absolute;
   top: 0;
@@ -8,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  transition: opacity 2s ease-in-out;
 }
 
 .title {
@@ -26,16 +31,26 @@
 }
 
 .fadeOut {
-  animation: slideOut 1.5s ease-out forwards;
+  animation: slideOut 4s ease-out forwards;
+  opacity: 0;
 }
 
 @keyframes slideOut {
   0% {
-    transform: translateX(0);
+    transform: scale(1);
     opacity: 1;
   }
   100% {
-    transform: translateX(-100%);
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    }
+  to {
     opacity: 0;
   }
 }

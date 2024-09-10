@@ -1,10 +1,22 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import style from './selecaoPersonagem.module.css'
 import personagem01 from '../../assets/characters/Protagonista01.png'
 import personagem02 from '../../assets/characters/Protagonista02.png'
 const SelecaoPersonagem = () => {
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const fadeInTimeout = setTimeout(() => {
+      setIsFading(true);
+    }, 100);
+
+    return () => clearTimeout(fadeInTimeout);
+  }, []);
+
+
   return (
-    <div className={style.selecaoContainer}>
+    <div className={`${style.selecaoContainer} ${isFading ? style.fadeIn : ''}`}>
       <div className={style.containerInterno}>
           <div className={style.containerInternoPersonagem}>
             <img src={personagem01} alt="" />
@@ -18,7 +30,7 @@ const SelecaoPersonagem = () => {
       <div className={style.containerInternoPersonagem}>
             <img src={personagem02} alt="" />
             <div className={style.containerInternoPersonagemInfo} >
-              <p>"Amante da leitura e da natureza, ela encontra beleza e serenidade no que é simples. Sua sabedoria vai além dos livros, e sua conexão com o ambiente reflete em sua presença calma e graciosa" </p>
+              <p>"Amante da leitura e da natureza, ela encontra beleza e serenidade no que é simples. Sua sabedoria vai além dos livros, e sua conexão com o ambiente reflete em sua presença calma e graciosa" <br /> -Beatrix </p>
               <button className={style.buttonSelection}>Escolher</button>
             </div>
           </div>

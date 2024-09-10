@@ -8,6 +8,8 @@
   justify-content: center;
   align-items: center;
   background-color: #000;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 }
 
 .containerInterno{
@@ -76,4 +78,31 @@
   transition: all 0.5s ease-in-out ;
   box-shadow: 0 0 10px 5px #fff;
   will-change: transform;
+}
+
+.fadeIn{
+  opacity: 1;
+}
+
+.fadeOut{
+  animation: fadeOut 2s ease-in-out forwards;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

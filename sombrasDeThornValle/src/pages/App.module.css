@@ -164,9 +164,6 @@
 
 }
 
-
-
-
 .hidden {
   opacity: 0; 
 }
@@ -176,7 +173,7 @@
 }
 
 .fadeOut {
-  animation: fadeOut 1s ease-out forwards;
+  animation: fadeOut 2s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
@@ -191,7 +188,7 @@
 @keyframes fadeOut {
   from {
     opacity: 1;
-  }
+    }
   to {
     opacity: 0;
   }
