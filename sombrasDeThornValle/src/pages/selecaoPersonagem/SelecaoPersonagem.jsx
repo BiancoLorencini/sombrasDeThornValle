@@ -7,11 +7,7 @@ const SelecaoPersonagem = () => {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    const fadeInTimeout = setTimeout(() => {
-      setIsFading(true);
-    }, 100);
-
-    return () => clearTimeout(fadeInTimeout);
+    setIsFading(true);
   }, []);
 
 

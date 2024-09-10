@@ -31,26 +31,16 @@ body {
 }
 
 .fadeOut {
-  animation: slideOut 4s ease-out forwards;
-  opacity: 0;
+  animation: scaleOut 2s ease-out forwards;
 }
 
-@keyframes slideOut {
+@keyframes scaleOut {
   0% {
     transform: scale(1);
     opacity: 1;
   }
   100% {
     transform: scale(0.5);
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    }
-  to {
     opacity: 0;
   }
 }

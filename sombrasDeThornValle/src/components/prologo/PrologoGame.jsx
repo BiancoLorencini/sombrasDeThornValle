@@ -15,6 +15,7 @@ const PrologoGame = () => {
     }, 4000);
 
     const navigateTimeout = setTimeout(() => {
+      console.log('Navegando para /playerChoose');
       navigate('/playerChoose'); 
     }, 6000);
 
@@ -26,7 +27,7 @@ const PrologoGame = () => {
   
   return (
     <>
-        <div className={`${isFading ? '' : style.fadeOut} ${style.prologoContainer}`}>
+        <div className={`${isFading ? style.fadeOut : ''} ${style.prologoContainer}`}>
         <div className={style.capitulo}>
           <audio autoPlay ref={audioRef} src={prologoAudio}></audio>
           <h1 className={style.title}>
