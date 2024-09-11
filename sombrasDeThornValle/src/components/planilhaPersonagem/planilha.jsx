@@ -14,9 +14,14 @@ import character01 from '../../assets/characters/Protagonista01.png'
 const Planilha = () => {
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
+  const [flipped2, setFlipped2] = useState(false);
 
   const handleClick = () => {
     setFlipped(!flipped);
+  };
+
+  const handleClickBackPack = () => {
+    setFlipped2(!flipped2);
   };
 
   const handleMouseMove = (e) => {
@@ -47,7 +52,24 @@ const handleMouseLeave = () => {
       <div className={ style.sheet } >
         <div>
           <div className={style.book}>
-            
+            <div className={style.atributeSide}>
+              <h3>Atributos</h3>
+              <div className={style.att}><p>Habilidade</p></div>
+              <div className={style.att}><p>Inteligência</p></div>
+              <div className={style.att}><p>Constituição</p></div>
+              <div className={style.att}><p>Sorte</p></div>
+            </div>
+            <div className={style.infoSide} >
+              <div className={style.scrollFlag1}>
+                <h3>Mochila</h3>
+              </div>
+              <div className={` ${style.backPack} ${flipped2 ? style.flipped : ''}`}>
+                <button className={style.backPackButton} onClick={handleClickBackPack}  ><img src={backPack} alt="" /></button>
+              </div>
+              <div className={style.back}>
+                  <p>testando</p>
+              </div>
+            </div>
           </div>
           <div className={style.sheetEnemies}>
             <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
