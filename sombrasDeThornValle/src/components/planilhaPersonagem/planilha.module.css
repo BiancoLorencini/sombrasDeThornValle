@@ -48,8 +48,13 @@
 .atributeSide{
   margin-top: 3%;
   width: 35% ;
-  height: 80%; 
+  height: 60%; 
   z-index: 3;
+}
+
+.info{
+  display: flex;
+  border-bottom: #000 1px solid;
 }
 
 .atributeSide h3{
@@ -62,10 +67,9 @@
 }
 
 .att{
-  width: 100%;
+  width: 60%;
   height: 20%;
   display: flex;
-  border-bottom: #211d1d 1px solid;
   align-items: center;
   font-size: 0.8rem;
   z-index: 3;
@@ -118,6 +122,7 @@
   align-items: center;
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
+  position: relative;
 }
 
 .backPackButton{
@@ -237,18 +242,77 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Evita que a face oculta seja visível */
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 24px;
   color: white;
-  border-radius: 5px; /* Para garantir um visual mais uniforme */
+  border-radius: 5px;
 }
 
 .front {
   transform: rotateY(0deg);
   z-index: 3;
+
+}
+
+.cardBack {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.backPack {
+  cursor: pointer;
+}
+
+.backback {
+  width: 100%;
+  height: 100%;
+  background-color: #211d1d;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border: 1px solid #000;
+  border-radius: 5px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.subBackPackContainer1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  gap: 8px;
+}
+
+.subBackPackContainer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  gap: 8px;
+}
+
+.subBackPack {
+  width: 40%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #fff;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
 }
 
 .back {
@@ -258,6 +322,11 @@
   border-radius: 5px;
   box-shadow: 1px 1px 5px #000;
   border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  z-index: 10;
 }
 
 .back p {

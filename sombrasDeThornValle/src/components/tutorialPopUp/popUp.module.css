@@ -1,0 +1,53 @@
+.tutorialPopUp {
+  position: absolute;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px black;
+  z-index: 1000;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  pointer-events: all;
+}
+
+.popUpContent {
+  position: relative;
+}
+
+.popUpArrow {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid white;
+}
+
+.popUpButtons {
+  margin: 10px 5px;
+  padding: 5px 10px;
+  width: 100%;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popUpButtons button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background:#211d1d;
+  color: white;
+  width: 100px;
+  font-weight: 400;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border : 1px solid black;
+}

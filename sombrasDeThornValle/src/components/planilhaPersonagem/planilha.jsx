@@ -11,17 +11,67 @@ import leatherTag from '../../assets/characterSheet/leatherTag.png'
 import lightiningMagic from '../../assets/characterSheet/lightningMagic.png'
 import scrollDecoration from '../../assets/characterSheet/scrollDecoration.png'
 import character01 from '../../assets/characters/Protagonista01.png'
+import TutorialPopUp from '../../components/tutorialPopUp/popUp.jsx'
 const Planilha = () => {
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
 
+  const steps = [
+    {
+      message: 'Ao clicar na imagem do seu personagem, você pode ver a sua biografia resumida...',
+      position: { top: '60px', left: '150px' }
+    },
+    {
+      message: '...aqui estão seus atributos, HABILIDADE, INTELIGENCIA,     CONSTITUIÇÃO E SORTE...',
+      position: { top: '10px', left: '600px' }
+    },
+    {
+      message: '...aqui é a Habilidade: competências fisica em geral(combate, arremessar, escalar etc)...',
+      position: { top: '20px', left: '330px' }
+    },
+    {
+      message: '...aqui é a Inteligência: utilizado para a a mana máxima, e para um bom observador...',
+      position: { top: '80px', left: '330px' }
+    },
+    {
+      message: '...essa é a Constituição: utilizado para o HP (Hit Points/vida) total, e para resistencias em geral',
+      position: { top: '80px', left: '330px' }
+    },
+    {
+      message: '...e aqui é a Sorte: utilizado para fazer uma nova rolagem de dados, porém não se recupera(condição especial).',
+      position: { top: '110px', left: '330px' }
+    },
+    {
+      message: '...aqui ficam os itens que o personagem está equipando no momento...',
+      position: { top: '250px', left: '120px' }
+    },
+    {
+      message: '...os icones representam magias que o personagem possui (gelo, raio e fogo, e normalmente só podem ser usadas em combate).',
+      position: { top: '405px', left: '330px' }
+    },
+    {
+      message: '...quando entrar em combate, os inimigos aparecerão aqui na tela"Inimigos"...',
+      position: { top: '350px', left: '850px' }
+    },
+    {
+      message: '...e por fim, essa é a sua mochila de itens(com limite para somente 4 itens),clique na imagem para abrir...',
+      position: { top: '100px', left: '850px' }
+    },
+    {
+      message: '...e aqui encerramos o tutorial básico, tenha uma ótima aventura',
+      position: { top: '400px', left: '950px' }
+    }
+  ];
+
   const handleClick = () => {
     setFlipped(!flipped);
+    setFlipped2(false);
   };
 
   const handleClickBackPack = () => {
     setFlipped2(!flipped2);
+    setFlipped(false);
   };
 
   const handleMouseMove = (e) => {
@@ -46,7 +96,6 @@ const handleMouseLeave = () => {
   });
 };
 
-
   return (
     <div className={style.sheetMainContainer}>
       <div className={ style.sheet } >
@@ -54,20 +103,39 @@ const handleMouseLeave = () => {
           <div className={style.book}>
             <div className={style.atributeSide}>
               <h3>Atributos</h3>
-              <div className={style.att}><p>Habilidade</p></div>
-              <div className={style.att}><p>Inteligência</p></div>
-              <div className={style.att}><p>Constituição</p></div>
-              <div className={style.att}><p>Sorte</p></div>
+              <div className={style.info} >
+                <div className={style.att}><p>HABILIDADE</p></div>
+                <div className={style.attValor} ><p>: 12</p></div>
+              </div>
+              <div className={style.info}>
+                <div className={style.att}><p>INTELIGÊNCIA</p></div>
+                <div className={style.attValor}><p>: 10</p></div>
+              </div>
+              <div className={style.info}>
+                <div className={style.att}><p>CONSTITUIÇÃO</p></div>
+                <div className={style.attValor}><p>: 24</p></div>
+              </div>
+              <div className={style.info}>
+                <div className={style.att}><p>SORTE</p></div>
+                <div className={style.attValor}><p>: 4</p></div>
+              </div>
             </div>
             <div className={style.infoSide} >
               <div className={style.scrollFlag1}>
                 <h3>Mochila</h3>
               </div>
-              <div className={` ${style.backPack} ${flipped2 ? style.flipped : ''}`}>
-                <button className={style.backPackButton} onClick={handleClickBackPack}  ><img src={backPack} alt="" /></button>
-              </div>
-              <div className={style.back}>
-                  <p>testando</p>
+              <div className={` ${style.backPack} ${flipped2 ? style.flipped : ''}`} onClick={handleClickBackPack}>
+                  <img className={style.front} src={backPack} alt="mochila" />
+                  <div className={style.backback}>
+                    <div className={style.subBackPackContainer1} >
+                      <div className={style.subBackPack} ></div>
+                      <div className={style.subBackPack}></div>
+                    </div>
+                    <div className={style.subBackPackContainer2} >
+                      <div className={style.subBackPack}></div>
+                      <div className={style.subBackPack}></div>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -104,6 +172,9 @@ const handleMouseLeave = () => {
           </div>
         </div>
       </div>
+      <div className={style.sheetPopUp}>
+      <TutorialPopUp  steps={steps} />
+    </div>
     </div>
   )
 }
