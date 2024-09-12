@@ -70,7 +70,7 @@
   width: 60%;
   height: 20%;
   display: flex;
-  align-items: center;
+  background-color: #211d1d;
   font-size: 0.8rem;
   z-index: 3;
 }
@@ -80,7 +80,7 @@
   font-weight: 600;
   font-family: 'Caveat', cursive;
   padding: 0.5rem;
-  color: #000;
+  color: #fff;
   z-index: 3;
 }
 
@@ -305,10 +305,10 @@
 .subBackPack {
   width: 40%;
   height: 90%;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: transparent;
+  border-radius: 4px;
   box-shadow: 0px 0px 2px #fff;
-  border: 1px solid #000;
+  border: 1px solid #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -318,25 +318,23 @@
 .back {
   transform: rotateY(180deg);
   z-index: 10;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: #211d1d;
+  border-radius: 10px;
   box-shadow: 1px 1px 5px #000;
   border: 1px solid #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000;
+  color: #fff;
   z-index: 10;
 }
 
 .back p {
   text-align: center;
   font-size: 0.6rem;
-  font-weight: 600;
   font-family: 'Caveat', cursive;
-  padding: 0.5rem;
-  color: #000;
-
+  padding: 0.4rem;
+  color: #fff;
 }
 
 .sheetCharacterImage img{
@@ -399,7 +397,6 @@
   width: 100%;
   height: 20%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
@@ -413,8 +410,29 @@
 }
 
 .sheetBottom img{
-  width: 60%;
+  width: 40%;
   align-self: center;
   object-fit: contain;
   z-index: 1;
+}
+
+.qtdMagic{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qtdMagicBackground{
+  background-color: #211d1d;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-family: 'Caveat', cursive;
 }

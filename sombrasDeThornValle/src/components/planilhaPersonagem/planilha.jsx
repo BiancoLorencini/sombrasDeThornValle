@@ -164,10 +164,14 @@ const handleMouseLeave = () => {
             <button><img width={20} height={25} src={iceMagic} alt="" /></button>
             <button><img width={20} height={25} src={lightiningMagic} alt="" /></button>
             <button><img width={20} height={25} src={fireMagic} alt="" /></button>
+            <div className={style.qtdMagic}>
+            <p>x</p>
+            <p className={style.qtdMagicBackground} >2</p>
+            </div>
           </div>
           <div className={style.sheetBottom}>
             <div className={style.scrollDecor}>
-              <img src={scrollDecoration} alt="" />
+              <img src={scrollDecoration} alt="decoração de pergaminho" />
             </div>
           </div>
         </div>
