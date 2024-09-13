@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import style from './planilha.module.css'
 import backPack from '../../assets/characterSheet/backPack.png'
 import bookOfAtributes from '../../assets/characterSheet/bookOfAtributes.png'
@@ -12,10 +12,64 @@ import lightiningMagic from '../../assets/characterSheet/lightningMagic.png'
 import scrollDecoration from '../../assets/characterSheet/scrollDecoration.png'
 import character01 from '../../assets/characters/Protagonista01.png'
 import TutorialPopUp from '../../components/tutorialPopUp/popUp.jsx'
+import musicBackground from '../../assets/music/Changes.mp3'
+import { useDado } from '../../context/Dice/DiceContext.jsx'
+
+
 const Planilha = () => {
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
+  const [isFadingIn, setIsFadingIn] = useState(false);
+  const musicRef = useRef();
+  const [habilidade, setHabilidade] = useState({});
+  const [inteligencia, setInteligencia] = useState({});
+  const [constituicao, setConstituicao] = useState({});
+  const [sorte, setSorte] = useState({});
+  const {rollDice} = useDado();
+
+  const [rollCount, setRollCount] = useState({
+    habilidade: 0,
+    inteligencia: 0,
+    constituicao: 0,
+    sorte: 0,
+  });
+
+  const [currentAttribute, setCurrentAttribute] = useState('habilidade');
+
+  const handleRoll = () => {
+    const result = rollDice(1, 6); // Rola o dado
+
+    if (currentAttribute === 'habilidade') {
+      setHabilidade(result);
+      setRollCount(prev => ({ ...prev, habilidade: prev.habilidade + 1 }));
+      if (rollCount.habilidade + 1 === 3) setCurrentAttribute('inteligencia');
+    } else if (currentAttribute === 'inteligencia') {
+      setInteligencia(result);
+      setRollCount(prev => ({ ...prev, inteligencia: prev.inteligencia + 1 }));
+      if (rollCount.inteligencia + 1 === 3) setCurrentAttribute('constituicao');
+    } else if (currentAttribute === 'constituicao') {
+      setConstituicao(result);
+      setRollCount(prev => ({ ...prev, constituicao: prev.constituicao + 1 }));
+      if (rollCount.constituicao + 1 === 3) setCurrentAttribute('sorte');
+    } else if (currentAttribute === 'sorte') {
+      setSorte(result);
+      setRollCount(prev => ({ ...prev, sorte: prev.sorte + 1 }));
+    }
+  };
+
+
+  useEffect(() => {
+    setIsFadingIn(true);
+  }, []);
+
+  useEffect(() => {
+    const audioElement = musicRef.current;
+    if (audioElement) {
+      audioElement.loop = true;
+      audioElement.play().catch(error => console.log('Playback error:', error));
+    }
+  }, []);
 
   const steps = [
     {
@@ -97,15 +151,21 @@ const handleMouseLeave = () => {
 };
 
   return (
-    <div className={style.sheetMainContainer}>
+    <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
       <div className={ style.sheet } >
         <div>
           <div className={style.book}>
             <div className={style.atributeSide}>
               <h3>Atributos</h3>
               <div className={style.info} >
-                <div className={style.att}><p>HABILIDADE</p></div>
-                <div className={style.attValor} ><p>: 12</p></div>
+                <label className={style.att}>HABILIDADE</label>
+                <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
+                <button className={style.buttonRolls}
+                onClick={handleRoll}
+                disabled={rollCount.habilidade >= 3 ||          currentAttribute !== 'habilidade'}
+                >
+                  Rolar Habilidade
+                </button>
               </div>
               <div className={style.info}>
                 <div className={style.att}><p>INTELIGÊNCIA</p></div>
@@ -179,6 +239,13 @@ const handleMouseLeave = () => {
       <div className={style.sheetPopUp}>
       <TutorialPopUp  steps={steps} />
     </div>
+    <audio 
+        ref={musicRef}
+        src={musicBackground} 
+        preload="auto"
+        autoPlay
+        loop
+        />
     </div>
   )
 }

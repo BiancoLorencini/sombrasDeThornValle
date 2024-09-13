@@ -71,18 +71,33 @@
   height: 20%;
   display: flex;
   background-color: #211d1d;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
+  z-index: 3;
+  font-family: 'Caveat', cursive;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem;
+  width: 70%;
+}
+
+.attValor{
+  width: 40%;
+  background-color: transparent;
+  border: none;
+}
+
+.buttonRolls{
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background-color: #fff;
   z-index: 3;
 }
 
-.att p{
-  font-size: 0.6rem;
-  font-weight: 600;
-  font-family: 'Caveat', cursive;
-  padding: 0.5rem;
-  color: #fff;
-  z-index: 3;
-}
+
 
 .infoSide{
   margin-top: 3%;
@@ -435,4 +450,23 @@
   align-items: center;
   font-size: 0.8rem;
   font-family: 'Caveat', cursive;
+}
+
+.fadeIn{
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.rolarDado{
+  position: absolute;
+  top: -15%;
+  right: 50%;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

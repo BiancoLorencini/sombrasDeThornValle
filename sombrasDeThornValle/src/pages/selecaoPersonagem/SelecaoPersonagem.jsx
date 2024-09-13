@@ -7,17 +7,21 @@ import personagem02 from '../../assets/characters/Protagonista02.png'
 const SelecaoPersonagem = () => {
   const navigate = useNavigate();
   const [isFading, setIsFading] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     setIsFading(true);
   }, []);
 
   const handleButtonClick = () => {
-    navigate('/planilha');
+    setIsFadingOut(true);
+    setTimeout(() => {
+      navigate('/planilha');
+    } , 2000);
   };
 
   return (
-    <div className={`${style.selecaoContainer} ${isFading ? style.fadeIn : ''}`}>
+    <div className={`${style.selecaoContainer} ${isFading ? style.fadeIn : ''} ${isFadingOut ? style.fadeOut : ''} `}>
       <div className={style.containerInterno}>
           <div className={style.containerInternoPersonagem}>
             <img src={personagem01} alt="" />

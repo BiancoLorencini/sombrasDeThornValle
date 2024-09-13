@@ -15,7 +15,6 @@ const PrologoGame = () => {
     }, 4000);
 
     const navigateTimeout = setTimeout(() => {
-      console.log('Navegando para /playerChoose');
       navigate('/playerChoose'); 
     }, 6000);
 
