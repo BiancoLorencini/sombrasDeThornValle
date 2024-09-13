@@ -86,10 +86,43 @@
   border: none;
 }
 
-.buttonRolls{
+.buttonRollsHabilidade{
   position: absolute;
-  top: -40%;
+  top: -20%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background-color: #fff;
+  z-index: 3;
+}
+
+.buttonRollsInteligencia{
+  position: absolute;
+  top: -20%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background-color: #fff;
+  z-index: 3;
+}
+
+.buttonRollsConstituicao{
+  position: absolute;
+  top: -20%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background-color: #fff;
+  z-index: 3;
+}
+
+.buttonRollsSorte{
+  position: absolute;
+  top: -20%;
+  left: 75%;
   transform: translate(-50%, -50%);
   width: 20%;
   height: 20%;

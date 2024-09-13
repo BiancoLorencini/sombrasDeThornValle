@@ -22,10 +22,10 @@ const Planilha = () => {
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
   const musicRef = useRef();
-  const [habilidade, setHabilidade] = useState({});
-  const [inteligencia, setInteligencia] = useState({});
-  const [constituicao, setConstituicao] = useState({});
-  const [sorte, setSorte] = useState({});
+  const [habilidade, setHabilidade] = useState(0);
+  const [inteligencia, setInteligencia] = useState(0);
+  const [constituicao, setConstituicao] = useState(0);
+  const [sorte, setSorte] = useState(0);
   const {rollDice} = useDado();
 
   const [rollCount, setRollCount] = useState({
@@ -35,24 +35,24 @@ const Planilha = () => {
     sorte: 0,
   });
 
-  const [currentAttribute, setCurrentAttribute] = useState('habilidade');
-
-  const handleRoll = () => {
-    const result = rollDice(1, 6); // Rola o dado
-
-    if (currentAttribute === 'habilidade') {
+  const handleRoll = (attribute) => {
+    let result;
+  
+    if (attribute === 'habilidade' && rollCount.habilidade < 3) {
+      result = rollDice(1, 6);
       setHabilidade(result);
       setRollCount(prev => ({ ...prev, habilidade: prev.habilidade + 1 }));
-      if (rollCount.habilidade + 1 === 3) setCurrentAttribute('inteligencia');
-    } else if (currentAttribute === 'inteligencia') {
+    } else if (attribute === 'inteligencia' && rollCount.inteligencia < 3) {
+      result = rollDice(1, 6);
       setInteligencia(result);
       setRollCount(prev => ({ ...prev, inteligencia: prev.inteligencia + 1 }));
-      if (rollCount.inteligencia + 1 === 3) setCurrentAttribute('constituicao');
-    } else if (currentAttribute === 'constituicao') {
-      setConstituicao(result);
+    } else if (attribute === 'constituicao' && rollCount.constituicao < 3) {
+      const rolls = rollDice(2, 6); // Rola dois dados
+      const total = Array.isArray(rolls) ? rolls.reduce((sum, r) => sum + r, 0) : rolls; // Soma os resultados
+      setConstituicao(total);
       setRollCount(prev => ({ ...prev, constituicao: prev.constituicao + 1 }));
-      if (rollCount.constituicao + 1 === 3) setCurrentAttribute('sorte');
-    } else if (currentAttribute === 'sorte') {
+    } else if (attribute === 'sorte' && rollCount.sorte < 3) {
+      result = rollDice(1, 6);
       setSorte(result);
       setRollCount(prev => ({ ...prev, sorte: prev.sorte + 1 }));
     }
@@ -109,8 +109,12 @@ const Planilha = () => {
       position: { top: '350px', left: '850px' }
     },
     {
-      message: '...e por fim, essa é a sua mochila de itens(com limite para somente 4 itens),clique na imagem para abrir...',
+      message: '...e essa é a sua mochila de itens(com limite para somente 4 itens),clique na imagem para abrir.',
       position: { top: '100px', left: '850px' }
+    },
+    {
+      message: 'Agora rolaremos os dados para definir seus atributos(maximo de 3 vezes para cada atributo, e ficando sempre com o ultimo resultado)...Boa Sorte!',
+      position: { top: '20px', left: '250px' }
     },
     {
       message: '...e aqui encerramos o tutorial básico, tenha uma ótima aventura',
@@ -160,24 +164,42 @@ const handleMouseLeave = () => {
               <div className={style.info} >
                 <label className={style.att}>HABILIDADE</label>
                 <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
-                <button className={style.buttonRolls}
-                onClick={handleRoll}
-                disabled={rollCount.habilidade >= 3 ||          currentAttribute !== 'habilidade'}
+                <button className={style. buttonRollsHabilidade}
+                onClick={() => handleRoll('habilidade')}
+                disabled={rollCount.habilidade >= 3}
                 >
-                  Rolar Habilidade
+                Rolar Habilidade
                 </button>
               </div>
               <div className={style.info}>
-                <div className={style.att}><p>INTELIGÊNCIA</p></div>
-                <div className={style.attValor}><p>: 10</p></div>
+                <label className={style.att}>INTELIGENCIA</label>
+                <input className={style.attValor} type="text"  value={inteligencia + 6} readOnly />
+                <button className={style.buttonRollsInteligencia}
+                onClick={() => handleRoll('inteligencia')}
+                disabled={rollCount.inteligencia >= 3}
+                >
+                Rolar Inteligência
+                </button>
               </div>
               <div className={style.info}>
-                <div className={style.att}><p>CONSTITUIÇÃO</p></div>
-                <div className={style.attValor}><p>: 24</p></div>
+                <label className={style.att}>CONSTITUIÇÃO</label>
+                <input className={style.attValor} type="text"  value={constituicao + 12} readOnly />
+                <button className={style.buttonRollsConstituicao}
+                onClick={() => handleRoll('constituicao')}
+                disabled={rollCount.constituicao >= 3}
+                >
+                Rolar Constituição
+                </button>
               </div>
               <div className={style.info}>
-                <div className={style.att}><p>SORTE</p></div>
-                <div className={style.attValor}><p>: 4</p></div>
+              <label className={style.att}>SORTE</label>
+                <input className={style.attValor} type="text"  value={sorte + 6} readOnly />
+                <button className={style.buttonRollsSorte}
+                onClick={() => handleRoll('sorte')}
+                disabled={rollCount.sorte >= 3}
+                >
+                Rolar Sorte
+                </button>
               </div>
             </div>
             <div className={style.infoSide} >
