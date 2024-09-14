@@ -14,6 +14,8 @@ import character01 from '../../assets/characters/Protagonista01.png'
 import TutorialPopUp from '../../components/tutorialPopUp/popUp.jsx'
 import musicBackground from '../../assets/music/Changes.mp3'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
+import d6x1 from '../../assets/diceImg/d61.png'
+import d6x2 from '../../assets/diceImg/d62.png'
 
 
 const Planilha = () => {
@@ -164,42 +166,54 @@ const handleMouseLeave = () => {
               <div className={style.info} >
                 <label className={style.att}>HABILIDADE</label>
                 <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
-                <button className={style. buttonRollsHabilidade}
-                onClick={() => handleRoll('habilidade')}
-                disabled={rollCount.habilidade >= 3}
-                >
-                Rolar Habilidade
-                </button>
+                <div className={style. buttonRollsHabilidade}>
+                    <p>Habilidade</p>
+                    <button 
+                    onClick={() => handleRoll('habilidade')}
+                    disabled={rollCount.habilidade >= 3}
+                    >
+                    <img className={style.d6} src={d6x1} alt="" />
+                    </button>
+                </div>
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
                 <input className={style.attValor} type="text"  value={inteligencia + 6} readOnly />
-                <button className={style.buttonRollsInteligencia}
-                onClick={() => handleRoll('inteligencia')}
-                disabled={rollCount.inteligencia >= 3}
-                >
-                Rolar Inteligência
-                </button>
+                <div className={style. buttonRollsInteligencia}>
+                    <p>Inteligencia</p>
+                    <button 
+                    onClick={() => handleRoll('inteligencia')}
+                    disabled={rollCount.inteligencia >= 3}
+                    >
+                    <img className={style.d6} src={d6x1} alt="" />
+                    </button>
+                </div>
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
                 <input className={style.attValor} type="text"  value={constituicao + 12} readOnly />
-                <button className={style.buttonRollsConstituicao}
-                onClick={() => handleRoll('constituicao')}
-                disabled={rollCount.constituicao >= 3}
-                >
-                Rolar Constituição
-                </button>
+                <div className={style. buttonRollsConstituicao}>
+                    <p>Constituição</p>
+                    <button 
+                    onClick={() => handleRoll('constituicao')}
+                    disabled={rollCount.constituicao >= 3}
+                    >
+                    <img className={style.d6} src={d6x2} alt="" />
+                    </button>
+                </div>
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
                 <input className={style.attValor} type="text"  value={sorte + 6} readOnly />
-                <button className={style.buttonRollsSorte}
-                onClick={() => handleRoll('sorte')}
-                disabled={rollCount.sorte >= 3}
-                >
-                Rolar Sorte
-                </button>
+                <div className={style. buttonRollsSorte}>
+                    <p>Sorte</p>
+                    <button 
+                    onClick={() => handleRoll('sorte')}
+                    disabled={rollCount.sorte >= 3}
+                    >
+                    <img className={style.d6} src={d6x1} alt="" />
+                    </button>
+                </div>
               </div>
             </div>
             <div className={style.infoSide} >
@@ -248,7 +262,7 @@ const handleMouseLeave = () => {
             <button><img width={20} height={25} src={fireMagic} alt="" /></button>
             <div className={style.qtdMagic}>
             <p>x</p>
-            <p className={style.qtdMagicBackground} >2</p>
+            <input type="text" value={Math.floor((inteligencia + 6) /2)} className={style.qtdMagicBackground}/>
             </div>
           </div>
           <div className={style.sheetBottom}>

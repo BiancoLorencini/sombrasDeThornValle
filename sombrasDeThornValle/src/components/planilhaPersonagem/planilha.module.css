@@ -84,53 +84,159 @@
   width: 40%;
   background-color: transparent;
   border: none;
+  padding-left: 10px;
+  font-family: 'Caveat', cursive;
 }
 
 .buttonRollsHabilidade{
   position: absolute;
-  top: -20%;
+  top: -35%;
   left: 0;
   transform: translate(-50%, -50%);
-  width: 20%;
-  height: 20%;
-  background-color: #fff;
+  width: 15%;
+  height: 50%;
   z-index: 3;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
+}
+
+.buttonRollsHabilidade p{
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+}
+
+.buttonRollsHabilidade button{
+  background-color:transparent;
+  width: 100%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonRollsHabilidade button:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
 }
 
 .buttonRollsInteligencia{
   position: absolute;
-  top: -20%;
-  left: 25%;
+  top: -35%;
+  left: 20%;
   transform: translate(-50%, -50%);
-  width: 20%;
-  height: 20%;
-  background-color: #fff;
+  width: 15%;
+  height: 50%;
   z-index: 3;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
+}
+
+.buttonRollsInteligencia p{
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+}
+
+.buttonRollsInteligencia button{
+  background-color:transparent;
+  width: 100%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonRollsInteligencia button:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
 }
 
 .buttonRollsConstituicao{
   position: absolute;
-  top: -20%;
-  left: 50%;
+  top: -35%;
+  left: 40%;
   transform: translate(-50%, -50%);
-  width: 20%;
-  height: 20%;
-  background-color: #fff;
+  width: 15%;
+  height: 50%;
   z-index: 3;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
 }
+
+.buttonRollsConstituicao p{
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+}
+
+.buttonRollsConstituicao button{
+  background-color:transparent;
+  width: 100%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonRollsConstituicao button:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+}
+
+
+
 
 .buttonRollsSorte{
   position: absolute;
-  top: -20%;
-  left: 75%;
+  top: -35%;
+  left: 60%;
   transform: translate(-50%, -50%);
-  width: 20%;
-  height: 20%;
-  background-color: #fff;
+  width: 15%;
+  height: 50%;
   z-index: 3;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
 }
 
+.buttonRollsSorte p{
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+}
 
+.buttonRollsSorte button{
+  background-color:transparent;
+  width: 100%;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonRollsSorte button:hover{
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+}
+
+.d6{
+  width: 100%;
+  height: 50%;
+  object-fit: contain;
+  cursor: pointer;
+}
 
 .infoSide{
   margin-top: 3%;
