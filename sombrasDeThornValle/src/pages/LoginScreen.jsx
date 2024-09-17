@@ -6,6 +6,8 @@ import buttomVideo from '../assets/introVideo/buttom.mp4'
 import style from './App.module.css'
 import OpeningAudio from '../assets/music/introFreyaSound.mp3'
 import OpeningInfo02  from '../assets/paperIntro.jpg'
+import VideoButton from '../components/videoButton/VideoButton';
+
 
 const LoginScreen = () => {
   const navigate = useNavigate();
@@ -25,15 +27,6 @@ const LoginScreen = () => {
       navigate('/prologo');
     }, 2000);
   };
-
-  const handleMouseEnter = () => {
-    videoRef.current.play();
-  };
-  const handleMouseLeave = () => {
-    videoRef.current.pause(); 
-    videoRef.current.currentTime = 0;
-  };
-
 
   const handleVideoEnd = () => {
       setIsFading(true);
@@ -109,21 +102,23 @@ const LoginScreen = () => {
             Para uma Experiência Completa
             Recomendamos usar áudio para uma imersão total na atmosfera do jogo. A música e os efeitos sonoros são projetados para enriquecer sua jornada e tornar a experiência mais envolvente. <br/> 
             <span className={style.divirtase}>Divirta-se e boa sorte!</span>
-              <div className={style.buttonContainer}>
-                <button onClick={startAudio} className={style.buttonInfo}>Som</button>
-                <button className={style.buttonInfo} onClick={handleStartGameWhitOutAudio} >Sem Som</button>
-              </div>
             </p>
+              <div className={style.buttonContainer}>
+                <div className={style.buttonContainerintern} >
+                  <VideoButton onClick={startAudio} title='Som'/>
+                </div>
+                <div className={style.buttonContainerintern}>
+                  <VideoButton onClick={handleStartGameWhitOutAudio} title='Sem Som'/>
+                </div>
+              </div>
         </div>
       </div>
     )}
       <div className={`${style.mainContainer} ${showIntro ? style.hidden : ''} ${isFading2 ? style.fadeOut : ''} `}>
         <h1 className={style.title}>Sombras de ThornValle</h1>
-        <button 
-          className={style.buttonIntro} 
-          onClick={HadleStartGame}
-          onMouseEnter={handleMouseEnter} 
-          onMouseLeave={handleMouseLeave}> <p className={style.buttomText}>Jogar</p> <video className={style.buttomVideo} ref={videoRef} loop muted src={buttomVideo}></video></button>
+        <div className={style.buttonContainerPlay}>
+          <VideoButton onClick={HadleStartGame} title='Jogar'/>
+        </div>
         <video 
           ref={videoRef1}
           className={`${style.backgroundVideo} ${currentVideo === 2 ? (isFading ? style.fadeOut : style.fadeIn) : style.hidden}`}
@@ -149,7 +144,6 @@ const LoginScreen = () => {
             src={OpeningAudio} 
             preload="auto"
             autoPlay
-            controls
             loop
             />
           }
