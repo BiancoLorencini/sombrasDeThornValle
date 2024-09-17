@@ -10,6 +10,15 @@ const PrologoGame = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.volume = 0.1;
+      audioElement.play();
+    }
+  }, []);
+
+
+  useEffect(() => {
     const fadeOutTimeout = setTimeout(() => {
       setIsFading(true);
     }, 4000);

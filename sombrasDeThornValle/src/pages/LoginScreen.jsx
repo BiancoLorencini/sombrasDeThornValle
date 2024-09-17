@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OpeningVideo from '../assets/introVideo/freyaIntro.mp4'
 import SecondOpeningVideo from '../assets/introVideo/smokeIntro.mp4'
-import buttomVideo from '../assets/introVideo/buttom.mp4'
 import style from './App.module.css'
 import OpeningAudio from '../assets/music/introFreyaSound.mp3'
 import OpeningInfo02  from '../assets/paperIntro.jpg'
@@ -11,7 +10,6 @@ import VideoButton from '../components/videoButton/VideoButton';
 
 const LoginScreen = () => {
   const navigate = useNavigate();
-  const videoRef = useRef(null);
   const videoRef1 = useRef(null);
   const videoRef2 = useRef(null);
   const [currentVideo, setCurrentVideo] = useState(2);
@@ -47,8 +45,9 @@ const LoginScreen = () => {
     setShowIntro(false);
     setAudioStarted(true);
     if (audioElement) {
-      audioElement.
       audioElement.loop = true;
+      audioElement.volume = 0.1; 
+      console.log('Starting audio with volume:', audioElement.volume);
       audioElement.play().catch(error => console.log('Playback error:', error));
       setAudioStarted(true);
     }
@@ -76,6 +75,8 @@ const LoginScreen = () => {
     const audioElement = audioRef.current;
     if (audioElement) {
       audioElement.loop = true;
+      audioElement.volume = 0.1;
+      console.log('Starting audio with volume:', audioElement.volume);
       audioElement.play().catch(error => console.log('Playback error:', error));
     }
   }, []);
