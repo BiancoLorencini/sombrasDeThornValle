@@ -47,6 +47,7 @@ const LoginScreen = () => {
     setShowIntro(false);
     setAudioStarted(true);
     if (audioElement) {
+      audioElement.
       audioElement.loop = true;
       audioElement.play().catch(error => console.log('Playback error:', error));
       setAudioStarted(true);

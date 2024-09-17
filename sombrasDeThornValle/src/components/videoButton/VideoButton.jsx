@@ -8,10 +8,14 @@ const VideoButton = ( {onClick, title, ...props} ) => {
   const audioRef = useRef(new Audio(audioClik));
   const videoRef = useRef(null);
 
+  const playButtonSound = () => {
+    const sound = audioRef.current;
+    sound.volume = 0.1;
+    sound.play();
+  };
+
   const handleClick = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
+    playButtonSound();
     if (onClick) {
       onClick();
     }
