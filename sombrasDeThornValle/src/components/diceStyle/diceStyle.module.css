@@ -1,0 +1,69 @@
+body{
+    background-color: #000;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-content: center;
+}
+
+.diceStyleContainer{
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+}
+
+.diceStyleCube{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transform-style: preserve-3d;
+    animation: rotate 6s linear infinite;
+}
+
+.diceStyleCube div{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    background: linear-gradient(45deg, #000, #fff);
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.s1{
+    transform: translateZ(25px);
+}
+
+.s2{
+    transform: rotateY(90deg) translateZ(25px);
+}
+
+.s3{
+    transform: rotateY(180deg) translateZ(25px);
+}
+
+.s4{
+    transform: rotateX(90deg) translateZ(25px);
+}
+
+.s5{
+    transform: rotateY(-90deg) translateZ(25px);
+}
+
+.s6{
+    transform: rotateX(-90deg) rotate(180deg)  translateZ(25px);
+}
+
+
+@keyframes rotate{
+    100%{
+        transform: rotateY(360deg) rotateX(0deg) rotateZ(360deg);
+    }
+}

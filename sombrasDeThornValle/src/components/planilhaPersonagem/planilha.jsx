@@ -1,13 +1,8 @@
 import React, {useEffect, useState, useRef} from 'react'
 import style from './planilha.module.css'
 import backPack from '../../assets/characterSheet/backPack.png'
-import bookOfAtributes from '../../assets/characterSheet/bookOfAtributes.png'
-import cardEquip from '../../assets/characterSheet/cardEquip.png'
 import fireMagic from '../../assets/characterSheet/fireMagic.png'
-import flagScroll from '../../assets/characterSheet/flagScroll.png'
-import healingPotion from '../../assets/characterSheet/healingPotion.png'
 import iceMagic from '../../assets/characterSheet/iceMagic.png'
-import leatherTag from '../../assets/characterSheet/leatherTag.png'
 import lightiningMagic from '../../assets/characterSheet/lightningMagic.png'
 import scrollDecoration from '../../assets/characterSheet/scrollDecoration.png'
 import character01 from '../../assets/characters/Protagonista01.png'
@@ -16,7 +11,7 @@ import musicBackground from '../../assets/music/Changes.mp3'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
 import d6x1 from '../../assets/diceImg/d61.png'
 import d6x2 from '../../assets/diceImg/d62.png'
-
+import DiceStyle from '../diceStyle/DiceStyle.jsx'
 
 const Planilha = () => {
   const [isStyle, setIsStyle] = useState({});
@@ -29,6 +24,7 @@ const Planilha = () => {
   const [constituicao, setConstituicao] = useState(0);
   const [sorte, setSorte] = useState(0);
   const {rollDice} = useDado();
+  
 
   const [rollCount, setRollCount] = useState({
     habilidade: 0,
@@ -172,7 +168,7 @@ const handleMouseLeave = () => {
                     onClick={() => handleRoll('habilidade')}
                     disabled={rollCount.habilidade >= 3}
                     >
-                    <img className={style.d6} src={d6x1} alt="" />
+                    <DiceStyle />
                     </button>
                 </div>
               </div>
