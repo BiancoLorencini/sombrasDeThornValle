@@ -13,6 +13,8 @@ import d6x1 from '../../assets/diceImg/d61.png'
 import d6x2 from '../../assets/diceImg/d62.png'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
 
+import Cards from '../cards/Cards.jsx'
+
 const Planilha = () => {
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
@@ -154,6 +156,7 @@ const handleMouseLeave = () => {
 
   return (
     <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
+      <Cards />
       <div className={ style.sheet } >
         <div>
           <div className={style.book}>
