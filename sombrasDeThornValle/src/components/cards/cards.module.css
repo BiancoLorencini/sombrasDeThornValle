@@ -1,14 +1,14 @@
-
 .card {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
   height: 45%;
   width: 15%;
   cursor: pointer;
   z-index: 999999;
 }
-
-.card::before,
-.card::after {
+.card::before {
     position: absolute;
     content: "";
     width: 90%;
@@ -20,51 +20,65 @@
     transform-origin: bottom;
     transition: .5s ease-in-out;
 }
-
 .card::before {
   background-image: url('../../assets/cards/equipCards.png');
   
 }
-
-.card::after {
-    background-image: url('../../assets/cards/axe.png');
-    height: 70%;
-    filter: drop-shadow(0 0 3px #000);
+.cards3D {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  filter: drop-shadow(0 0 3px #000);
 }
-
-.card:hover::before,
-.card:hover::after {
+.card:hover::before {
     --scale: 1.3;
 }
-
 .card:hover::before {
     --rotate: 65deg;
     filter: blur(.5px) drop-shadow(0 0 10px #000);
 }
-
 .cardInfo {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
+  position: relative;
   width: 80%;
-  height: 20%;
+  height: 25%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   border: gold 1px solid;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.616);
   color: #fff;
-  font-size: 0.8rem;
-  text-shadow: 0 0 5px #fff;
-  font-family: 'Caveat', cursive;
+  font-size: 0.5rem;
+  text-shadow: 0 0 10px #fff;
+  text-wrap: wrap;
+  margin-bottom: 15%; 
 }
 
-.cardIcon {
-  width: 1px;
-  height: 80%;
-  background-color: gold;
-  border-radius: 5px;
-  margin-right: 25px;
-  margin-left: 25px;
+.cardTitle {
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px #fff;
+  color: #fff;
+  border-bottom: gold 1px solid;
+}
+
+.cardText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 70%;
+  font-size: 0.8rem;
+  text-align: center;
+  text-shadow: 0 0 10px #fff;
+  color: #fff;
+  text-wrap: wrap;
+  padding: 10px;
 }

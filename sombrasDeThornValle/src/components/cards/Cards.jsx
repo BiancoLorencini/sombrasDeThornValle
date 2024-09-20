@@ -1,4 +1,5 @@
-import React , {useState} from 'react'
+import React , {useState, useEffect} from 'react'
+import axios from 'axios'
 import style from './cards.module.css'
 import CardEquip from '../../assets/cards/equipCards.png'
 import axe from '../../assets/cards/axe.png'
@@ -16,18 +17,84 @@ import plateArmor from '../../assets/cards/plateArmor.png'
 import shield from '../../assets/cards/shield.png'
 import shortSword from '../../assets/cards/shortSword.png'
 import simpleGloves from '../../assets/cards/simpleGloves.png'
+import leatherBoots from '../../assets/cards/leatherBoots.png'
 
 
-const Cards = () => {
+const Cards = ({ itemNome }) => {
+  const [equipamentos, setEquipamentos] = useState([])
+  
+  useEffect(() => {
+    axios.get(`http://localhost:3001/equipamento?_=${new Date().getTime()}`)
+      .then(response => {
+        console.log('Equipamentos:', response.data);
+        setEquipamentos(response.data);
+      })
+      .catch(error => console.error('Erro ao buscar equipamentos:', error));
+  }, [itemNome]);
+
+  const getImagemItem = (item) => {
+    switch (item) {
+      case 'Machado':
+        return axe
+      case 'Arco':
+        return bow
+      case 'EspadaDeDuasMaos':
+        return greatSword
+      case 'healingPotion':
+        return healingPotion
+      case 'Bota Pesada':
+        return heavyBoots
+      case 'ArmaduraDeCouroPesada':
+        return heavyLeatherArmor
+      case 'ElmoDeCouro':
+        return helm
+      case 'Lanca':
+        return lance
+      case 'ArmaduraDeCouro':
+        return leatherArmor
+      case 'EspadaLonga':
+        return longSword
+      case 'Maca':
+        return mace
+      case 'ArmaduraDePlacas':
+        return plateArmor
+      case 'Escudo':
+        return shield
+      case 'EspadaCurta':
+        return shortSword
+      case 'simpleGloves':
+        return simpleGloves
+      case 'BotaDeCouro':
+        return leatherBoots
+      default:
+        return null
+    }
+  }
+
+  const filteredEquipamento = equipamentos.length > 0 ? 
+  equipamentos.filter(equipamento => equipamento.nome === itemNome) : [];
 
   return (
     <>
-      <div className={style.card}>
-        <div className={style.cardInfo}><p>Axe</p><span className={style.cardIcon}></span><p>+1 hab <br /> Dmg: 1d6 </p></div>
-      </div>
-      
+      {filteredEquipamento.length > 0 ? (
+        filteredEquipamento.map(item => (
+          <div className={style.card} key={item.id + itemNome}>
+            <img src={getImagemItem(item.nome)} alt={item.nome} className={style.cards3D} />
+            <div className={style.cardInfo}>
+              <div className={style.cardTitle}>
+                <p>{item.nome}</p>
+              </div>
+              <div className={style.cardText}>
+                <p>+{item.bonusHab} hab <br /> Dano: {item.dano}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>Item não encontrado</p>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;

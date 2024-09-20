@@ -1,0 +1,138 @@
+{
+  "equipamento": [
+    {
+      "id": 1,
+      "nome": "Machado",
+      "bonusHab": 1,    
+      "dano": "1d6+1"  
+    },
+    {
+      "id": 2,
+      "nome": "Arco",
+      "bonusHab": 3,
+      "dano": "1d6-1"
+    },
+    {
+      "id": 3,
+      "nome": "EspadaDeDuasMaos",
+      "bonusHab": 1,
+      "dano": "2d6"
+    },
+    {
+      "id": 4,
+      "nome": "Lanca",
+      "bonusHab": 2,
+      "dano": "1d6"
+    },
+    {
+      "id": 5,
+      "nome": "EspadaLonga",
+      "bonusHab": 1,
+      "dano": "1d6+2"
+    },
+    {
+      "id": 6,
+      "nome": "Maca",
+      "bonusHab": 2,
+      "dano": "1d6+1"
+    },
+    {
+      "id": 7,
+      "nome": "EspadaCurta",
+      "bonusHab": 1,
+      "dano": "1d6+1"
+    },
+    {
+      "id": 8,
+      "nome": "BotaPesada",
+      "bonusDef": 2
+    },
+    {
+      "id": 9,
+      "nome": "ArmaduraDeCouroPesada",
+      "bonusDef": 2,
+      "resistencia": 20
+    },
+    {
+      "id": 10,
+      "nome": "ElmoDeCouro",
+      "bonusDef": 1
+    },
+    {
+      "id": 11,
+      "nome": "ArmaduraDeCouro",
+      "bonusDef": 1,
+      "resistencia": 12
+    },
+    {
+      "id": 12,
+      "nome": "BotaDeCouro",
+      "bonusDef": 1
+    },
+    {
+      "id": 13,
+      "nome": "ArmaduraDePlacas",
+      "bonusDef": 4,
+      "bonusHab": -2,
+      "resistencia": 32
+    },
+    {
+      "id": 14,
+      "nome": "Escudo",
+      "bonusDef": 2,
+      "bonusHab": 1,
+      "resistencia": 40
+    }
+  ],
+  "inimigos": [
+    {
+      "id": 1,
+      "nome": "Saqueador",
+      "vida": 18,
+      "habilidade": 8,
+      "defesa": 0
+    },
+    {
+      "id": 2,
+      "nome": "Bandido",
+      "vida": 20,
+      "habilidade": 9,
+      "defesa": 1
+    },
+    {
+      "id": 3,
+      "nome": "Soldado",
+      "vida": 20,
+      "habilidade": 10,
+      "defesa": 2
+    },
+    {
+      "id": 4,
+      "nome": "Dorian",
+      "vida": 30,
+      "habilidade": 11,
+      "defesa": 3
+    },
+    {
+      "id": 5,
+      "nome": "GuardaCostas",
+      "vida": 20,
+      "habilidade": 10,
+      "defesa": 2
+    },
+    {
+      "id": 6,
+      "nome": "Vortigern",
+      "vida": 10,
+      "habilidade": 8,
+      "defesa": 0
+    },
+    {
+      "id": 7,
+      "nome": "LordeDamian",
+      "vida": 40,
+      "habilidade": 10,
+      "defesa": 2
+    }
+  ]
+}
