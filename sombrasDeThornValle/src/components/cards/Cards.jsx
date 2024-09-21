@@ -18,71 +18,83 @@ import shield from '../../assets/cards/shield.png'
 import shortSword from '../../assets/cards/shortSword.png'
 import simpleGloves from '../../assets/cards/simpleGloves.png'
 import leatherBoots from '../../assets/cards/leatherBoots.png'
+import { db } from '../../config/firebaseConfig';
+import { ref, get } from 'firebase/database';
 
 
 const Cards = ({ itemNome }) => {
   const [equipamentos, setEquipamentos] = useState([])
   
   useEffect(() => {
-    axios.get(`http://localhost:3001/equipamento?_=${new Date().getTime()}`)
-      .then(response => {
-        console.log('Equipamentos:', response.data);
-        setEquipamentos(response.data);
-      })
-      .catch(error => console.error('Erro ao buscar equipamentos:', error));
+    const fetchData = async () => {
+      try {
+        const dbRef = ref(db, 'equipamento/armas');
+        const snapshot = await get(dbRef); 
+        
+        if (snapshot.exists()) {
+          console.log('Equipamentos:', snapshot.val());
+          console.log('Dados do Firebase:', snapshot.val());
+          setEquipamentos(snapshot.val());
+        } else {
+          console.log('Nenhum dado disponível');
+        }
+      } catch (error) {
+        console.error('Erro ao buscar equipamentos:', error);
+      }
+    };
+  
+    fetchData();
   }, [itemNome]);
+  
 
   const getImagemItem = (item) => {
     switch (item) {
-      case 'Machado':
+      case 'machado':
         return axe
-      case 'Arco':
+      case 'arco':
         return bow
-      case 'EspadaDeDuasMaos':
+      case 'espadaDeDuasMaos':
         return greatSword
-      case 'healingPotion':
-        return healingPotion
-      case 'Bota Pesada':
+      case 'botaPesada':
         return heavyBoots
-      case 'ArmaduraDeCouroPesada':
+      case 'armaduraCouroPesada':
         return heavyLeatherArmor
-      case 'ElmoDeCouro':
+      case 'elmoCouro':
         return helm
-      case 'Lanca':
+      case 'lanca':
         return lance
-      case 'ArmaduraDeCouro':
+      case 'armaduraCouroLeve':
         return leatherArmor
-      case 'EspadaLonga':
+      case 'espadaLonga':
         return longSword
-      case 'Maca':
+      case 'maca':
         return mace
-      case 'ArmaduraDePlacas':
+      case 'armaduraPlacas':
         return plateArmor
-      case 'Escudo':
+      case 'escudo':
         return shield
-      case 'EspadaCurta':
+      case 'espadaCurta':
         return shortSword
-      case 'simpleGloves':
-        return simpleGloves
-      case 'BotaDeCouro':
+      case 'botaCouro':
         return leatherBoots
       default:
         return null
     }
   }
 
-  const filteredEquipamento = equipamentos.length > 0 ? 
-  equipamentos.filter(equipamento => equipamento.nome === itemNome) : [];
+  const filteredEquipamento = equipamentos
+    ? Object.entries(equipamentos).filter(([key, value]) => key === itemNome)
+    : [];
 
   return (
     <>
       {filteredEquipamento.length > 0 ? (
-        filteredEquipamento.map(item => (
-          <div className={style.card} key={item.id + itemNome}>
-            <img src={getImagemItem(item.nome)} alt={item.nome} className={style.cards3D} />
+        filteredEquipamento.map(([key, item]) => (
+          <div className={style.card} key={key}>
+            <img src={getImagemItem(key)} alt={key} className={style.cards3D} />
             <div className={style.cardInfo}>
               <div className={style.cardTitle}>
-                <p>{item.nome}</p>
+                <p>{key}</p>
               </div>
               <div className={style.cardText}>
                 <p>+{item.bonusHab} hab <br /> Dano: {item.dano}</p>

@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState, useRef , useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import style from './planilha.module.css'
 import backPack from '../../assets/characterSheet/backPack.png'
 import fireMagic from '../../assets/characterSheet/fireMagic.png'
@@ -12,49 +13,54 @@ import { useDado } from '../../context/Dice/DiceContext.jsx'
 import d6x1 from '../../assets/diceImg/d61.png'
 import d6x2 from '../../assets/diceImg/d62.png'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
-import Cards from '../cards/Cards.jsx'
+import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 
 const Planilha = () => {
+  const { personagem, equiparItem, desequiparItem } = useContext(PersonagemContext);
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
-  const musicRef = useRef();
   const [habilidade, setHabilidade] = useState(0);
   const [inteligencia, setInteligencia] = useState(0);
   const [constituicao, setConstituicao] = useState(0);
   const [sorte, setSorte] = useState(0);
+  const navigate = useNavigate();
+  const musicRef = useRef();
   const {rollDice} = useDado();
   
+
+  
   const [rollCount, setRollCount] = useState({
-    habilidade: 0,
-    inteligencia: 0,
-    constituicao: 0,
-    sorte: 0,
+    habilidade: habilidade,
+    inteligencia: inteligencia,
+    constituicao: constituicao,
+    sorte: sorte,
   });
 
   const handleRoll = (attribute) => {
     let result;
   
     if (attribute === 'habilidade' && rollCount.habilidade < 3) {
-      result = rollDice(1, 6);
-      setHabilidade(result);
+      result = rollDice(1, 6) + 6;
+      updateAtributo('habilidade', result); // Atualizando o contexto
       setRollCount(prev => ({ ...prev, habilidade: prev.habilidade + 1 }));
     } else if (attribute === 'inteligencia' && rollCount.inteligencia < 3) {
-      result = rollDice(1, 6);
-      setInteligencia(result);
+      result = rollDice(1, 6) + 6;
+      updateAtributo('inteligencia', result);
       setRollCount(prev => ({ ...prev, inteligencia: prev.inteligencia + 1 }));
     } else if (attribute === 'constituicao' && rollCount.constituicao < 3) {
       const rolls = rollDice(2, 6);
       const total = Array.isArray(rolls) ? rolls.reduce((sum, r) => sum + r, 0) : rolls;
-      setConstituicao(total);
+      updateAtributo('constituicao', total + 12);
       setRollCount(prev => ({ ...prev, constituicao: prev.constituicao + 1 }));
     } else if (attribute === 'sorte' && rollCount.sorte < 3) {
-      result = rollDice(1, 6);
-      setSorte(result);
+      result = rollDice(1, 6) + 6;
+      updateAtributo('sorte', result);
       setRollCount(prev => ({ ...prev, sorte: prev.sorte + 1 }));
     }
   };
+  
 
   useEffect(() => {
     setIsFadingIn(true);
@@ -151,10 +157,12 @@ const handleMouseLeave = () => {
   });
 };
 
+const handleSkip = () => {
+  navigate('/comeco');
+}
 
   return (
     <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
-      <Cards itemNome={'EspadaCurta'} />
       <div className={ style.sheet } >
         <div>
           <div className={style.book}>
@@ -239,7 +247,7 @@ const handleMouseLeave = () => {
         <div className={style.leftSheet} >
           <div className={style.sheetHeader}>
             <div className={style.scrollFlagHeader}>
-              <h2>Nome</h2>
+              <h2>{personagem.nome}</h2>
             </div>
           </div>
           <div className={`${style.sheetCharacterImage} ${flipped ? style.flipped : ''}`} onClick={handleClick}>
@@ -271,6 +279,7 @@ const handleMouseLeave = () => {
       </div>
       <div className={style.sheetPopUp}>
       <TutorialPopUp  steps={steps} />
+      <button onClick={handleSkip}>Skip Tutorial</button>
     </div>
     <audio 
         ref={musicRef}
