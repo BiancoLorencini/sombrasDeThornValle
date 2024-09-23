@@ -10,8 +10,6 @@ import character01 from '../../assets/characters/Protagonista01.png'
 import TutorialPopUp from '../../components/tutorialPopUp/popUp.jsx'
 import musicBackground from '../../assets/music/Changes.mp3'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
-import d6x1 from '../../assets/diceImg/d61.png'
-import d6x2 from '../../assets/diceImg/d62.png'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 
@@ -28,8 +26,8 @@ const Planilha = () => {
   const navigate = useNavigate();
   const musicRef = useRef();
   const {rollDice} = useDado();
-  
-
+  const [openPopUp, setOpenPopUp] = useState(false);
+  const [attributeName, setAttributeName] = useState('');
   
   const [rollCount, setRollCount] = useState({
     habilidade: habilidade,
@@ -38,28 +36,40 @@ const Planilha = () => {
     sorte: sorte,
   });
 
+  const handlePopUp = (attribute) => {
+    if (openPopUp && attributeName === attribute || rollCount[attribute] >= 3) {
+      setOpenPopUp(false);
+    } else if (rollCount[attribute] < 3) {
+      setAttributeName(attribute);
+      setOpenPopUp(true);
+    }
+  };
+
+
+
   const handleRoll = (attribute) => {
     let result;
   
     if (attribute === 'habilidade' && rollCount.habilidade < 3) {
-      result = rollDice(1, 6) + 6;
-      updateAtributo('habilidade', result); // Atualizando o contexto
+      result = rollDice(1, 6);
+      setHabilidade(result);
       setRollCount(prev => ({ ...prev, habilidade: prev.habilidade + 1 }));
     } else if (attribute === 'inteligencia' && rollCount.inteligencia < 3) {
-      result = rollDice(1, 6) + 6;
-      updateAtributo('inteligencia', result);
+      result = rollDice(1, 6);
+      setInteligencia(result);
       setRollCount(prev => ({ ...prev, inteligencia: prev.inteligencia + 1 }));
     } else if (attribute === 'constituicao' && rollCount.constituicao < 3) {
       const rolls = rollDice(2, 6);
-      const total = Array.isArray(rolls) ? rolls.reduce((sum, r) => sum + r, 0) : rolls;
-      updateAtributo('constituicao', total + 12);
+      const total = Array.isArray(rolls) ? rolls.reduce((sum, r) => sum + r, 0) : rolls; 
+      setConstituicao(total);
       setRollCount(prev => ({ ...prev, constituicao: prev.constituicao + 1 }));
     } else if (attribute === 'sorte' && rollCount.sorte < 3) {
-      result = rollDice(1, 6) + 6;
-      updateAtributo('sorte', result);
+      result = rollDice(1, 6);
+      setSorte(result);
       setRollCount(prev => ({ ...prev, sorte: prev.sorte + 1 }));
     }
   };
+
   
 
   useEffect(() => {
@@ -167,58 +177,28 @@ const handleSkip = () => {
         <div>
           <div className={style.book}>
             <div className={style.atributeSide}>
+              <div className={style.rollsButtons}>
+                <button onClick={() => handlePopUp('habilidade')} className={style.rollsButtonStyle} ><span>+</span></button>
+                <button onClick={() => handlePopUp('inteligencia')}  className={style.rollsButtonStyle} >+</button>
+                <button onClick={() => handlePopUp('constituicao')} className={style.rollsButtonStyle} >+</button>
+                <button onClick={() => handlePopUp('sorte')} className={style.rollsButtonStyle} >+</button>
+              </div>
               <h3>Atributos</h3>
               <div className={style.info}>
-                <label className={style.att}>HABILIDADE</label>
-                <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
-                <div className={style. buttonRollsHabilidade}>
-                    <p>Habilidade</p>
-                    <button 
-                    onClick={() => handleRoll('habilidade')}
-                    disabled={rollCount.habilidade >= 3}
-                    >
-                    <DiceStyle />
-                    </button>
-                </div>
+                  <label className={style.att}>HABILIDADE</label>
+                  <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
                 <input className={style.attValor} type="text"  value={inteligencia + 6} readOnly />
-                <div className={style. buttonRollsInteligencia}>
-                    <p>Inteligencia</p>
-                    <button 
-                    onClick={() => handleRoll('inteligencia')}
-                    disabled={rollCount.inteligencia >= 3}
-                    >
-                    <img className={style.d6} src={d6x1} alt="" />
-                    </button>
-                </div>
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
                 <input className={style.attValor} type="text"  value={constituicao + 12} readOnly />
-                <div className={style. buttonRollsConstituicao}>
-                    <p>Constituição</p>
-                    <button 
-                    onClick={() => handleRoll('constituicao')}
-                    disabled={rollCount.constituicao >= 3}
-                    >
-                    <img className={style.d6} src={d6x2} alt="" />
-                    </button>
-                </div>
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
                 <input className={style.attValor} type="text"  value={sorte + 6} readOnly />
-                <div className={style. buttonRollsSorte}>
-                    <p>Sorte</p>
-                    <button 
-                    onClick={() => handleRoll('sorte')}
-                    disabled={rollCount.sorte >= 3}
-                    >
-                    <img className={style.d6} src={d6x1} alt="" />
-                    </button>
-                </div>
               </div>
             </div>
             <div className={style.infoSide} >
@@ -279,6 +259,25 @@ const handleSkip = () => {
       </div>
       <div className={style.sheetPopUp}>
       <TutorialPopUp  steps={steps} />
+
+      {openPopUp && 
+        <div className={style.diceStylePopUp}>
+          <h3>{attributeName}</h3>
+          <button className={style.diceStylePopUpButton}
+            onClick={() => handleRoll(attributeName)}
+            disabled={rollCount[attributeName] >= 3}
+          >
+            <DiceStyle />
+          </button>
+          <p className={style.textRoll}>Clique para rolar <br /> max. {rollCount[attributeName]}/3</p>
+          <p className={style.resultPopUp}>
+            {attributeName === 'habilidade' && habilidade}
+            {attributeName === 'inteligencia' && inteligencia}
+            {attributeName === 'constituicao' && constituicao}
+            {attributeName === 'sorte' && sorte}
+          </p>
+        </div>
+      }
       <button onClick={handleSkip}>Skip Tutorial</button>
     </div>
     <audio 
