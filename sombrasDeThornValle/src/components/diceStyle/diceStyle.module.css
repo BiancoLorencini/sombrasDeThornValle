@@ -105,7 +105,7 @@ body{
 
 
 .diceStyleCube.rolling {
-    animation: bounce 3s ease-in-out, rotate 0.5s linear infinite;
+    animation: bounceAndRotate 1.5s ease-in-out;
 }
 
 @keyframes bounce {
@@ -132,3 +132,21 @@ body{
         transform: rotateY(360deg) rotateX(0deg) rotateZ(360deg);
     }
 }
+
+@keyframes bounceAndRotate {
+    0% {
+      transform: translate(0, 0) rotate(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    25% {
+      transform: translate(50px, -50px) rotate(90deg) rotateY(90deg) rotateZ(90deg);
+    }
+    50% {
+      transform: translate(-50px, 50px) rotate(180deg) rotateY(180deg) rotateZ(180deg);
+    }
+    75% {
+      transform: translate(50px, 50px) rotate(270deg) rotateY(270deg) rotateZ(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+  }
