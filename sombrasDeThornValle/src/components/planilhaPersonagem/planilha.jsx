@@ -267,7 +267,7 @@ const handleSkip = () => {
             onClick={() => handleRoll(attributeName)}
             disabled={rollCount[attributeName] >= 3}
           >
-            <DiceStyle />
+            {attributeName === 'constituicao' ? <><DiceStyle /><DiceStyle /></> : <DiceStyle />}
           </button>
           <p className={style.textRoll}>Clique para rolar <br /> max. {rollCount[attributeName]}/3</p>
           <p className={style.resultPopUp}>
