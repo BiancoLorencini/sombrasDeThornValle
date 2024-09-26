@@ -12,9 +12,13 @@ import musicBackground from '../../assets/music/Changes.mp3'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
+import PersonagemProvider from '../../context/characterContext/PersonagemProvider.jsx'
+import { db } from '../../config/firebaseConfig'
+import { ref, set, get, update } from 'firebase/database'
+
 
 const Planilha = () => {
-  const { personagem, equiparItem, desequiparItem } = useContext(PersonagemContext);
+  const { personagem } = useContext(PersonagemContext);
   const { handleRoll, habilidade, inteligencia, constituicao, sorte, rollCount } = useDado();
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
@@ -24,7 +28,58 @@ const Planilha = () => {
   const [attributeName, setAttributeName] = useState('');
   const musicRef = useRef();
   const navigate = useNavigate();
+  const [nome, setNome] = useState(personagem?.nome || '');
+  const [bdHabilidade, setBdHabilidade] = useState('');
+  const [bdInteligencia, setBdInteligencia] = useState('');
+  const [bdConstituicao, setBdConstituicao] = useState('');
+  const [bdSorte, setBdSorte] = useState('');
+  const [bdMagia, setBdMagia] = useState('');
   
+  const handleInputChange = (e, setFunction) => {
+    setFunction(e.target.value);
+  };
+
+  useEffect(() => {
+    setBdHabilidade(habilidade + 6);
+    setBdInteligencia(inteligencia + 6);
+    setBdConstituicao(constituicao + 12);
+    setBdSorte(sorte + 6);
+    setBdMagia(Math.floor((inteligencia + 6) / 2));
+    
+  }, [habilidade, inteligencia, constituicao, sorte]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const updatedPersonagem = {
+      habilidade: Number(bdHabilidade),
+      inteligencia: Number(bdInteligencia),
+      constituicao: Number(bdConstituicao),
+      sorte: Number(bdSorte),
+      qtdMagia: Number(bdMagia),
+    };
+
+    if (isNaN(updatedPersonagem.habilidade) || isNaN(updatedPersonagem.inteligencia) || isNaN(updatedPersonagem.constituicao) || isNaN(updatedPersonagem.sorte) || isNaN(updatedPersonagem.qtdMagia)) {
+      console.error("Erro: Os valores dos atributos devem ser números válidos.");
+      return;
+    }
+
+    try {
+      const personagemRef = ref(db, 'personagem/atributo');
+
+      const snapshot = await get(personagemRef);
+
+      if (snapshot.exists()) {
+        await update(personagemRef, updatedPersonagem);
+        console.log("Personagem atualizado com sucesso:", updatedPersonagem);
+      } else {
+        console.log("Personagem não encontrado.");
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar o personagem:", error);
+    }
+  };
+
 
   const handlePopUp = (attribute) => {
     if (openPopUp && attributeName === attribute || rollCount[attribute] >= 3) {
@@ -149,19 +204,19 @@ const steps = [
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="text"  value={habilidade + 6} readOnly />
+                  <input className={style.attValor} type="number"  value={Number(habilidade + 6)} onChange={(e) => handleInputChange(e, setBdHabilidade)} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
-                <input className={style.attValor} type="text"  value={inteligencia + 6} readOnly />
+                <input className={style.attValor} type="number" value={Number(inteligencia + 6)} onChange={(e) => handleInputChange(e, setBdInteligencia)} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="text"  value={constituicao + 12} readOnly />
+                <input className={style.attValor} type="number"  value={Number(constituicao + 12)} onChange={(e) => handleInputChange(e, setBdConstituicao)} readOnly />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="text"  value={sorte + 6} readOnly />
+                <input className={style.attValor} type="number"  value={Number(sorte + 6)} onChange={(e) => handleInputChange(e, setBdSorte)} readOnly />
               </div>
             </div>
             <div className={style.infoSide} >
@@ -210,7 +265,7 @@ const steps = [
             <button><img width={20} height={25} src={fireMagic} alt="" /></button>
             <div className={style.qtdMagic}>
             <p>x</p>
-            <input type="text" value={Math.floor((inteligencia + 6) /2)} className={style.qtdMagicBackground}/>
+            <input type="number" value={Math.floor(Number(inteligencia + 6) /2)} readOnly onChange={(e) => handleInputChange(e, setBdMagia)} className={style.qtdMagicBackground}/>
             </div>
           </div>
           <div className={style.sheetBottom}>
@@ -241,7 +296,7 @@ const steps = [
           </p>
         </div>
       }
-      <button onClick={handleSkip}>Skip Tutorial</button>
+      <button type='submit' onClick={handleSubmit}>Skip Tutorial</button>
     </div>
     <audio 
         ref={musicRef}

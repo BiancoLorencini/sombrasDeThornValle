@@ -1,71 +1,43 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useEffect, useState } from 'react'
+import { db } from '../../config/firebaseConfig'
+import { ref, get } from 'firebase/database'
 
-export const PersonagemContext = createContext();
 
-export const PersonagemProvider = ({ children }) => {
+const PersonagemContext = createContext();
 
-  const [personagem, setPersonagem] = useState({
-    nome: '',
-    habilidade: 0,
-    inteligencia: 0,
-    constituicao: 0,
-    sorte: 0,
-    backpack: [],
-    itensEquipados: [],
-    magias: {
-      gelo: false,
-      raio: false,
-      fogo: false,
-    },
-  });
+const PersonagemProvider = ( { children } ) => {
+  const [personagem, setPersonagem] = useState({})
 
-  const adicionarItemNaMochila = (item) => {
-    if (personagem.backpack.length < 4) {
-      setPersonagem((prevState) => ({
-        ...prevState,
-        backpack: [...prevState.backpack, item],
-      }));
-    }
-  };
-
-  const equiparItem = (item) => {
-    if (personagem.itensEquipados.length < 3) {
-      setPersonagem((prevState) => ({
-        ...prevState,
-        itensEquipados: [...prevState.itensEquipados, item],
-        // Alterar os atributos ao equipar o item
-        habilidade: prevState.habilidade + item.bonusHab,
-        constituicao: prevState.constituicao + item.bonusConstituicao,
-        // Outros atributos...
-      }));
-    }
-  };
-
-  const desequiparItem = (item) => {
-    setPersonagem((prevState) => ({
-      ...prevState,
-      itensEquipados: prevState.itensEquipados.filter(i => i.id !== item.id),
-      habilidade: prevState.habilidade - item.bonusHab,
-      constituicao: prevState.constituicao - item.bonusConstituicao,
-      // Restaurar os atributos...
-    }));
-  };
-
-  const atualizarAtributo = (atributo, valor) => {
-    setPersonagem(prev => ({
-      ...prev,
-      atributos: {
-        ...prev.atributos,
-        [atributo]: valor
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const dbRef = ref(db, 'personagem');
+        const snapshot = await get(dbRef); 
+        
+        if (snapshot.exists()) {
+          console.log('Personagem:', snapshot.val());
+          console.log('Dados do Firebase:', snapshot.val());
+          setPersonagem(snapshot.val());
+        } else {
+          console.log('Nenhum dado disponível.');
+        }
+      } catch (error) {
+        console.error('Erro ao buscar personagem:', error);
       }
-    }));
-  };
+    };
+    fetchData();
+  }, []);
+
+  
+
+  
+
 
   return (
-    <PersonagemContext.Provider value={{ personagem, adicionarItemNaMochila, equiparItem, desequiparItem , atualizarAtributo }}>
+    <PersonagemContext.Provider value={{ personagem }}>
       {children}
     </PersonagemContext.Provider>
-  );
-};
+  )
+}
 
-export const useDado = () => useContext(DadoContext);
+export { PersonagemContext, PersonagemProvider as default };
