@@ -204,19 +204,19 @@ const steps = [
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="number"  value={Number(habilidade + 6)} onChange={(e) => handleInputChange(e, setBdHabilidade)} readOnly />
+                  <input className={style.attValor} type="number"  value={Number(bdHabilidade)} onChange={(e) => handleInputChange(e, setBdHabilidade)} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
-                <input className={style.attValor} type="number" value={Number(inteligencia + 6)} onChange={(e) => handleInputChange(e, setBdInteligencia)} readOnly />
+                <input className={style.attValor} type="number" value={Number(bdInteligencia)} onChange={(e) => handleInputChange(e, setBdInteligencia)} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="number"  value={Number(constituicao + 12)} onChange={(e) => handleInputChange(e, setBdConstituicao)} readOnly />
+                <input className={style.attValor} type="number"  value={Number(bdConstituicao)} onChange={(e) => handleInputChange(e, setBdConstituicao)} readOnly />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="number"  value={Number(sorte + 6)} onChange={(e) => handleInputChange(e, setBdSorte)} readOnly />
+                <input className={style.attValor} type="number"  value={ Number(bdSorte) } onChange={(e) => handleInputChange(e, setBdSorte)} readOnly />
               </div>
             </div>
             <div className={style.infoSide} >
@@ -265,7 +265,7 @@ const steps = [
             <button><img width={20} height={25} src={fireMagic} alt="" /></button>
             <div className={style.qtdMagic}>
             <p>x</p>
-            <input type="number" value={Math.floor(Number(inteligencia + 6) /2)} readOnly onChange={(e) => handleInputChange(e, setBdMagia)} className={style.qtdMagicBackground}/>
+            <input type="text" value={bdMagia} readOnly onChange={(e) => handleInputChange(e, setBdMagia)} className={style.qtdMagicBackground}/>
             </div>
           </div>
           <div className={style.sheetBottom}>
@@ -296,7 +296,7 @@ const steps = [
           </p>
         </div>
       }
-      <button type='submit' onClick={handleSubmit}>Skip Tutorial</button>
+      <button type='submit' onClick={handleSubmit}>Enviar personagem <br />teste</button>
     </div>
     <audio 
         ref={musicRef}

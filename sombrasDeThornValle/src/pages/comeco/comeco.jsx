@@ -5,7 +5,7 @@ import PlanilhaContexto from '../../components/planilhaCompInGame/planilhaCompon
 const comeco = () => {
   return (
     <div className={style.comecoContainer}>
-      <PlanilhaContexto />
+      <Cards itemNome="espadaCurta" />
     </div>
   )
 }

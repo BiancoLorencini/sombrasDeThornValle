@@ -8,6 +8,8 @@ import lightningMagic from '../../assets/characterSheet/lightningMagic.png'
 import backPack from '../../assets/characterSheet/backPack.png'
 import fireMagic from '../../assets/characterSheet/fireMagic.png'
 import iceMagic from '../../assets/characterSheet/iceMagic.png'
+import { db } from '../../config/firebaseConfig';
+import { ref, set, get, update } from 'firebase/database';
 
 
 const PlanilhaComponent = () => {
@@ -16,6 +18,13 @@ const PlanilhaComponent = () => {
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
+  
+
+
+
+
+
+
 
 useEffect(() => {
 }, [personagem]);
