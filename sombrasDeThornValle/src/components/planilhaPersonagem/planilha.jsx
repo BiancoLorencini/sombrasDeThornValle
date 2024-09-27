@@ -15,6 +15,7 @@ import { PersonagemContext } from '../../context/characterContext/PersonagemProv
 import PersonagemProvider from '../../context/characterContext/PersonagemProvider.jsx'
 import { db } from '../../config/firebaseConfig'
 import { ref, set, get, update } from 'firebase/database'
+import Card from '../cards/Cards.jsx'
 
 
 const Planilha = () => {
@@ -52,6 +53,7 @@ const Planilha = () => {
     e.preventDefault();
 
     const updatedPersonagem = {
+      nome: nome,
       habilidade: Number(bdHabilidade),
       inteligencia: Number(bdInteligencia),
       constituicao: Number(bdConstituicao),
@@ -79,7 +81,6 @@ const Planilha = () => {
       console.error("Erro ao atualizar o personagem:", error);
     }
   };
-
 
   const handlePopUp = (attribute) => {
     if (openPopUp && attributeName === attribute || rollCount[attribute] >= 3) {
@@ -245,7 +246,7 @@ const steps = [
         <div className={style.leftSheet} >
           <div className={style.sheetHeader}>
             <div className={style.scrollFlagHeader}>
-              <h2>{personagem.nome}</h2>
+              <h2>{nome}</h2>
             </div>
           </div>
           <div className={`${style.sheetCharacterImage} ${flipped ? style.flipped : ''}`} onClick={handleClick}>
@@ -296,8 +297,11 @@ const steps = [
           </p>
         </div>
       }
-      <button type='submit' onClick={handleSubmit}>Enviar personagem <br />teste</button>
     </div>
+    <div className={style.inputNome}>
+      <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome do personagem" />
+    </div>
+    <button onClick={handleSubmit} className={style.buttonConfirm} disabled={!nome} type='submit'>Confirmar</button>
     <audio 
         ref={musicRef}
         src={musicBackground} 
@@ -305,6 +309,10 @@ const steps = [
         autoPlay
         loop
         />
+      <div className={style.caixaDeItens}>
+        <Card itemNome="espadaCurta" />
+        <Card itemNome="espadaLonga" />
+      </div>
     </div>
   )
 }

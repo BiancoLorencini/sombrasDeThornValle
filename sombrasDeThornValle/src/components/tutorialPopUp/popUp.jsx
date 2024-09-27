@@ -31,8 +31,6 @@ const TutorialPopUp = ({ steps }) => {
         </div>
       ) : (
         <div className={style.popUpButtons}>
-          <button onClick={handlePrevious}>Anterior</button>
-          <button onClick={() => setCurrentStep(steps.length)}>Fechar</button>
         </div>
       )}
     </div>
