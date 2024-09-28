@@ -16,6 +16,7 @@ import PersonagemProvider from '../../context/characterContext/PersonagemProvide
 import { db } from '../../config/firebaseConfig'
 import { ref, set, get, update } from 'firebase/database'
 import Card from '../cards/Cards.jsx'
+import { DndContext } from '@dnd-kit/core'
 
 
 const Planilha = () => {
@@ -80,6 +81,7 @@ const Planilha = () => {
     } catch (error) {
       console.error("Erro ao atualizar o personagem:", error);
     }
+    navigate('/comeco ');
   };
 
   const handlePopUp = (attribute) => {
@@ -135,9 +137,6 @@ const handleMouseLeave = () => {
   });
 };
 
-const handleSkip = () => {
-  navigate('/comeco');
-}
 
 const steps = [
   {
@@ -311,7 +310,7 @@ const steps = [
         />
       <div className={style.caixaDeItens}>
         <Card itemNome="espadaCurta" />
-        <Card itemNome="espadaLonga" />
+        <Card itemNome="lanca" />
       </div>
     </div>
   )

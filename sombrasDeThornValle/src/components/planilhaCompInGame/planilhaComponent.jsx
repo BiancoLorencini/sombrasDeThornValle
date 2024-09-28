@@ -18,16 +18,8 @@ const PlanilhaComponent = () => {
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
-  
 
 
-
-
-
-
-
-useEffect(() => {
-}, [personagem]);
 
 useEffect(() => {
   setIsFadingIn(true);
