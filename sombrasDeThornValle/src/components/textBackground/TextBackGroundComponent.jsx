@@ -44,11 +44,6 @@ const TextBackGroundComponent = ({ children, onClick, onClick2, onClick3, ...pro
       <div ref={textRef} className={style.textBox} onClick={handleClick}>
         <p>{displayedText}</p> 
       </div>
-
-      <div className={style.buttonsContainer}>
-        <button className={style.botãoEscolha} onClick={onClick2}>escolha01</button>
-        <button className={style.botãoEscolha} onClick={onClick3}>escolha02</button>
-      </div>
     </div>
   );
 };

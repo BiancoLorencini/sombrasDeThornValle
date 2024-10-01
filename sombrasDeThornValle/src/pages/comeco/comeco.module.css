@@ -1,21 +1,131 @@
-.introImg01 {
-  position: absolute;
-  height: 50%; 
-  top: 30%;
-  right: 30%;
-  z-index: 9;
-}
 
 .planilhaPopUp {
   position: absolute;
   top: 0;
   right: 10%;
   width: 50%;
-  height: 90%;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  backdrop-filter: blur(5px);
+  transition: all 0.5s ease;
+  background: transparent;
+}
+
+.flagScrollTop {
+  background-image: url('../../assets/fragmentImage/flagScrollTopScreen.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 30%;
+  height:20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flagScrollTop p {
+  font-size: 1.5rem;
+  font-family: 'Caveat', cursive;
+  text-decoration: underline;
+}
+
+.flagScrollTop p, h1 {
+  color: #000;
+  text-shadow: 0 0 5px #fff;
+  font-size: 1.5rem;
+  font-family: 'Caveat', cursive;
+  text-align: center;
+}
+
+.containerImageBoard {
+  background-image:url('../../assets/fragmentImage/mesaTeste.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 20%;
+  right: 1%;
+  width: 60%;
+  height:75%;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+  gap: 3rem;
+  z-index: -1;
+}
+
+.mapaContainer {
+  background-image: url('../../assets/fragmentImage/worldMapBackGround.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: 3%;
+  width: 90%;
+  height:100%;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.containerImageBoard img {
+  align-self: center;
+  width: 25%;
+  height: 50%;
+  filter: drop-shadow(0px 0px 15px #000);
+  transition: all 0.5s ease;
+}
+
+.buttonChoiceA {
+  border-radius: 5px;
+  border: none;
+  width: 90px;
+  height: 50px;
+  z-index: 100;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  z-index: 500;
+}
+
+.buttonChoiceA:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+}
+
+
+.fadeIn {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.5s forwards;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
