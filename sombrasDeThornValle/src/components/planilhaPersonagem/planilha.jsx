@@ -36,7 +36,8 @@ const Planilha = () => {
   const [bdConstituicao, setBdConstituicao] = useState('');
   const [bdSorte, setBdSorte] = useState('');
   const [bdMagia, setBdMagia] = useState('');
-  
+  const [fadeOut, setFadeOut] = useState(false);
+
   const handleInputChange = (e, setFunction) => {
     setFunction(e.target.value);
   };
@@ -52,6 +53,7 @@ const Planilha = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const audioElement = musicRef.current;
 
     const updatedPersonagem = {
       nome: nome,
@@ -81,7 +83,25 @@ const Planilha = () => {
     } catch (error) {
       console.error("Erro ao atualizar o personagem:", error);
     }
-    navigate('/comeco ');
+    
+    if (audioElement) {
+      let volume = audioElement.volume;
+      const fadeAudio = setInterval(() => {
+        if (volume > 0.01) {
+          volume = Math.max(volume - 0.01, 0);
+          audioElement.volume = volume;
+        } else {
+          clearInterval(fadeAudio);
+          audioElement.pause(); 
+        }
+      }, 40);
+    }
+
+
+    setFadeOut(true); 
+    setTimeout(() => {
+      navigate('/comeco');
+    }, 4000);
   };
 
   const handlePopUp = (attribute) => {
@@ -137,6 +157,10 @@ const handleMouseLeave = () => {
   });
 };
 
+const lowerVolumeAudio = () => {
+  
+};
+
 
 const steps = [
   {
@@ -190,7 +214,7 @@ const steps = [
 ];
 
   return (
-    <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
+    <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''} ${fadeOut ? style.fadeOut : ''}`}>
       <div className={ style.sheet } >
         <div>
           <div className={style.book}>
