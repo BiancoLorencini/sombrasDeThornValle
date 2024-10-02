@@ -6,15 +6,33 @@ import TextBackground from '../../components/textBackground/TextBackGroundCompon
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
 const comeco = () => {
-
+  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled2, setIsToggled2] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-
+  const [fadeOut, setFadeOut] = useState(false);
+  const [window01, setWindow01] = useState(false);
+  const [window02, setWindow02] = useState(false);
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
     setFadeIn(!fadeIn);
   };
 
+  const windowOpen1 = () => {
+    setWindow01(!window01);
+    setFadeOut(!fadeOut);
+    setIsToggled(!isToggled);
+    setWindow02(false)
+    setIsToggled2(false)
+  };
+
+  const windowOpen2 = () => {
+    setWindow02(!window02);
+    setFadeOut(!fadeOut);
+    setIsToggled2(!isToggled2);
+    setIsToggled(false)
+    setWindow01(false)
+  };
 
   return (
   <>
@@ -29,8 +47,22 @@ const comeco = () => {
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>
-        <img className={style.introImg01} src={introImg01} alt="" />
-        <img className={style.introImg02} src={introImg02} alt="" />
+        <img onClick={windowOpen1} className={`${style.imgFlow} ${window01 ? style.fadeInSide : ''} ${isToggled ? style.toggleActive : ''}`}  src={introImg01} alt="" />
+        {window01 &&
+          <div className={`${style.window01Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In sit, adipisci tenetur laboriosam, similique cumque, tempora beatae nobis minima nihil maxime aspernatur eveniet perferendis mollitia maiores officiis animi laborum quidem?
+            </p>
+          </div>
+        }
+        <img onClick={windowOpen2} className={`${style.imgFlow} ${window02 ? style.fadeInSide : ''} ${isToggled2 ? style.toggleActive2 : ''}`}  src={introImg02} alt="" />
+        {window02 &&
+          <div className={`${style.window01Container} ${window02 ? style.fadeIn : style.fadeOut}`}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In sit, adipisci tenetur laboriosam, similique cumque, tempora beatae nobis minima nihil maxime aspernatur eveniet perferendis mollitia maiores officiis animi laborum quidem?
+            </p>
+          </div>
+        }
       </div>
       <button className={style.buttonChoiceA}>Continuar</button>
     </div>

@@ -157,9 +157,7 @@ const handleMouseLeave = () => {
   });
 };
 
-const lowerVolumeAudio = () => {
-  
-};
+
 
 
 const steps = [

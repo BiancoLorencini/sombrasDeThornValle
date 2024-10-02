@@ -5,7 +5,7 @@ const TextBackGroundComponent = ({ children, onClick, onClick2, onClick3, ...pro
   const [displayedText, setDisplayedText] = useState(''); 
   const [showFullText, setShowFullText] = useState(false); 
   const textRef = useRef(null);
-  const typingSpeed = 30; 
+  const typingSpeed = 10; 
   const fullText = typeof children === 'string' ? children : children.props.children;
 
   useEffect(() => {
