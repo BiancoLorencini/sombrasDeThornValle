@@ -38,12 +38,12 @@ const comeco = () => {
   <>
     <div className={style.containerText}>
       <TextBackground onClick={handlePopUp} >
-      <p>É  uma manhã radiante de outono. O sol brilha alto no céu, lançando seus raios dourados sobre os vastos campos fora dos muros da grande cidade. O ar está fresco e cheio do aroma das colheitas recém-cortadas. Ao longe, vocês ouvem o som animado de risos e conversas, entremeados pelo suave tilintar de um alaúde, uma flauta doce e o ritmado batucar de tambores... </p>
+      <p>É  uma manhã radiante de outono. O sol brilha alto no céu, lançando seus raios dourados sobre os vastos campos de  FrondeLume, fora dos muros da grande cidade de ThornValle. O ar está fresco e cheio do aroma das colheitas recém-cortadas. Ao longe, vocês ouvem o som animado de risos e conversas, entremeados pelo suave tilintar de um alaúde, uma flauta doce e o ritmado batucar de tambores... </p>
       </TextBackground>
     </div>
     <div className={style.flagScrollTop}>
       <p>Prólogo</p>
-      <h1>Ecos da Praga </h1>
+      <h1>"<span>Ecos da Praga</span>" </h1>
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>
@@ -51,7 +51,7 @@ const comeco = () => {
         {window01 &&
           <div className={`${style.window01Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. In sit, adipisci tenetur laboriosam, similique cumque, tempora beatae nobis minima nihil maxime aspernatur eveniet perferendis mollitia maiores officiis animi laborum quidem?
+            " A cada outono, a vila de FrondeLume se transforma em um vibrante centro de celebração, onde moradores se reúnem na praça central para compartilhar suas fartas colheitas. A música e a dança ecoam, fortalecendo os laços familiares e mantendo viva a tradição da abundância. "
             </p>
           </div>
         }
@@ -59,7 +59,7 @@ const comeco = () => {
         {window02 &&
           <div className={`${style.window01Container} ${window02 ? style.fadeIn : style.fadeOut}`}>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. In sit, adipisci tenetur laboriosam, similique cumque, tempora beatae nobis minima nihil maxime aspernatur eveniet perferendis mollitia maiores officiis animi laborum quidem?
+            " Diz os contos dos mais antigos que as frutas gigantes que nascem nas terras ao redor da vila, foi uma luz misteriosa que foi vista no céu, e onde essa luz tocou a terra, as primeiras dessas frutas extraordinárias cresceram, como um presente de uma força muito antiga e esquecida. "
             </p>
           </div>
         }
