@@ -74,8 +74,8 @@
 
 .imgFlow {
   align-self: center;
-  width: 45%;
-  height: 50%;
+  width: 30%;
+  height: 55%;
   filter: drop-shadow(0px 0px 15px #000);
   transition: all 0.5s ease;
   cursor: pointer;
@@ -88,6 +88,34 @@
   transform: scale(1.1);
   filter: drop-shadow(0 0 3px #fff);
   transition: all 1s ease;
+}
+
+.imgFlow2 {
+  align-self: center;
+  width: 55%;
+  height: 55%;
+  filter: drop-shadow(0px 0px 15px #000);
+  transition: all 0.5s ease;
+  cursor: pointer;
+  z-index: 300;
+  will-change: transform;
+  transition: all 1s ease;
+}
+
+.imgFlow2:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.imgFlow2 img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 5px #000);
+  will-change: transform;
+  transition: all 1s ease;
+  animation: fadeIn 0.5s forwards;
 }
 
 .window01Container {
@@ -116,8 +144,8 @@
   position: absolute;
   bottom: 1%;
   right: 0; 
-  width: 50%;
-  height: 50%;
+  width: 65%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -162,6 +190,130 @@
   color: #563413;
 }
 
+.window04Container {
+  position: absolute;
+  bottom: 1%;
+  right: 0; 
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 500;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: small;
+  padding: 15px;
+  color: #563413;
+}
+
+.window05Container {
+  position: absolute;
+  bottom: 1%;
+  right: 0; 
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 500;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: small;
+  padding: 15px;
+  color: #563413;
+}
+
+.window06Container {
+  position: absolute;
+  bottom: 1%;
+  right: 0; 
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 500;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: small;
+  padding: 15px;
+  color: #563413;
+}
+
+.window07Container {
+  position: absolute;
+  bottom: 1%;
+  right: 0; 
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 500;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: small;
+  padding: 15px;
+  color: #563413;
+}
+
+.window08Container {
+  position: absolute;
+  bottom: 1%;
+  right: 0; 
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 500;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: small;
+  padding: 15px;
+  color: #563413;
+}
 
 .buttonChoiceA {
   background-image: url('../../assets/fragmentImage/buttonFrame.png');
@@ -191,6 +343,30 @@
   background-color: #fefee3;
 }
 
+.fadeInBookParty {
+  position: absolute;
+  top: 1%;
+  left: 50%; 
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fefee3a8;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  animation: fadeIn 0.5s forwards;
+  z-index: 500;
+  opacity: 1;
+}
+
+.fadeOut {
+  animation: fadeout 1s forwards;
+  transition: opacity 1s ease-in-out;
+  display: none;
+}
 
 .fadeIn {
   animation: fadeIn 0.5s forwards;
@@ -214,6 +390,36 @@
 }
 
 .toggleActive3 {
+  transform: scale(2.0);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive4 {
+  transform: scale(2.0);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive5 {
+  transform: scale(2.0);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive6 {
+  transform: scale(2.0);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive7 {
+  transform: scale(2.0);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive8 {
   transform: scale(2.0);
   filter: drop-shadow(0 0 3px #fff);
   transition: all 1s ease;
@@ -256,9 +462,6 @@
 
 @keyframes fadeOut {
   0% {
-    opacity: 1;
-  }
-  50% {
     opacity: 1;
   }
   100% {
