@@ -5,7 +5,9 @@ import introImg01 from '../../assets/prologoImg/inicio01.png'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
+import { useNavigate } from 'react-router-dom'
 const comeco = () => {
+  const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
   const [isToggled2, setIsToggled2] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
@@ -32,6 +34,10 @@ const comeco = () => {
     setIsToggled2(!isToggled2);
     setIsToggled(false)
     setWindow01(false)
+  };
+
+  const festaColheita = () => {
+    navigate('/colheita');
   };
 
   return (
@@ -64,7 +70,7 @@ const comeco = () => {
           </div>
         }
       </div>
-      <button className={style.buttonChoiceA}>Continuar</button>
+      <button onClick={festaColheita} className={style.buttonChoiceA}>Continuar</button>
     </div>
     {openPopUp && 
         <div className={` ${style.planilhaPopUp} ${fadeIn ? style.fadeIn : style.fadeOut}`}>

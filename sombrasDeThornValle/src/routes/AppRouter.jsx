@@ -6,7 +6,7 @@ import PlayerChoose from '../../src/pages/selecaoPersonagem/selecaoPersonagem.js
 import Planilha from '../components/planilhaPersonagem/planilha.jsx';
 import Comeco from '../pages/comeco/comeco.jsx';
 import AppContextProvider from '../context/appContext/AppContextProvider.jsx';
-
+import Festa from '../pages/colheita/festaColheita.jsx'
 const AppRouter = () => {
 
   return ( 
@@ -18,6 +18,7 @@ const AppRouter = () => {
           <Route path="/playerChoose" element={<PlayerChoose />} />
           <Route path="/planilha" element={<Planilha />} />
           <Route path="/comeco" element={<Comeco />} />
+          <Route path="/colheita" element={<Festa />} />
         </Routes>
       </Router>
     </AppContextProvider>
