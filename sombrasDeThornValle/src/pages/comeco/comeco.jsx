@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import style from './comeco.module.css'
 import Cards from '../../components/cards/Cards.jsx' 
 import introImg01 from '../../assets/prologoImg/inicio01.png'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
-import { useNavigate } from 'react-router-dom'
 const comeco = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
@@ -49,7 +49,7 @@ const comeco = () => {
     </div>
     <div className={style.flagScrollTop}>
       <p>Prólogo</p>
-      <h1>"<span>Ecos da Praga</span>" </h1>
+      <h1>"Ecos da Praga" </h1>
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>

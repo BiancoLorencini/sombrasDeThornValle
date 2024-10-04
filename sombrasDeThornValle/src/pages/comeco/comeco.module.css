@@ -37,14 +37,7 @@
 .flagScrollTop h1 {
   font-size: 2.0rem;
   font-family: 'Caveat', cursive;
-  color: #850707;
-  filter: drop-shadow(1px 1px 5px #000);
-}
-
-.flagScrollTop h1 span {	
-  font-size: 2.0rem;
-  font-family: 'Caveat', cursive;
-  color: #000;
+  color: #563413;
 }
 
 .containerImageBoard {
@@ -116,7 +109,7 @@
   font-family: 'Caveat', cursive;
   font-weight: 800;
   padding: 15px;
-  color: #000;
+  color: #563413;
 }
 
 

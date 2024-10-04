@@ -77,7 +77,7 @@ const festaColheita = () => {
     </div>
     <div className={style.flagScrollTop}>
       <p>Prólogo</p>
-      <h1>"<span>Ecos da Praga</span>" </h1>
+      <h1>"Ecos da Praga" </h1>
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>
@@ -104,6 +104,13 @@ const festaColheita = () => {
           <div className={`${style.window03Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
             <img className={style.imgPersonagensIntern} src={Freya} alt=""/>
             <h2>Freya</h2>
+            <p>A irmã mais nova de Elowen, compartilha da mesma beleza cativante. Ela tem 18 anos, com cabelos longos e negros, semelhantes aos de Elowen, sempre de cabelos presos. Sua pele clara e suave contrasta com seus olhos de um cinza pálido, sem visão desde o nascimento, mas sempre irradiando serenidade.Freya está constantemente sorrindo e é conhecida por sua atenção calorosa a todos ao seu redor. Sua ligação especial com a natureza é evidente; ela parece entender profundamente o ambiente que não pode ver, como se sentisse a vida ao seu redor em uma forma mais pura. </p>
+          </div>
+        }
+        {window04 &&
+          <div className={`${style.window04Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
+            <img className={style.imgPersonagensIntern} src={Berethur} alt=""/>
+            <h2>Berethur</h2>
             <p>A irmã mais nova de Elowen, compartilha da mesma beleza cativante. Ela tem 18 anos, com cabelos longos e negros, semelhantes aos de Elowen, sempre de cabelos presos. Sua pele clara e suave contrasta com seus olhos de um cinza pálido, sem visão desde o nascimento, mas sempre irradiando serenidade.Freya está constantemente sorrindo e é conhecida por sua atenção calorosa a todos ao seu redor. Sua ligação especial com a natureza é evidente; ela parece entender profundamente o ambiente que não pode ver, como se sentisse a vida ao seu redor em uma forma mais pura. </p>
           </div>
         }
