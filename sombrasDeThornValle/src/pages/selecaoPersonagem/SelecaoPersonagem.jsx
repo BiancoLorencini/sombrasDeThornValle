@@ -2,8 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './selecaoPersonagem.module.css'
-import personagem01 from '../../assets/characters/Protagonista01.png'
-import personagem02 from '../../assets/characters/Protagonista02.png'
+import personagem01 from '../../assets/characters/protagonistaHomem.png'
+import personagem02 from '../../assets/characters/protanistaMulher.png'
 import VideoButton from '../../components/videoButton/VideoButton.jsx'
 
 const SelecaoPersonagem = () => {

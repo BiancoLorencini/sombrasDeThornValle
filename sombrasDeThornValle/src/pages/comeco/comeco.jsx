@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './comeco.module.css'
-import Cards from '../../components/cards/Cards.jsx' 
 import introImg01 from '../../assets/prologoImg/inicio01.png'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
-const comeco = () => {
+const Comeco = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
   const [isToggled2, setIsToggled2] = useState(false);
@@ -22,7 +21,6 @@ const comeco = () => {
 
   const windowOpen1 = () => {
     setWindow01(!window01);
-    setFadeOut(!fadeOut);
     setIsToggled(!isToggled);
     setWindow02(false)
     setIsToggled2(false)
@@ -30,19 +28,21 @@ const comeco = () => {
 
   const windowOpen2 = () => {
     setWindow02(!window02);
-    setFadeOut(!fadeOut);
     setIsToggled2(!isToggled2);
     setIsToggled(false)
     setWindow01(false)
   };
 
   const festaColheita = () => {
-    navigate('/colheita');
+    setFadeOut(true);
+    setTimeout(() => {
+      navigate('/colheita');
+    }, 800);
   };
 
   return (
   <>
-    <div className={style.containerText}>
+    <div className={`${style.containerText} ${fadeOut ? style.fadeOut : style.fadeIn}`}>
       <TextBackground onClick={handlePopUp} >
       <p>É  uma manhã radiante de outono. O sol brilha alto no céu, lançando seus raios dourados sobre os vastos campos de  FrondeLume, fora dos muros da grande cidade de ThornValle. O ar está fresco e cheio do aroma das colheitas recém-cortadas. Ao longe, vocês ouvem o som animado de risos e conversas, entremeados pelo suave tilintar de um alaúde, uma flauta doce e o ritmado batucar de tambores... </p>
       </TextBackground>
@@ -63,7 +63,7 @@ const comeco = () => {
         }
         <img onClick={windowOpen2} className={`${style.imgFlow} ${window02 ? style.fadeInSide : ''} ${isToggled2 ? style.toggleActive2 : ''}`}  src={introImg02} alt="" />
         {window02 &&
-          <div className={`${style.window01Container} ${window02 ? style.fadeIn : style.fadeOut}`}>
+          <div className={`${style.window01Container} ${window02 ? style.fadeIn : ''}`}>
             <p>
             " Diz os contos dos mais antigos que as frutas gigantes que nascem nas terras ao redor da vila, foi uma luz misteriosa que foi vista no céu, e onde essa luz tocou a terra, as primeiras dessas frutas extraordinárias cresceram, como um presente de uma força muito antiga e esquecida. "
             </p>
@@ -81,4 +81,4 @@ const comeco = () => {
   )
 }
 
-export default comeco
+export default Comeco
