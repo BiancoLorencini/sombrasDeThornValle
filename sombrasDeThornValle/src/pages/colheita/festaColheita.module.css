@@ -100,6 +100,7 @@
   z-index: 300;
   will-change: transform;
   transition: all 1s ease;
+  animation: fadeIn 0.5s forwards;
 }
 
 .imgFlow2:hover {
@@ -133,6 +134,7 @@
   border: #000 1px solid;
   filter: drop-shadow(0 0 3px #fff);
   will-change: transform;
+  animation: fadeIn 0.5s forwards;
   transition: all 1s ease;
   font-family: 'Caveat', cursive;
   font-weight: 800;
@@ -362,21 +364,6 @@
   opacity: 1;
 }
 
-.fadeOut {
-  animation: fadeout 1s forwards;
-  transition: opacity 1s ease-in-out;
-  display: none;
-}
-
-.fadeIn {
-  animation: fadeIn 0.5s forwards;
-}
-
-.fadeOut {
-  animation: fadeOut 0.5s forwards;
-  transition: opacity 0.5s ease-in-out;
-}
-
 .toggleActive {
   transform: scale(1.1);
   filter: drop-shadow(0 0 3px #fff);
@@ -451,8 +438,18 @@
   transition: all 1s ease;
 }
 
+.fadeIn {
+  animation: fadeIn 0.8s forwards;
+}
+
+.fadeOut {
+  animation: fadeOut  0.3s forwards;
+  transition: opacity 0.8s ease-in-out;
+}
+
 @keyframes fadeIn {
   from {
+    transform: scale(0.5);
     opacity: 0;
   }
   to {
@@ -465,6 +462,8 @@
     opacity: 1;
   }
   100% {
+    transform: scale(0.5);
     opacity: 0;
+    display: none;
   }
 }

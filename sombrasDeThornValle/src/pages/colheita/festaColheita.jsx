@@ -263,7 +263,7 @@ const festaColheita = () => {
         }
         {openBookFrondeLume && 
           <div className={`${style.imgFlow2}`}>
-            <img onClick={bookFrondeLumeClose} src={party01} alt="" />
+            <img className={style.imgBookOpen} onClick={bookFrondeLumeClose} src={party01} alt="" />
           </div>
         }
       </div>
