@@ -7,6 +7,7 @@ import Planilha from '../components/planilhaPersonagem/planilha.jsx';
 import Comeco from '../pages/comeco/comeco.jsx';
 import AppContextProvider from '../context/appContext/AppContextProvider.jsx';
 import Festa from '../pages/colheita/festaColheita.jsx'
+import Encontro from '../pages/encontroElowen/encontroElowen.jsx'
 const AppRouter = () => {
 
   return ( 
@@ -19,6 +20,7 @@ const AppRouter = () => {
           <Route path="/planilha" element={<Planilha />} />
           <Route path="/comeco" element={<Comeco />} />
           <Route path="/colheita" element={<Festa />} />
+          <Route path="/encontro" element={<Encontro />} />
         </Routes>
       </Router>
     </AppContextProvider>

@@ -5,7 +5,7 @@ const TextBackGroundComponent = ({ children, onClick, onClick2, onClick3, ...pro
   const [displayedText, setDisplayedText] = useState(''); // Texto atualmente exibido
   const [typing, setTyping] = useState(true); // Estado para controlar se está digitando
   const textRef = useRef(null); // Referência para a caixa de texto
-  const typingSpeed = 50; // Velocidade de digitação em milissegundos
+  const typingSpeed = 30; // Velocidade de digitação em milissegundos
 
   useEffect(() => {
     const fullText = typeof children === 'string' ? children : children.props.children;

@@ -17,10 +17,11 @@ const FestaColheita = () => {
   const navigate = useNavigate();
   const [fadeIn, setFadeIn] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [isFading, setIsFading] = useState(false);
   const [openBookFrondeLume,  setOpenBookFrondeLume] = useState(false);
+  const [openPopUp, setOpenPopUp] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
   const [isToggled2, setIsToggled2] = useState(false);
-  const [openPopUp, setOpenPopUp] = useState(false);
   const [isToggled3, setIsToggled3] = useState(false);
   const [isToggled4, setIsToggled4] = useState(false);
   const [isToggled5, setIsToggled5] = useState(false);
@@ -179,28 +180,46 @@ const FestaColheita = () => {
   };
 
   useEffect(() => {
-    
-  }, []);
+    setElowen(false);
+    setFreya(false);
+    setBerethur(false);
+    setHelene(false);
+    setFaramond(false);
+    setHalstein(false);
+    setDorian(false);
+    setIsToggled2(false);
+    setIsToggled3(false);
+    setIsToggled4(false);
+    setIsToggled5(false);
+    setIsToggled6(false);
+    setIsToggled7(false);
+    setIsToggled8(false);
+  }, [window01]);
 
+  const encontro = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      navigate('/encontro');
+    }, 800);
+  };
 
   return (
     <>
-    <div className={`${style.containerText} ${fadeIn ? style.fadeIn : ''}`}>
-      <TextBackground onClick={handlePopUp} >
-      <p>V oce chega à clareira, onde aldeões já se reúnem ao redor de uma fogueira. Mesas de madeira, abarrotadas de pães quentes, queijos aromáticos, frutas frescas e carne assada, enchem o ar com aromas deliciosos. Faramond, o mais velho dos três irmãos músicos, dedilha seu alaúde com maestria, enquanto Helene encanta com sua flauta doce e Halstein, no tambor, mantém todos dançando. O som da música é alegre, e os pés dos presentes se movem quase involuntariamente, num ritmo contagiante.
+      <div className={isFading ? style.fadeOut : ''}>
+        <TextBackground onClick={handlePopUp} >
+        <p>V oce chega à clareira, onde aldeões já se reúnem ao redor de uma fogueira. Mesas de madeira, abarrotadas de pães quentes, queijos aromáticos, frutas frescas e carne assada, enchem o ar com aromas deliciosos. Faramond, um dos três irmãos músicos, dedilha seu alaúde com maestria, enquanto Helene encanta com sua flauta doce e Halstein, no tambor, mantém todos dançando. O som da música é alegre, e os pés dos presentes se movem quase involuntariamente, num ritmo contagiante.
+        Entre os dançarinos, Elowen, com uma coroa de flores, se destaca. Seus movimentos são fluidos, quase sobrenaturais, e borboletas parecem segui-la enquanto ela sorri para todos ao redor. Sua irmã cega, Freya, permanece sentada batendo palmas em um ritmo perfeito, sorrindo serenamente enquanto sente a vibração da música no ar.
+        Berentur, ergue sua caneca em um brinde animado: "À fartura e à amizade!". O pôr do sol tinge o céu de laranja, e as tochas ao redor da fogueira brilham, enquanto todos formam um grande círculo de dança ao som acelerado da flauta de Helene. É um momento de pura alegria, uma celebração que transcende as as dificuldades do dia a dia.</p>
+        </TextBackground>
+      </div>
 
-      Entre os dançarinos, Elowen, com uma coroa de flores, se destaca. Seus movimentos são fluidos, quase sobrenaturais, e borboletas parecem segui-la enquanto ela sorri para todos ao redor. Sua irmã cega, Freya, permanece sentada, sorrindo serenamente enquanto sente a vibração da música no ar.
-
-      Berentur, sempre animado, ergue sua caneca em um brinde animado: "À fartura e à amizade!". O pôr do sol tinge o céu de laranja, e as tochas ao redor da fogueira brilham, enquanto todos formam um grande círculo de dança ao som acelerado do alaúde de Faramond. É um momento de pura alegria, uma celebração que transcende as dificuldades dentro dos muros da cidade.</p>
-      </TextBackground>
-    </div>
     <div className={style.flagScrollTop}>
       <p>Prólogo</p>
       <h1>"Ecos da Praga" </h1>
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>
-        <img onClick={windowOpen1} className={`${style.imgFlow} ${window01 ? style.fadeOut : ''} ${isToggled ? style.toggleActive : ''} ${!fadeOut ? style.fadeIn : ''}`}  src={BookLumen} alt="" />
+        <img onClick={windowOpen1} className={`${style.imgFlow} ${window01 ? style.flipBookOpen : ''} ${isToggled ? style.toggleActive : ''} ${!fadeOut ? style.fadeIn : ''}`}  src={BookLumen} alt="" />
         {window01 &&
           <div className={`${style.window01Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
             <img onClick={windowOpen2} className={`${style.imgPersonagens} ${isToggled2 ? style.toggleActive2 : ''}`} src={Elowen} alt=""/>
@@ -282,10 +301,10 @@ const FestaColheita = () => {
           </div>
         }
       </div>
-      <button className={style.buttonChoiceA}>Continuar</button>
+      <button onClick={encontro} className={style.buttonChoiceA}>Continuar</button>
     </div>
     {openPopUp && 
-        <div className={` ${style.planilhaPopUp} ${fadeIn ? style.fadeIn : style.fadeOut}`}>
+        <div className={style.planilhaPopUp}>
           <PlanilhaComponent />
         </div>
     }
