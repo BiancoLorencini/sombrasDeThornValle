@@ -6,7 +6,7 @@ import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaCompo
 import Elowen from '../../assets/characters/elowen.png'
 import imgEncontro from '../../assets/prologoImg/encontroElowen.png'
 import arvoreEncontro from '../../assets/prologoImg/arvoreEncontro.png'
-import caminhoArvore from '../../assets/prologoImg/treeElowen.jpg'
+import caminhoArvore from '../../assets/prologoImg/treeElowen.png'
 import noiteEncontro from '../../assets/prologoImg/moonElowen.jpg'
 
 const EncontroElowen = () => {
@@ -42,7 +42,7 @@ const EncontroElowen = () => {
     <>
       <div className={isFading ? style.fadeOut : ''}>
         <TextBackground onClick={handlePopUp} >
-        <p>  Em meio à celebração da colheita, você se destaca da multidão, até que os olhos de Elowen encontram os seus, brilhando com uma promessa silenciosa. Com um gesto delicado, ela te convida a segui-la até uma antiga árvore solitária, afastando-se do som distante da festa. Do belo entardecer até o anoitecer, seus sentimentos se revelam enquanto ela fala sobre o futuro e seus sonhos, muitos dos quais, ela confessa, te incluem. Em um momento íntimo e sincero, ela expressa seu desejo de que, apesar das incertezas da vida, você permaneça ao seu lado, compartilhando juntos o que o futuro reserva.
+        <p>  Em meio à celebração da colheita, você se destaca da multidão, até que os olhos de Elowen encontram os seus, brilhando com uma promessa silenciosa. Com um gesto delicado, ela te convida a segui-la até uma antiga árvore solitária,"um lugar secreto", afastando-se do som distante da festa. Do belo entardecer até o anoitecer, seus sentimentos se revelam enquanto ela fala sobre o futuro e seus sonhos, muitos dos quais, ela confessa, te incluem. Em um momento íntimo e sincero, ela expressa seu desejo de que, apesar das incertezas da vida, você permaneça ao seu lado, compartilhando juntos o que o futuro reserva.
         O momento é marcado por uma conexão profunda e sincera, um encontro de vulnerabilidade e esperança, tornando-se um momento inesquecível.</p>
         </TextBackground>
       </div>
@@ -61,11 +61,29 @@ const EncontroElowen = () => {
                 <p>"Eu... queria ter um momento longe de toda a agitação," <br />  <span>ela fala com uma voz suave e sincera.</span> </p> <p>-Elowen</p>
               </div>
             }
+            <div className={style.caminhoArvoreEscolha}>
+              <p>Momento de Escolha</p>
+              <hr />
+              <p>...ela faz uma pausa, olhando para o céu    estrelado por um momento antes de voltar seus olhos para você. <br /> <span>-"Eu tenho pensado muito sobre o futuro,"</span> <br /> ela continua. <br /> <span>-"Sobre o que eu quero para mim, para minha vida... e percebi que muitas das minhas esperanças e sonhos têm você nelas."</span> <br />
+              Você sente o calor subir em suas bochechas, o coração acelerando com as palavras dela...
+              </p>
+              <hr />
+              <div className={style.caminhoArvoreEscolhaButtons}>
+                <div className={style.caminhoArvoreEscolhaButtonsDiv}>
+                  <button>Opção 1</button>
+                  <p>Ser reciproco</p>
+                </div>
+                <p>ou</p>
+                <div className={style.caminhoArvoreEscolhaButtonsDiv}>
+                  <button>Opção 2</button>
+                  <p>Voltar para a festa</p>
+                </div>
+              </div>
+            </div>
           </>
         }
         
       </div>
-      <button className={style.buttonChoiceA}>Continuar</button>
     </div>
     {openPopUp && 
         <div className={style.planilhaPopUp}>

@@ -227,25 +227,94 @@
   transition: all 1s ease;
   cursor: pointer;
   border: 1px solid #563413;
-  color: #563413;
+  
   font-family: 'Caveat', cursive;
   font-weight: 800;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #fefee3;
   perspective:  500px;
   animation: backFlipPerspective 0.5s forwards;
 }
 
 .caminhoArvoreBack p {
-  color: #850707;
+  color: #563413;
   font-family: 'Caveat', cursive;
   font-weight: 800;
 }
 
 .caminhoArvoreBack span {
   color: #850707;
-
 }
+
+.caminhoArvoreEscolha {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  animation: fadeIn 5s forwards;
+  width: 35%;
+  height: 90%;
+  background-color: #fefee3;
+  text-align: center;
+  padding: 10px;
+  color: #563413;
+  border-radius: 5px;
+  border: 2px solid #563413;
+}
+
+.caminhoArvoreEscolha span {
+  color: #563413;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.caminhoArvoreEscolha p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.caminhoArvoreEscolhaButtons {
+  margin-top: 1px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.caminhoArvoreEscolhaButtonsDiv {
+  width: 40%;
+  border-radius: 5px;
+  padding: 1px;
+  overflow: hidden;
+}
+
+.caminhoArvoreEscolhaButtonsDiv button {
+  width: 100%;
+  height: 30% ;
+  box-shadow: 1px 1px 5px #563413;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  border: none;
+  background-color: #fefee3;
+  color: #563413;
+  font-weight: 600;
+}
+
+.caminhoArvoreEscolhaButtonsDiv button:hover {
+  filter: drop-shadow(0 0 3px #563413);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+
+.caminhoArvoreEscolhaButtonsDiv p {
+  background-color: #563413;
+  color: #fefee3;
+  border-radius: 5px;
+  padding: 5px;
+  height: 74%;
+  margin-top: 2px;
+  font-size: small;
+}
+
 
 .fadeIn {
   animation: fadeIn 0.5s forwards;
