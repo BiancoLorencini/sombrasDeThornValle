@@ -6,6 +6,8 @@ import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaCompo
 import Elowen from '../../assets/characters/elowen.png'
 import imgEncontro from '../../assets/prologoImg/encontroElowen.png'
 import arvoreEncontro from '../../assets/prologoImg/arvoreEncontro.png'
+import caminhoArvore from '../../assets/prologoImg/treeElowen.jpg'
+import noiteEncontro from '../../assets/prologoImg/moonElowen.jpg'
 
 const EncontroElowen = () => {
   const navigate = useNavigate();
@@ -16,20 +18,25 @@ const EncontroElowen = () => {
   const [fadeIn, setFadeIn] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [window01, setWindow01] = useState(false);
-
-  
+  const [timed, setTimed] = useState(false);
+  const [relocation, setRelocation] = useState(false);
+  const [openCaminhoArvore, setOpenCaminhoArvore] = useState(false);
+  const [flip, setFlip] = useState(false);
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
-    setIsFading(!isFading);
   };
 
   const windowOpen1 = () => {
     setIsToggled(!isToggled);
+    setWindow01(!window01);
+    setRelocation(!relocation);
+    setOpenCaminhoArvore(false);
+    setFlip(false);
   };
   const windowOpen2 = () => {
-    setIsToggled2(!isToggled2);
+    setOpenCaminhoArvore(!openCaminhoArvore);
+    setFlip(!flip);
   };
-  
   
   return (
     <>
@@ -45,13 +52,18 @@ const EncontroElowen = () => {
     </div>
     <div className={style.containerImageBoard}>
       <div className={style.mapaContainer}>
-        <img onClick={windowOpen1} className={`${style.imgFlow} ${isToggled ? style.toggleActive : ''}`}  src={arvoreEncontro} alt="" />
+        <img onClick={windowOpen1} className={`${style.imgFlow} ${isToggled ? style.toggleActive : ''} ${relocation ? style.relocation : style.relocationBack}`}  src={arvoreEncontro} alt="" />
         {window01 &&
-          <div className={`${style.window01Container} ${window01 ? style.fadeIn : style.fadeOut}`}>
-            <img onClick={windowOpen2} className={`${style.imgPersonagens} ${isToggled2 ? style.toggleActive2 : ''}`} src={Elowen} alt=""/>
-            <img src={arvoreEncontro} alt="" />
-          </div>
+          <>
+            <img onClick={windowOpen2} className={`${style.imgPersonagens} ${openCaminhoArvore ? style.openCaminhoArvore : ''}`} src={caminhoArvore} alt=""/>
+            {flip && 
+              <div onClick={windowOpen2} className={style.caminhoArvoreBack}>
+                <p>"Eu... queria ter um momento longe de toda a agitação," <br />  <span>ela fala com uma voz suave e sincera.</span> </p> <p>-Elowen</p>
+              </div>
+            }
+          </>
         }
+        
       </div>
       <button className={style.buttonChoiceA}>Continuar</button>
     </div>
