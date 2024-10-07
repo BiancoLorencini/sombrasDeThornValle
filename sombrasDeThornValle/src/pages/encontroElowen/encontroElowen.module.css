@@ -250,7 +250,7 @@
   position: absolute;
   top: 5%;
   right: 0;
-  animation: fadeIn 5s forwards;
+  animation: fadeIn 2s forwards;
   width: 35%;
   height: 90%;
   background-color: #fefee3;
@@ -259,6 +259,7 @@
   color: #563413;
   border-radius: 5px;
   border: 2px solid #563413;
+  filter: drop-shadow(0 0 5px #fff);
 }
 
 .caminhoArvoreEscolha span {
@@ -270,7 +271,7 @@
 
 .caminhoArvoreEscolha p {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .caminhoArvoreEscolhaButtons {
@@ -315,6 +316,61 @@
   font-size: small;
 }
 
+.caminhoArvoreTimed {
+  position: absolute;
+  top: 8%;
+  left: -2%;
+  object-fit: contain;
+  width: 55%;
+  height: 65%;
+  filter: drop-shadow(0 0 5px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  cursor: pointer;
+  animation: fadeInBottom 1s forwards;
+  background-color: #fefee3;
+  border: 2px solid #563413;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.caminhoArvoreTimed img {
+  width: 40%;
+  margin: 5px;
+  filter: drop-shadow(0 0 5px #000);
+}
+
+.imgsNoiteEncontro {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+}
+
+.imgsNoiteEncontro p {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: #563413;
+  margin: 5px;
+}
+
+.videoNoiteEncontro{
+  width: 100%;
+  padding: 10px;
+  filter: drop-shadow(0 0 5px #000);
+}
+
+.videoNoiteEncontro video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 
 .fadeIn {
   animation: fadeIn 0.5s forwards;
@@ -332,6 +388,21 @@
 .relocationBack {
   animation: relocateTop 1.5s forwards;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  opacity: 0;
+  animation: fadeToBlack 25s ease-in-out;
+  z-index: 9999;
+}
+
+
+
 
 
 @keyframes flipPerspective {
@@ -400,14 +471,20 @@
   }
 }
 
+@keyframes fadeToBlack {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeOut {
-  0% {
+  from {
     opacity: 1;
   }
-  50% {
-    opacity: 1;
-  }
-  100% {
+  to {
     opacity: 0;
   }
 }

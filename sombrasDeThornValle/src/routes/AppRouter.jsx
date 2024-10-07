@@ -8,6 +8,12 @@ import Comeco from '../pages/comeco/comeco.jsx';
 import AppContextProvider from '../context/appContext/AppContextProvider.jsx';
 import Festa from '../pages/colheita/festaColheita.jsx'
 import Encontro from '../pages/encontroElowen/encontroElowen.jsx'
+import FimFestaColheita from '../pages/fimFestaColheita/fimFestaColheita.jsx';
+
+
+
+
+
 const AppRouter = () => {
 
   return ( 
@@ -21,6 +27,7 @@ const AppRouter = () => {
           <Route path="/comeco" element={<Comeco />} />
           <Route path="/colheita" element={<Festa />} />
           <Route path="/encontro" element={<Encontro />} />
+          <Route path="/fimFestaColheita" element={<FimFestaColheita />} />
         </Routes>
       </Router>
     </AppContextProvider>

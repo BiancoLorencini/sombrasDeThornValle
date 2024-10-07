@@ -7,21 +7,26 @@ import Elowen from '../../assets/characters/elowen.png'
 import imgEncontro from '../../assets/prologoImg/encontroElowen.png'
 import arvoreEncontro from '../../assets/prologoImg/arvoreEncontro.png'
 import caminhoArvore from '../../assets/prologoImg/treeElowen.png'
-import noiteEncontro from '../../assets/prologoImg/moonElowen.jpg'
+import noiteEncontro from '../../assets/prologoImg/opcao1Encontro.png'
+import noiteEncontro2 from '../../assets/prologoImg/opcao1Encontro02.png'
+import noiteEncontro3 from '../../assets/prologoImg/opcao1Encontro03.png'
+import videoEncontro from '../../assets/videoRandom/encontroElowen.mp4'
+
 
 const EncontroElowen = () => {
   const navigate = useNavigate();
   const [isFading, setIsFading] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
-  const [isToggled2, setIsToggled2] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
   const [window01, setWindow01] = useState(false);
   const [timed, setTimed] = useState(false);
   const [relocation, setRelocation] = useState(false);
   const [openCaminhoArvore, setOpenCaminhoArvore] = useState(false);
   const [flip, setFlip] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [overlay, setOverlay] = useState(false);
+  const [goodNight, setGoodNight] = useState(false);
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
   };
@@ -37,12 +42,30 @@ const EncontroElowen = () => {
     setOpenCaminhoArvore(!openCaminhoArvore);
     setFlip(!flip);
   };
+
+  const opcao1Elowen = () => {
+    setTimed(!timed);
+    setDisabled(true)
+    setOverlay(true)
+    setTimeout(() => {
+      setGoodNight(true)
+      setTimeout(() => {
+        navigate('/fimFestaColheita');
+      }, 23000)
+    } , 2000)
+  }
+
+  const opcao2Elowen = () => {
+    navigate('/fimFestaColheita');
+    setFadeIn(!fadeIn);
+    setDisabled(true)
+  }
   
   return (
     <>
       <div className={isFading ? style.fadeOut : ''}>
         <TextBackground onClick={handlePopUp} >
-        <p>  Em meio à celebração da colheita, você se destaca da multidão, até que os olhos de Elowen encontram os seus, brilhando com uma promessa silenciosa. Com um gesto delicado, ela te convida a segui-la até uma antiga árvore solitária,"um lugar secreto", afastando-se do som distante da festa. Do belo entardecer até o anoitecer, seus sentimentos se revelam enquanto ela fala sobre o futuro e seus sonhos, muitos dos quais, ela confessa, te incluem. Em um momento íntimo e sincero, ela expressa seu desejo de que, apesar das incertezas da vida, você permaneça ao seu lado, compartilhando juntos o que o futuro reserva.
+        <p>...após muito dançar e cantar, você se afastaum pouco da multidão, até que os olhos de Elowen encontram os seus, brilhando com uma promessa silenciosa. Com um gesto delicado, ela te convida a segui-la até uma antiga árvore solitária, -"um lugar secreto" ela diz no caminho, afastando-se do som distante da festa. Do belo entardecer até o anoitecer, seus sentimentos se revelam enquanto ela fala sobre o futuro e seus sonhos, muitos dos quais, ela confessa, te incluem. Em um momento íntimo e sincero, ela expressa seu desejo de que, apesar das incertezas da vida, você permaneça ao seu lado, compartilhando juntos o que o futuro reserva.
         O momento é marcado por uma conexão profunda e sincera, um encontro de vulnerabilidade e esperança, tornando-se um momento inesquecível.</p>
         </TextBackground>
       </div>
@@ -64,31 +87,51 @@ const EncontroElowen = () => {
             <div className={style.caminhoArvoreEscolha}>
               <p>Momento de Escolha</p>
               <hr />
-              <p>...ela faz uma pausa, olhando para o céu    estrelado por um momento antes de voltar seus olhos para você. <br /> <span>-"Eu tenho pensado muito sobre o futuro,"</span> <br /> ela continua. <br /> <span>-"Sobre o que eu quero para mim, para minha vida... e percebi que muitas das minhas esperanças e sonhos têm você nelas."</span> <br />
+              <p>...ela faz uma pausa, olhando para o céu    estrelado por um momento antes de voltar os olhos para você. <br /> <span>-"Eu tenho pensado muito sobre o futuro,"</span> <br /> ela continua. <br /> <span>-"Sobre o que eu quero para mim, para minha vida... e percebi que muitas das minhas esperanças e sonhos têm você nelas."</span> <br />
               Você sente o calor subir em suas bochechas, o coração acelerando com as palavras dela...
               </p>
               <hr />
               <div className={style.caminhoArvoreEscolhaButtons}>
                 <div className={style.caminhoArvoreEscolhaButtonsDiv}>
-                  <button>Opção 1</button>
-                  <p>Ser reciproco</p>
+                  <button onClick={opcao1Elowen} disabled={disabled}>Opção 1</button>
+                  <p>Ser recíproco</p>
                 </div>
                 <p>ou</p>
                 <div className={style.caminhoArvoreEscolhaButtonsDiv}>
-                  <button>Opção 2</button>
+                  <button onClick={opcao2Elowen} disabled={disabled}>Opção 2</button>
                   <p>Voltar para a festa</p>
                 </div>
               </div>
             </div>
+            {timed &&
+              <div className={style.caminhoArvoreTimed}>
+                <img src={noiteEncontro2} alt="" />
+                <div className={style.imgsNoiteEncontro}>
+                  <div className={style.videoNoiteEncontro}>
+                    <video src={videoEncontro} autoPlay></video>
+                  </div>
+                  <p>(+1 Sorte Máxima)</p>
+                  <img src={noiteEncontro3} alt="" />
+                </div>
+              </div>
+            }
           </>
         }
-        
       </div>
     </div>
     {openPopUp && 
         <div className={style.planilhaPopUp}>
           <PlanilhaComponent />
         </div>
+    }
+    {overlay &&
+      <>
+        <div className={style.overlay}></div>
+        {goodNight &&
+          <TextBackground>...ao voltar para casa, o som do vento e as lembranças da noite marcaram o fim perfeito de um dia memorável. Com um último suspiro, você sussurra: "Boa noite, Elowen..."
+          </TextBackground>
+        }
+      </>
     }
   </>
   )
