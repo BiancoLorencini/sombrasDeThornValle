@@ -1,0 +1,349 @@
+.planilhaPopUp {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 45%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: all 0.5s ease;
+  background: transparent;
+}
+
+.flagScrollTop {
+  background-image: url('../../assets/fragmentImage/flagScrollTopScreen.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 30%;
+  height:20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flagScrollTop p {
+  font-size: 1.5rem;
+  font-family: 'Caveat', cursive;
+  color: #850707;
+}
+
+.flagScrollTop h1 {
+  font-size: 2.0rem;
+  font-family: 'Caveat', cursive;
+  color: #563413;
+}
+
+.containerImageBoard {
+  background-image:url('../../assets/fragmentImage/mesaTeste.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 20%;
+  right: 1%;
+  width: 60%;
+  height:75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  z-index: 100;
+  padding: 5px;
+}
+
+.mapaContainer {
+  background-image: url('../../assets/fragmentImage/worldMapBackGround.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: 3%;
+  width: 85%;
+  height:100%;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.imgFlow {
+  align-self: center;
+  width: 25%;
+  height: 50%;
+  filter: drop-shadow(0px 0px 15px #000);
+  cursor: pointer;
+  z-index: 300;
+  will-change: transform;
+  transition: all 1s ease;
+  animation: fadeInSide 2s forwards;
+}
+
+.imgFlow:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.window01Container {
+  position: absolute;
+  top: 1%;
+  left: 0; 
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: #fefee3a8;
+  border-radius: 5px;
+  border: #000 1px solid;
+  filter: drop-shadow(0 0 3px #fff);
+  will-change: transform;
+  transition: all 1s ease;
+  font-family: 'Caveat', cursive;
+  font-weight: 800;
+  padding: 15px;
+  color: #563413;
+}
+
+
+.buttonChoiceA {
+  background-image: url('../../assets/fragmentImage/buttonFrame.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 5px;
+  border: none;
+  width: 80px;
+  height: 45px;
+  z-index: 100;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+  z-index: 500;
+  background-color: #fefee370;
+  color: #563413;
+  font-family: 'Caveat', cursive;
+  font-weight: 800;
+  will-change: transform;
+  transition: all 1s ease;
+}
+
+.buttonChoiceA:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 0.3s ease;
+  background-color: #fefee3;
+}
+
+.toggleActive {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.toggleActive2 {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #fff);
+  transition: all 1s ease;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.8s forwards;
+  transition: opacity 1s ease-in-out;
+}
+
+.sheetEnemies{
+  width: 100%;
+  height: 95%;
+  border-radius: 10px;
+  background-color: #211d1d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.scrollFlag{
+  background-image: url('../../assets/characterSheet/flagScroll.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 45%;
+  height: 15%;
+  text-align: center;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  filter: drop-shadow(0 0 2px #fff);
+  text-shadow: 0 0 3px #fff;
+}
+
+.enemiesContainer{
+  background-image: url('../../assets/enemieSheet/atributeBook.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 98%;
+  height: 80%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  gap: 1rem;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.containerEnemiesLeft{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 35%;
+  height: 77%;
+  margin-bottom: 0.5rem;
+}
+
+.containerEnemiesLeft h3{
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  color: #563413;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 0 3px #fff;
+}
+
+.containerEnemiesRight{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 94%;
+  padding: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  text-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.enemiesContainer img {
+  width: 35%;
+  height: 30%;
+}
+
+.containerInput{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+}
+
+.inputContainer1 {
+  display: flex;
+  flex-direction: column;
+  width: 45%; 
+}
+
+.inputContainer1 label {
+  color: #563413;
+  font-weight: 600;
+  border-top: #563413 1px solid;
+  border-left: #563413 1px solid;
+  border-right: #563413 1px solid;
+  border-bottom: transparent;
+  border-radius: 2px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer1 input {
+  background: transparent;
+  border-left: 1px solid #563413;
+  border-right: 1px solid #563413;
+  border-bottom: #563413 1px solid; 
+  border-top:#563413 1px solid;
+  padding: 5px;
+  color: #563413;
+  font-weight: 600;
+  text-align: center;
+  height: 55px;
+}
+
+.inputContainer2 {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.inputContainer2 label {
+  color: #563413;
+  font-weight: 600;
+  border-top: #563413 1px solid;
+  border-left: #563413 1px solid;
+  border-right: #563413 1px solid;
+  border-bottom: transparent;
+  border-radius: 2px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer2 input {
+  background: transparent;
+  border-left: 1px solid #563413;
+  border-right: 1px solid #563413;
+  border-bottom: #563413 1px solid; 
+  border-top:#563413 1px solid;
+  padding: 5px;
+  color: #563413;
+  font-weight: 600;
+  text-align: center;
+  height: 55px;
+}
+
+@keyframes fadeInSide {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

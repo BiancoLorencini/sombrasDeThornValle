@@ -371,6 +371,33 @@
   object-fit: contain;
 }
 
+.videoNoiteEncontro2 {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 5px #000);
+  border: 2px solid #563413;
+  border-radius: 5px;
+  background-color: #fefee3;
+  object-fit: contain;
+  will-change: transform;
+  animation: fadeIn 2s forwards;
+  z-index: 999;
+  background-color: #fefee3;
+  overflow: hidden;
+}
+
+.videoNoiteEncontro2 video {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: contain;
+}
+
 
 .fadeIn {
   animation: fadeIn 0.5s forwards;
@@ -397,13 +424,9 @@
   height: 100%;
   background-color: rgb(0, 0, 0);
   opacity: 0;
-  animation: fadeToBlack 25s ease-in-out;
+  animation: fadeToBlack 26s ease-in-out;
   z-index: 9999;
 }
-
-
-
-
 
 @keyframes flipPerspective {
   from {

@@ -4,10 +4,8 @@ import style from './encontroElowen.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import Elowen from '../../assets/characters/elowen.png'
-import imgEncontro from '../../assets/prologoImg/encontroElowen.png'
 import arvoreEncontro from '../../assets/prologoImg/arvoreEncontro.png'
 import caminhoArvore from '../../assets/prologoImg/treeElowen.png'
-import noiteEncontro from '../../assets/prologoImg/opcao1Encontro.png'
 import noiteEncontro2 from '../../assets/prologoImg/opcao1Encontro02.png'
 import noiteEncontro3 from '../../assets/prologoImg/opcao1Encontro03.png'
 import videoEncontro from '../../assets/videoRandom/encontroElowen.mp4'
@@ -18,7 +16,6 @@ const EncontroElowen = () => {
   const [isFading, setIsFading] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
   const [window01, setWindow01] = useState(false);
   const [timed, setTimed] = useState(false);
   const [relocation, setRelocation] = useState(false);
@@ -27,6 +24,7 @@ const EncontroElowen = () => {
   const [disabled, setDisabled] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [goodNight, setGoodNight] = useState(false);
+  const [goodDay, setGoodDay] = useState(false);
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
   };
@@ -50,15 +48,20 @@ const EncontroElowen = () => {
     setTimeout(() => {
       setGoodNight(true)
       setTimeout(() => {
-        navigate('/fimFestaColheita');
+        navigate('/diaSeguinte');
       }, 23000)
     } , 2000)
   }
 
   const opcao2Elowen = () => {
-    navigate('/fimFestaColheita');
-    setFadeIn(!fadeIn);
     setDisabled(true)
+    setTimeout(() => {
+      setGoodDay(true)
+      setWindow01(false)
+      setTimeout(() => {
+        navigate('/diaSeguinte');
+      }, 25200)
+    }, 800)
   }
   
   return (
@@ -74,6 +77,11 @@ const EncontroElowen = () => {
       <h1>"Ecos da Praga" </h1>
     </div>
     <div className={style.containerImageBoard}>
+      {goodDay &&
+        <div className={style.videoNoiteEncontro2}>
+        <video src={videoEncontro} autoPlay></video>
+      </div>
+      }
       <div className={style.mapaContainer}>
         <img onClick={windowOpen1} className={`${style.imgFlow} ${isToggled ? style.toggleActive : ''} ${relocation ? style.relocation : style.relocationBack}`}  src={arvoreEncontro} alt="" />
         {window01 &&
@@ -119,6 +127,13 @@ const EncontroElowen = () => {
         }
       </div>
     </div>
+    {goodDay &&
+    <>
+      <div className={style.overlay}></div>
+      <TextBackground>...ao final da noite alegria e paz se misturam com a tristeza de Elowen, que é palpável enquanto ela olha para as brasas da fogueira. A atmosfera é de incerteza, com estrelas brilhantes, acordes musicais suaves e abraços calorosos. Você se despede, questionando se fez a escolha certa. O dia termina com a certeza de que será lembrado por muitos anos, especialmente as escolhas...
+      </TextBackground>
+    </>
+    }
     {openPopUp && 
         <div className={style.planilhaPopUp}>
           <PlanilhaComponent />
