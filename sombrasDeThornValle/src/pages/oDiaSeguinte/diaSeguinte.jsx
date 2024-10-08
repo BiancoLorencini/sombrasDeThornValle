@@ -2,7 +2,8 @@ import React , { useState, useEffect } from 'react'
 import style from './diaSeguinte.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent'
-import javali from '../../assets/imgDiaSeguinte/javali.png'
+import EnemieBackground from '../../components/backgroundEnemies/backgroundEnemies.jsx'
+
 const FimFestaColheita = () => {
   const [fadeOut, setFadeOut] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -28,29 +29,7 @@ const FimFestaColheita = () => {
       </div>
       <div className={style.containerImageBoard}>
         <div className={style.mapaContainer}>
-          <div className={style.sheetEnemies}>
-            <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
-            <div className={style.enemiesContainer}>
-              <div className={style.containerEnemiesLeft}>
-                <img src={javali} alt="" />
-                <h3> Javali </h3>
-                <div className={style.containerInput}>
-                  <div className={style.inputContainer1}>
-                    <label htmlFor="">Habilidade</label>
-                    <input type="text" />
-                  </div>
-                  <div className={style.inputContainer2}>
-                    <label htmlFor="">Constituição</label>
-                    <input type="text" />
-                  </div>
-                </div>
-              </div>
-              <div className={style.containerEnemiesRight}>
-                  <p>Os javalis de ThornValle são conhecidos por sua ferocidade e tamanho impressionante. Esses animais, que habitam as florestas densas ao  
-                  </p>
-              </div>
-            </div>
-          </div>
+          <EnemieBackground  enemieName= "guardaCostas"/>
         </div>
       </div>
       {openPopUp && 

@@ -259,11 +259,10 @@
 .inputContainer1 label {
   color: #563413;
   font-weight: 600;
-  border-top: #563413 1px solid;
-  border-left: #563413 1px solid;
-  border-right: #563413 1px solid;
-  border-bottom: transparent;
-  border-radius: 2px;
+  border-top: #563413 2px solid;
+  border-left: #563413 2px solid;
+  border-right: #563413 2px solid;
+  border-radius: 4px 4px 0px 0px;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -272,10 +271,11 @@
 
 .inputContainer1 input {
   background: transparent;
-  border-left: 1px solid #563413;
-  border-right: 1px solid #563413;
-  border-bottom: #563413 1px solid; 
-  border-top:#563413 1px solid;
+  border-left: 2px solid #563413;
+  border-right: 2px solid #563413;
+  border-bottom: #563413 2px solid; 
+  border-top:#563413 2px solid;
+  border-radius: 0px 0px 4px 4px;
   padding: 5px;
   color: #563413;
   font-weight: 600;
@@ -292,11 +292,10 @@
 .inputContainer2 label {
   color: #563413;
   font-weight: 600;
-  border-top: #563413 1px solid;
-  border-left: #563413 1px solid;
-  border-right: #563413 1px solid;
-  border-bottom: transparent;
-  border-radius: 2px;
+  border-top: #563413 2px solid;
+  border-left: #563413 2px solid;
+  border-right: #563413 2px solid;
+  border-radius: 4px 4px 0px 0px;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -305,10 +304,11 @@
 
 .inputContainer2 input {
   background: transparent;
-  border-left: 1px solid #563413;
-  border-right: 1px solid #563413;
-  border-bottom: #563413 1px solid; 
-  border-top:#563413 1px solid;
+  border-left: 2px solid #563413;
+  border-right: 2px solid #563413;
+  border-bottom: #563413 2px solid; 
+  border-top:#563413 2px solid;
+  border-radius: 0px 0px 4px 4px;
   padding: 5px;
   color: #563413;
   font-weight: 600;

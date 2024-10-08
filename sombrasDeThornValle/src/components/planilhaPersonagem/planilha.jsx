@@ -157,9 +157,6 @@ const handleMouseLeave = () => {
   });
 };
 
-
-
-
 const steps = [
   {
     message: 'Ao clicar na imagem do seu personagem, você pode ver a sua biografia resumida...',

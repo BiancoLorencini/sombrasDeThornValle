@@ -1,0 +1,154 @@
+.sheetEnemies{
+  width: 100%;
+  height: 95%;
+  border-radius: 10px;
+  background-color: #211d1d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.scrollFlag{
+  background-image: url('../../assets/characterSheet/flagScroll.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 45%;
+  height: 15%;
+  text-align: center;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  filter: drop-shadow(0 0 2px #fff);
+  text-shadow: 0 0 3px #fff;
+}
+
+.enemiesContainer{
+  background-image: url('../../assets/enemieSheet/atributeBook.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 98%;
+  height: 80%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  gap: 1rem;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.containerEnemiesLeft{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 35%;
+  height: 77%;
+  margin-bottom: 0.5rem;
+}
+
+.containerEnemiesLeft h3{
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  color: #563413;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 0 3px #fff;
+}
+
+.containerEnemiesRight{
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 90%;
+  margin-bottom: 1rem;
+  padding: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  text-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.enemiesContainer img {
+  width: 35%;
+  height: 30%;
+}
+
+.containerInput{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+}
+
+.inputContainer1 {
+  display: flex;
+  flex-direction: column;
+  width: 45%; 
+}
+
+.inputContainer1 label {
+  color: #563413;
+  font-weight: 600;
+  border-top: #563413 2px solid;
+  border-left: #563413 2px solid;
+  border-right: #563413 2px solid;
+  border-radius: 4px 4px 0px 0px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer1 input {
+  background: transparent;
+  border-left: 2px solid #563413;
+  border-right: 2px solid #563413;
+  border-bottom: #563413 2px solid; 
+  border-top:#563413 2px solid;
+  border-radius: 0px 0px 4px 4px;
+  padding: 5px;
+  color: #563413;
+  font-weight: 600;
+  text-align: center;
+  height: 55px;
+}
+
+.inputContainer2 {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.inputContainer2 label {
+  color: #563413;
+  font-weight: 600;
+  border-top: #563413 2px solid;
+  border-left: #563413 2px solid;
+  border-right: #563413 2px solid;
+  border-radius: 4px 4px 0px 0px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputContainer2 input {
+  background: transparent;
+  border-left: 2px solid #563413;
+  border-right: 2px solid #563413;
+  border-bottom: #563413 2px solid; 
+  border-top:#563413 2px solid;
+  border-radius: 0px 0px 4px 4px;
+  padding: 5px;
+  color: #563413;
+  font-weight: 600;
+  text-align: center;
+  height: 55px;
+}
