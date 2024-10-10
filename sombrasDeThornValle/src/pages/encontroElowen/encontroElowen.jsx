@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './encontroElowen.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
@@ -9,6 +9,7 @@ import caminhoArvore from '../../assets/prologoImg/treeElowen.png'
 import noiteEncontro2 from '../../assets/prologoImg/opcao1Encontro02.png'
 import noiteEncontro3 from '../../assets/prologoImg/opcao1Encontro03.png'
 import videoEncontro from '../../assets/videoRandom/encontroElowen.mp4'
+import primeiroEncontro from '../../assets/music/firstDate.mp3'
 
 
 const EncontroElowen = () => {
@@ -63,6 +64,15 @@ const EncontroElowen = () => {
       }, 25200)
     }, 800)
   }
+
+  useEffect(() => {
+    const audioElement = new Audio(primeiroEncontro);
+    audioElement.play();
+    audioElement.volume = 0.1;
+    return () => {
+      audioElement.pause();
+    };
+  }, []);
   
   return (
     <>
@@ -143,7 +153,7 @@ const EncontroElowen = () => {
       <>
         <div className={style.overlay}></div>
         {goodNight &&
-          <TextBackground>...ao voltar para casa, o som do vento e as lembranças da noite marcaram o fim perfeito de um dia memorável. Com um último suspiro, você sussurra: "Boa noite, Elowen..."
+          <TextBackground>...ao voltar para casa, o som do vento e as lembranças da noite marcaram o fim perfeito de um dia memorável. Com um suspiro, você sussurra: " Boa noite, Elowen... "
           </TextBackground>
         }
       </>

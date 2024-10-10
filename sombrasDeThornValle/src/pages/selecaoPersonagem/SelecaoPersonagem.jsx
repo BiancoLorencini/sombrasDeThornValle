@@ -38,7 +38,7 @@ const SelecaoPersonagem = () => {
             <img src={personagem02} alt="" />
             <div className={style.containerInternoPersonagemInfo} >
               <p>"Amante da leitura e da natureza, ela encontra beleza e serenidade no que é simples. Sua sabedoria vai além dos livros, e sua conexão com o ambiente reflete em sua presença calma e graciosa" <br /> -Beatrix MÃE </p>
-              <VideoButton onClick={handleButtonClick}  title="Escolher"/>
+              <VideoButton onClick={handleButtonClick} title="Escolher"/>
             </div>
           </div>
       </div>

@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, useRef } from 'react'
 import style from './festaColheita.module.css'
 import { useNavigate } from 'react-router-dom'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
@@ -12,6 +12,7 @@ import Faramond from '../../assets/characters/faramond.png'
 import Freya from '../../assets/characters/freya.png'
 import Halstein from '../../assets/characters/halstein.png'
 import Dorian from '../../assets/characters/dorian.png'
+import beginningParty from '../../assets/music/beginningParty.mp3'
 
 const FestaColheita = () => {
   const navigate = useNavigate();
@@ -202,6 +203,16 @@ const FestaColheita = () => {
       navigate('/encontro');
     }, 800);
   };
+
+  useEffect(() => {
+    const audioElement = new Audio(beginningParty);
+    audioElement.volume = 0.3;
+    audioElement.play();
+    return () => {
+      audioElement.pause();
+    };
+  }, []);
+
 
   return (
     <>

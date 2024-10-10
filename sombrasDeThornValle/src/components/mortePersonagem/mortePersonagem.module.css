@@ -7,10 +7,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: crimson;
   position: relative;
   transition: all 3s ease;
-  animation: fadeIn 3s forwards;
+  animation: fadeIn 2s forwards;
+}
+
+.mortePersonagemContainer h1 {
+  font-family: 'livingStone', cursive;
+  font-size: 3rem;
+  color: crimson;
+  text-shadow: 0 0 20px  #000;
 }
 
 .blood {
@@ -24,12 +30,11 @@
 }
 
 .blood img {
-  animation: unBlurred 2s forwards;
   width: 100%;
 }
 
-.mortePersonagemContainer img {
-  animation: unBlurred 6s forwards;
+.mortePersonagem{
+  animation: unBlurred 3s forwards;
 }
 
 .reiniciar {
@@ -46,8 +51,10 @@
 @keyframes unBlurred {
   0% {
     filter: blur(5px);
+    transform: scale(0.5); ;
   }
   100% {
+    transform: scale(1);
     filter: blur(0);
   }
 }

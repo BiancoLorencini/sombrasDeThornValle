@@ -35,7 +35,7 @@
 
 .flagScrollTop h1 {
   font-size: 2.0rem;
-  font-family: 'Caveat', cursive;
+  font-family: 'livingStone', cursive;
   color: #563413;
 }
 
@@ -99,9 +99,9 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background-color: #fefee3a8;
+  background-color: #fefee3;
   border-radius: 5px;
-  border: #000 1px solid;
+  border: #563413 2px solid;
   filter: drop-shadow(0 0 3px #fff);
   will-change: transform;
   transition: all 1s ease;

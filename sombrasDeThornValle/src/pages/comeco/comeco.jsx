@@ -5,6 +5,7 @@ import introImg01 from '../../assets/prologoImg/inicio01.png'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
+import comecoSound from '../../assets/music/comecoSound.mp3'
 const Comeco = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
@@ -39,6 +40,15 @@ const Comeco = () => {
       navigate('/colheita');
     }, 800);
   };
+
+  useEffect(() => {
+    const audioElement = new Audio(comecoSound);
+    audioElement.volume = 0.3;
+    audioElement.play();
+    return () => {
+      audioElement.pause();
+    };
+  }, []);
 
   return (
   <>

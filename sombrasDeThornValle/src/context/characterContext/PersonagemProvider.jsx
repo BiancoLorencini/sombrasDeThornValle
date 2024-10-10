@@ -28,11 +28,6 @@ const PersonagemProvider = ( { children } ) => {
     fetchData();
   }, []);
 
-  
-
-  
-
-
   return (
     <PersonagemContext.Provider value={{ personagem }}>
       {children}
