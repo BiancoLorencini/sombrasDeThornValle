@@ -1,19 +1,29 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect  } from 'react'
+import { useNavigate } from 'react-router-dom'
 import style from './diaSeguinte.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent'
 import EnemieBackground from '../../components/backgroundEnemies/backgroundEnemies.jsx'
+import Combate from '../../components/combate/combatePagina.jsx'
+import MortePersonagem from '../../components/mortePersonagem/mortePersonagem.jsx'
 
-const FimFestaColheita = () => {
+
+const DiaSeguinte = () => {
+  const navigate = useNavigate();
   const [fadeOut, setFadeOut] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
+  const [combate, setCombate] = useState(false);
   
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
   };
 
-  
+  const testeCombate = () => {
+    setCombate(true);
+  }
+
+
 
   return (
     <>
@@ -28,8 +38,9 @@ const FimFestaColheita = () => {
         <h1>"Ecos da Praga" </h1>
       </div>
       <div className={style.containerImageBoard}>
+        <button onClick={testeCombate}>Teste Combate</button>
         <div className={style.mapaContainer}>
-          <EnemieBackground  enemieName= "guardaCostas"/>
+          
         </div>
       </div>
       {openPopUp && 
@@ -37,8 +48,11 @@ const FimFestaColheita = () => {
             <PlanilhaComponent />
           </div>
       }
+      {combate &&
+            <Combate enemieName="javali" />
+      }
     </>
     )
 }
 
-export default FimFestaColheita
+export default DiaSeguinte

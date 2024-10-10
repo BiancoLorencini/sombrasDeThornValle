@@ -1,0 +1,62 @@
+.mortePersonagemContainer {
+  background-color: #000;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: crimson;
+  position: relative;
+  transition: all 3s ease;
+  animation: fadeIn 3s forwards;
+}
+
+.blood {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.blood img {
+  animation: unBlurred 2s forwards;
+  width: 100%;
+}
+
+.mortePersonagemContainer img {
+  animation: unBlurred 6s forwards;
+}
+
+.reiniciar {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 10%;
+  height: 10%;
+  cursor: pointer;
+  z-index: 999999;
+  animation: fadeIn 3s forwards;
+}
+
+@keyframes unBlurred {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

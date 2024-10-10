@@ -9,6 +9,7 @@ import AppContextProvider from '../context/appContext/AppContextProvider.jsx';
 import Festa from '../pages/colheita/festaColheita.jsx'
 import Encontro from '../pages/encontroElowen/encontroElowen.jsx'
 import DiaSeguinte from '../pages/oDiaSeguinte/diaSeguinte.jsx';
+import CombatePagina from '../components/combate/combatePagina.jsx'
 
 
 
@@ -28,6 +29,7 @@ const AppRouter = () => {
           <Route path="/colheita" element={<Festa />} />
           <Route path="/encontro" element={<Encontro />} />
           <Route path="/diaSeguinte" element={<DiaSeguinte />} />
+          <Route path="/combate" element={<CombatePagina />} />
         </Routes>
       </Router>
     </AppContextProvider>

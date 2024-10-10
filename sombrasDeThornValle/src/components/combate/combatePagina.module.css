@@ -1,0 +1,132 @@
+.combatePagina {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeIn 1s forwards;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.containerPlanilha {
+  width: 45%;
+  height: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  filter:drop-shadow(0 0 5px #fff);
+  transition: all 0.5s ease;
+  will-change: transform;
+}
+
+.containerEnemie {
+  right: 2%;
+  width: 45%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 5px #fff);
+  overflow: hidden;
+  z-index: 200;
+  transition: all 0.5s ease;
+  will-change: transform;
+}
+
+.containerCombateIcone {
+  background-image: url('../../assets/fragmentImage/combate.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 10%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:15px;
+  z-index: 20;
+  color: #fff;
+  box-shadow: 0 0 5px #fff;
+  transition: all 0.5s ease;
+  will-change: transform;
+}
+
+.fadeInPlanilha {
+  animation: fadeInTopRightToMiddleLeft 4s ease-in-out;
+}
+
+.fadeInEnemie {
+  animation: fadeInBottomLeftToMiddleRight 4s ease-in-out;
+}
+
+.zoomIn {
+  animation: zoomIn 7s ease-in-out;
+}
+
+
+@keyframes fadeInTopRightToMiddleLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(200%) translateY(-35%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0) translateY(-35%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInBottomLeftToMiddleRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%) translateY(35%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0) translateY(35%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

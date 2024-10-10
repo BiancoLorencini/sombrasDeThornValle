@@ -47,29 +47,33 @@ const BackgroundEnemies = ( {enemieName} ) => {
         console.error('Erro ao buscar inimigos:', error);
       }
     }
-
     fetchData();
   }, [ enemieName ]);
 
   const getImagemInimigo = (inimigo) => {
+    const saqueadorImagens = [saqueador, saqueador01, saqueador02, saqueador03, saqueador04];
+    const bandidosImagens = [bandido, bandido01, bandido02, bandido03, bandido04, bandido05];
+    const guardasImagens = [guarda, guarda01, guarda02];
+    const soldadosImagens = [soldado, soldado01, soldado02, soldado03, soldado04];
+
     switch (inimigo) {
       case 'javali':
         return javali
       case 'saqueador':
-        return saqueador
+        return saqueadorImagens[Math.floor(Math.random() * saqueadorImagens.length)];
       case 'bandido':
-        return bandido
+        return bandidosImagens [Math.floor(Math.random() * bandidosImagens.length)];
       case 'guardaCostas':
-        return guarda
+        return guardasImagens [Math.floor(Math.random() * guardasImagens.length)];
       case 'soldado':
-        return soldado
+        return soldadosImagens [Math.floor(Math.random() * soldadosImagens.length)];
       case 'soldadosDamien':
         return soldadosDamien
       case 'dorian':
         return dorian
       case 'vortigern':
         return vortigern
-      case 'lordDamian':
+      case 'lordeDamian':
         return lordDamian
       default:
         return null
@@ -84,12 +88,10 @@ const BackgroundEnemies = ( {enemieName} ) => {
   return (
     <>
       {filteredEnemies.length > 0 ? (filteredEnemies.map(([key, value]) => (
-          <div key={key} className={style.sheetEnemies}>
-              <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
-              <div className={style.enemiesContainer}>
+              <div key={key} className={style.enemiesContainer}>
                 <div className={style.containerEnemiesLeft}>
                   <img src={getImagemInimigo(key)} alt={key} />
-                  <h3>{key.toUpperCase()}</h3>
+                  <h3>{key.charAt(0).toUpperCase() + key.slice(1)}</h3>
                   <div className={style.containerInput}>
                     <div className={style.inputContainer1}>
                       <label htmlFor="">Habilidade</label>
@@ -107,10 +109,12 @@ const BackgroundEnemies = ( {enemieName} ) => {
                     </p>
                 </div>
               </div>
-            </div>
+            
         ))
       ) : (
-        <p>Nenhum inimigo encontrado</p>
+        <div className={style.noEnemies}>
+          <p>Nenhum inimigo encontrado</p>
+        </div>
       )} 
     </>
     )
