@@ -36,8 +36,17 @@
 .ataqueButton {
   position: absolute;
   bottom: 5%;
-  left: 30%;
+  left: 5%;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   animation: fadeInLeft 1s ease-in-out;
+}
+
+.ataqueButton.disabled {
+  pointer-events: none;
+  opacity: 0.5; /* opcional, para dar um efeito de desabilitado */
 }
 
 .containerEnemie {
@@ -65,6 +74,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   z-index: 999999;
+  animation: slowFadeBloodDropDown 2s ease-in-out;
 }
 
 .attckEffect2 {
@@ -98,6 +108,15 @@
 
 .zoomIn {
   animation: zoomIn 7s ease-in-out;
+}
+
+.containerCombateATB {
+  position: absolute;
+  top: 2%;
+  left: 8%;
+  width: 50%;
+  height:30%;
+  z-index: 999999;
 }
 
 
@@ -171,6 +190,21 @@
     opacity: 1;
   }
   100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slowFadeBloodDropDown {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(0,0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 25px);
     opacity: 0;
   }
 }
