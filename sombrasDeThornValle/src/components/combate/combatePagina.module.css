@@ -74,7 +74,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   z-index: 999999;
-  animation: slowFadeBloodDropDown 2s ease-in-out;
+  animation: slowFadeBloodDropDown 3s ease-in-out;
 }
 
 .attckEffect2 {
@@ -112,8 +112,8 @@
 
 .containerCombateATB {
   position: absolute;
-  top: 2%;
-  left: 8%;
+  top: 5%;
+  left: 10%;
   width: 50%;
   height:30%;
   z-index: 999999;

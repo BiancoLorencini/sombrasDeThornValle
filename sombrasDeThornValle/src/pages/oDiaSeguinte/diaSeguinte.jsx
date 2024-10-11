@@ -6,9 +6,6 @@ import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaCompo
 import EnemieBackground from '../../components/backgroundEnemies/backgroundEnemies.jsx'
 import Combate from '../../components/combate/combatePagina.jsx'
 import MortePersonagem from '../../components/mortePersonagem/mortePersonagem.jsx'
-import musicCombate02 from '../../assets/music/combate02.mp3'
-import musicCombate from '../../assets/music/combateMain.mp3'
-import musicCombate01 from '../../assets/music/combate01.mp3'
 
 
 const DiaSeguinte = () => {
@@ -17,8 +14,6 @@ const DiaSeguinte = () => {
   const [fadeIn, setFadeIn] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [combate, setCombate] = useState(false);
-  const musicaAleatoria = [musicCombate, musicCombate01, musicCombate02]
-  const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
   const handlePopUp = () => {
     setOpenPopUp(!openPopUp);
   };
@@ -26,19 +21,6 @@ const DiaSeguinte = () => {
   const testeCombate = () => {
     setCombate(true);
   };
-
-  useEffect(() => {
-    if (combate) {
-      const audioElement = new Audio(musica);
-      audioElement.play();
-      audioElement.volume = 0.1;
-    } else {
-      const audioElement = new Audio(musicCombate02);
-      audioElement.pause();
-      audioElement.currentTime = 0;
-    }
-  }, [ combate ]);
-
 
   return (
     <>

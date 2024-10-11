@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import style from './actionTimeBar.module.css'
+import backBar from '../../assets/fragmentImage/atb04.png'
+import underscoreBar from '../../assets/fragmentImage/underscoreATB.png'
 
 const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
   const [progress, setProgress] = useState(0);
   const [actionAvailable, setActionAvailable] = useState(false);
-  const progressRate = 1500 / habilidade;
+  const progressRate = 1000 / habilidade;
+
+
+  const getBarColor = () => {
+    if (progress <= 25) {
+      return '#aa0505'; 
+    } else if (progress <= 50) {
+      return '#F6511D'; 
+    } else if (progress <= 75) {
+      return '#f0be1d'; 
+    } else {
+      return '#345511';
+    }
+  };
+
   useEffect(() => {
     let interval = null;
 
@@ -43,12 +59,17 @@ const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
   }, [reset]);
 
   return (
-    <div className={ style.atbBarContainer }>
-      <div
-        className={ style.atbBar }
-        style={{ width: `${progress}%` }} // O progresso é mostrado aqui
-      />
-    </div>
+    <>
+      <p className={ style.atbTitle }>Action Time Bar</p>
+      <div className={ style.atbBarContainer }>
+            <div
+              className={ style.atbBar }
+              style={{ width: `${progress}%` , backgroundColor: getBarColor()}} // O progresso é mostrado aqui
+            >
+            <img className={ style.backBar } src={backBar} alt="" />
+            </div>
+      </div>
+    </>
   )
 }
 
