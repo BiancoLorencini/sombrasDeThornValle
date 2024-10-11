@@ -22,7 +22,50 @@
 
 .atbBar {
   height: 100%;
-  background-color: rgb(255, 0, 0); /* Cor da barra de preenchimento */
+  background-color: transparent;
   transition: width 0.1s ease , background-color 0.5s ease;  
   border-radius: 4px;
+  overflow: hidden;
+}
+
+.atbFill {
+  width: 0;
+  height: 100%;
+  background-color: #4caf50;
+  position: relative;
+  transition: width 0.1s linear; /* Animação suave do progresso */
+}
+
+.glow {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -15px; /* Posiciona o brilho à direita da barra de progresso */
+  width: 15px;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 80%);
+  opacity: 0.7;
+  animation: moveGlow 0.1s linear infinite; /* Mantém o movimento suave */
+}
+
+.atbFullGlow {
+  animation: fullGlow 1s forwards;
+}
+
+@keyframes moveGlow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fullGlow {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 1);
+  }
 }

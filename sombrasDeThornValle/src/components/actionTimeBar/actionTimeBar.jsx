@@ -35,12 +35,6 @@ const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
     return () => clearInterval(interval);
   }, [progress, actionAvailable, progressRate]);
 
-  useEffect(() => {
-    if (progress === 100) {
-      console.log('Ação disponível!');
-      setProgress(100);
-    }
-  }, [progress]);
 
   useEffect(() => {
     if (progress === 100) {
@@ -63,7 +57,7 @@ const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
       <p className={ style.atbTitle }>Action Time Bar</p>
       <div className={ style.atbBarContainer }>
             <div
-              className={ style.atbBar }
+              className={`${style.atbBar} ${progress === 100 ? style.atbFullGlow : ''}`}
               style={{ width: `${progress}%` , backgroundColor: getBarColor()}} // O progresso é mostrado aqui
             >
             <img className={ style.backBar } src={backBar} alt="" />
