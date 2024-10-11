@@ -10,6 +10,8 @@ import noiteEncontro2 from '../../assets/prologoImg/opcao1Encontro02.png'
 import noiteEncontro3 from '../../assets/prologoImg/opcao1Encontro03.png'
 import videoEncontro from '../../assets/videoRandom/encontroElowen.mp4'
 import primeiroEncontro from '../../assets/music/firstDate.mp3'
+import flipPage from '../../assets/sound/flipPage.mp3'
+import write from '../../assets/sound/write.mp3'
 
 
 const EncontroElowen = () => {
@@ -36,13 +38,22 @@ const EncontroElowen = () => {
     setRelocation(!relocation);
     setOpenCaminhoArvore(false);
     setFlip(false);
+    const audio = new Audio(flipPage);
+    audio.play();
+    audio.volume = 0.5;
   };
   const windowOpen2 = () => {
     setOpenCaminhoArvore(!openCaminhoArvore);
     setFlip(!flip);
+    const audio = new Audio(flipPage);
+    audio.play();
+    audio.volume = 0.5;
   };
 
   const opcao1Elowen = () => {
+    const audio = new Audio(write);
+    audio.play();
+    audio.volume = 0.5;
     setTimed(!timed);
     setDisabled(true)
     setOverlay(true)
@@ -55,6 +66,9 @@ const EncontroElowen = () => {
   }
 
   const opcao2Elowen = () => {
+    const audio = new Audio(write);
+    audio.play();
+    audio.volume = 0.5;
     setDisabled(true)
     setTimeout(() => {
       setGoodDay(true)

@@ -33,6 +33,13 @@
   will-change: transform;
 }
 
+.ataqueButton {
+  position: absolute;
+  bottom: 5%;
+  left: 30%;
+  animation: fadeInLeft 1s ease-in-out;
+}
+
 .containerEnemie {
   right: 2%;
   width: 45%;
@@ -45,6 +52,23 @@
   z-index: 200;
   transition: all 0.5s ease;
   will-change: transform;
+}
+
+.attckEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  transform: rotate(-15deg);
+  background-image: url('../../assets/fragmentImage/blood02.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 999999;
+}
+
+.attckEffect2 {
+  animation: fadeOut 0.5s ease-in-out;
 }
 
 .containerCombateIcone {
@@ -128,5 +152,25 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+} 
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

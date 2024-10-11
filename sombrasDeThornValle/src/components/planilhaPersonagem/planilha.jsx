@@ -122,6 +122,7 @@ const Planilha = () => {
     if (audioElement) {
       audioElement.loop = true;
       audioElement.play().catch(error => console.log('Playback error:', error));
+      audioElement.volume = 0.1;
     }
   }, []);
 

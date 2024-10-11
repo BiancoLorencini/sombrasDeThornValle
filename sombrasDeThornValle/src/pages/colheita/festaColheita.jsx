@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import BookLumen from '../../assets/fragmentImage/bookCoverFrondeLume.png'
+import openBook from '../../assets/sound/openingBook.mp3'
+import closeBook from '../../assets/sound/closeBook.mp3'
 import party01 from '../../assets/fragmentImage/FrondeLumeParty.png'
 import Elowen from '../../assets/characters/elowen.png'
 import Helene from '../../assets/characters/helene.png'
@@ -49,6 +51,9 @@ const FestaColheita = () => {
     setIsToggled(!isToggled);
     setIsToggled2(false);
     setIsToggled3(false);
+    const audio = new Audio(openBook);
+    audio.play();
+    audio.volume = 0.5;
     setTimeout(() => {
       setOpenBookFrondeLume(!openBookFrondeLume);
     } , 200);
@@ -57,6 +62,9 @@ const FestaColheita = () => {
   const bookFrondeLumeClose = () => {
     setFadeOut(!fadeOut);
     setIsToggled(false);
+    const audio = new Audio(closeBook);
+    audio.play();
+    audio.volume = 0.5;
     setTimeout(() => {
       setWindow01(false)
       setOpenBookFrondeLume(false)
@@ -206,7 +214,7 @@ const FestaColheita = () => {
 
   useEffect(() => {
     const audioElement = new Audio(beginningParty);
-    audioElement.volume = 0.3;
+    audioElement.volume = 0.1;
     audioElement.play();
     return () => {
       audioElement.pause();

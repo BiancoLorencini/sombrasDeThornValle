@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './comeco.module.css'
 import introImg01 from '../../assets/prologoImg/inicio01.png'
@@ -6,6 +6,7 @@ import TextBackground from '../../components/textBackground/TextBackGroundCompon
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent.jsx'
 import introImg02 from '../../assets/prologoImg/inicio02.png'
 import comecoSound from '../../assets/music/comecoSound.mp3'
+import fliPage from '../../assets/sound/flipPage.mp3'
 const Comeco = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
@@ -25,13 +26,20 @@ const Comeco = () => {
     setIsToggled(!isToggled);
     setWindow02(false)
     setIsToggled2(false)
+    const audio = new Audio(fliPage);
+    audio.play();
+    audio.volume = 0.5;
   };
+
 
   const windowOpen2 = () => {
     setWindow02(!window02);
     setIsToggled2(!isToggled2);
     setIsToggled(false)
     setWindow01(false)
+    const audio = new Audio(fliPage);
+    audio.play();
+    audio.volume = 0.5;
   };
 
   const festaColheita = () => {

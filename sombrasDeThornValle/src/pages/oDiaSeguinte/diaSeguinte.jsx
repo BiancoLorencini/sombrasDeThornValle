@@ -31,12 +31,13 @@ const DiaSeguinte = () => {
     if (combate) {
       const audioElement = new Audio(musica);
       audioElement.play();
+      audioElement.volume = 0.1;
     } else {
       const audioElement = new Audio(musicCombate02);
       audioElement.pause();
       audioElement.currentTime = 0;
     }
-  }, []);
+  }, [ combate ]);
 
 
   return (
@@ -58,12 +59,12 @@ const DiaSeguinte = () => {
         </div>
       </div>
       {openPopUp && 
-          <div className={` ${style.planilhaPopUp} ${fadeIn ? style.fadeIn : ''}`}>
+          <div className={`${style.planilhaPopUp} ${style.fadeIn}`}>
             <PlanilhaComponent />
           </div>
       }
       {combate &&
-            <MortePersonagem />
+            <Combate enemieName="dorian" />
       }
     </>
     )
