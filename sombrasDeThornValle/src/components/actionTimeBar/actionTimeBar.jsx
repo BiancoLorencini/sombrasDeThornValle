@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import style from './actionTimeBar.module.css'
 import backBar from '../../assets/fragmentImage/atb04.png'
-import underscoreBar from '../../assets/fragmentImage/underscoreATB.png'
 
 const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
   const [progress, setProgress] = useState(0);
@@ -54,7 +53,7 @@ const ActionTimeBar = ({habilidade, onActionAvailable, reset}) => {
 
   return (
     <>
-      <p className={ style.atbTitle }>Action Time Bar</p>
+      <p className={`${style.atbTitle} ${progress === 100 ? style.atbFull : ''}`}>Action Time Bar</p>
       <div className={ style.atbBarContainer }>
             <div
               className={`${style.atbBar} ${progress === 100 ? style.atbFullGlow : ''}`}

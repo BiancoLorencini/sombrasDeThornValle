@@ -1,15 +1,12 @@
 import React , { useContext, useState, useEffect } from 'react'
 import style from './planilhaComponent.module.css'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
-import PersonagemProvider from '../../context/characterContext/PersonagemProvider.jsx'
 import character01 from '../../assets/characters/protagonistaHomem.png'
 import scrollDecoration from '../../assets/characterSheet/scrollDecoration.png'
 import lightningMagic from '../../assets/characterSheet/lightningMagic.png'
 import backPack from '../../assets/characterSheet/backPack.png'
 import fireMagic from '../../assets/characterSheet/fireMagic.png'
 import iceMagic from '../../assets/characterSheet/iceMagic.png'
-import { db } from '../../config/firebaseConfig';
-import { ref, set, get, update } from 'firebase/database';
 
 
 const PlanilhaComponent = () => {
@@ -18,12 +15,6 @@ const PlanilhaComponent = () => {
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
-
-
-
-useEffect(() => {
-  setIsFadingIn(true);
-}, []);
 
 const handleClick = () => {
   setFlipped(!flipped);
@@ -57,6 +48,9 @@ const handleMouseLeave = () => {
   });
 };
 
+useEffect(() => {
+  setIsFadingIn(true);
+}, []);
 
   return (
     <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
@@ -67,19 +61,19 @@ const handleMouseLeave = () => {
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="text"  value={personagem.habilidade} readOnly />
+                  <input className={style.attValor} type="text"  value={personagem.atributo.habilidade} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
-                <input className={style.attValor} type="text"  value={personagem.inteligencia} readOnly />
+                <input className={style.attValor} type="text"  value={personagem.atributo.inteligencia} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="text"  value={personagem.constituicao} readOnly />
+                <input className={style.attValor} type="text"  value={personagem.atributo.constituicao} readOnly />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="text"  value={personagem.sorte} readOnly />
+                <input className={style.attValor} type="text"  value={personagem.atributo.sorte} readOnly />
               </div>
             </div>
             <div className={style.infoSide} >

@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { db } from '../../config/firebaseConfig'
-import { ref, get } from 'firebase/database'
+import { ref, get, onValue } from 'firebase/database'
 
 
 const PersonagemContext = createContext();
@@ -26,6 +26,17 @@ const PersonagemProvider = ( { children } ) => {
       }
     };
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const dbRef = ref(db, 'personagem');
+    onValue(dbRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setPersonagem(snapshot.val());
+      } else {
+        console.log('Nenhum dado disponível.');
+      }
+    });
   }, []);
 
   return (

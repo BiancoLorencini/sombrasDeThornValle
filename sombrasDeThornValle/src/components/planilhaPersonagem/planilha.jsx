@@ -12,7 +12,6 @@ import musicBackground from '../../assets/music/Changes.mp3'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
-import PersonagemProvider from '../../context/characterContext/PersonagemProvider.jsx'
 import { db } from '../../config/firebaseConfig'
 import { ref, set, get, update } from 'firebase/database'
 import Card from '../cards/Cards.jsx'
@@ -97,7 +96,6 @@ const Planilha = () => {
       }, 40);
     }
 
-
     setFadeOut(true); 
     setTimeout(() => {
       navigate('/comeco');
@@ -145,7 +143,6 @@ const Planilha = () => {
     const centerY = rect.height / 2;
     const rotateX = (y - centerY) / 4;
     const rotateY = (centerX - x) / 4;
-
     setIsStyle({
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
     });

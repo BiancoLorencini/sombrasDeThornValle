@@ -1,4 +1,4 @@
-import React , { useState, useEffect, useRef, useCallback } from 'react'
+import React , { useState, useEffect, useCallback, useContext } from 'react'
 import style from './combatePagina.module.css'
 import particleFire from '../../assets/videoRandom/particlesFire.mp4'
 import PlanilhaComponent from '../planilhaCompInGame/planilhaComponent.jsx'
@@ -9,19 +9,20 @@ import ATBBar from '../../components/actionTimeBar/actionTimeBar.jsx'
 import musicCombate02 from '../../assets/music/combate02.mp3'
 import musicCombate from '../../assets/music/combateMain.mp3'
 import musicCombate01 from '../../assets/music/combate01.mp3'
+import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 
 const CombatePagina = ({ enemieName, onClick }) => {
+  const { personagem } = useContext(PersonagemContext);
   const [fadeInPersonagem, setFadeInPersonagem] = useState(false);
   const [fadeInEnemie, setFadeInEnemie] = useState(false);
   const [zoomIn, setZoomIn] = useState(false);
-  const [zoomOut, setZoomOut] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
   const [attack, setAttack] = useState(false);
   const [attckEffect, setAttackEffect] = useState(false);
   const [availableAction, setAvailableAction] = useState(false);
   const [reset, setReset] = useState(false);
   const musicaAleatoria = [musicCombate, musicCombate01, musicCombate02]
   const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
+  const [renderAtbBar, setRenderAtbBar] = useState(false);
 
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
@@ -33,6 +34,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
     setZoomIn(true);
     setTimeout(() => {
       setAttack(true);
+      setRenderAtbBar(true);
     } , 5000);
   }, []);
 
@@ -61,9 +63,9 @@ const CombatePagina = ({ enemieName, onClick }) => {
   return (
     <div className={style.combatePagina}>
       <video src={particleFire} autoPlay loop muted className={style.video} />
-      <div className={style.containerCombateATB}>
-        <ATBBar habilidade={19} onActionAvailable={onActionAvailable} reset={reset} />
-      </div>
+      {renderAtbBar ? <div className={style.containerCombateATB}>
+        <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+      </div> : null}
       <div className={`${style.containerPlanilha} ${fadeInPersonagem ? style.fadeInPlanilha : ''}`}>
         <PlanilhaComponent />
       </div>
