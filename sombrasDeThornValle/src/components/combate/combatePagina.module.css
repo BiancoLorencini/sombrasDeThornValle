@@ -112,13 +112,35 @@
 
 .containerCombateATB {
   position: absolute;
-  top: 5%;
-  left: 10%;
-  width: 50%;
-  height:30%;
+  top: 1%;
+  left: 0;
+  width: 100%;
+  height:10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 999999;
 }
 
+.playerCombateATBBar {
+  width: 30%;
+  height:80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;;
+  z-index: 999999;
+  margin: 0 20px;
+}
+
+.enemieCombateATBBar {
+  width: 30%;
+  height:80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;;
+  z-index: 999999;
+  margin: 0 20px;
+}
 
 @keyframes fadeInTopRightToMiddleLeft {
   0% {

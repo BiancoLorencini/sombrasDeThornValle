@@ -64,7 +64,12 @@ const CombatePagina = ({ enemieName, onClick }) => {
     <div className={style.combatePagina}>
       <video src={particleFire} autoPlay loop muted className={style.video} />
       {renderAtbBar ? <div className={style.containerCombateATB}>
-        <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+        <div className={style.playerCombateATBBar}>
+          <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+        </div>
+        <div className={style.enemieCombateATBBar}>
+          <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+        </div>
       </div> : null}
       <div className={`${style.containerPlanilha} ${fadeInPersonagem ? style.fadeInPlanilha : ''}`}>
         <PlanilhaComponent />
