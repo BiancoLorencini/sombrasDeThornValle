@@ -1,4 +1,4 @@
-import React , { useState, useEffect, useRef  } from 'react'
+import React , { useState, useEffect, useRef , useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import style from './diaSeguinte.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
@@ -6,9 +6,11 @@ import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaCompo
 import EnemieBackground from '../../components/backgroundEnemies/backgroundEnemies.jsx'
 import Combate from '../../components/combate/combatePagina.jsx'
 import MortePersonagem from '../../components/mortePersonagem/mortePersonagem.jsx'
+import { EnemyProvider, EnemyContext } from '../../context/enemyContext/enemyProvider.jsx';
 
 
 const DiaSeguinte = () => {
+  const {enemies} = useContext(EnemyContext);
   const navigate = useNavigate();
   const [fadeOut, setFadeOut] = useState(false);
   const [fadeIn, setFadeIn] = useState(false);
@@ -21,6 +23,8 @@ const DiaSeguinte = () => {
   const testeCombate = () => {
     setCombate(true);
   };
+
+  const javali = 'javali';
 
   return (
     <>
@@ -46,7 +50,7 @@ const DiaSeguinte = () => {
           </div>
       }
       {combate &&
-            <Combate enemieName="dorian" />
+            <Combate enemieName={javali} />
       }
     </>
     )

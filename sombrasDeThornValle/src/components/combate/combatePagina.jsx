@@ -10,8 +10,10 @@ import musicCombate02 from '../../assets/music/combate02.mp3'
 import musicCombate from '../../assets/music/combateMain.mp3'
 import musicCombate01 from '../../assets/music/combate01.mp3'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
+import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider.jsx'
 
 const CombatePagina = ({ enemieName, onClick }) => {
+  const { enemies } = useContext(EnemyContext);
   const { personagem } = useContext(PersonagemContext);
   const [fadeInPersonagem, setFadeInPersonagem] = useState(false);
   const [fadeInEnemie, setFadeInEnemie] = useState(false);
@@ -43,6 +45,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
     setAvailableAction(false);
     const audioElement = new Audio(audioAttack);
     audioElement.play();
+    audioElement.volume = 0.8;
     if (availableAction) {
       setReset(true);
       setTimeout(() => {
@@ -57,7 +60,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   useEffect(() => {
       const audioElement = new Audio(musica);
       audioElement.play();
-      audioElement.volume = 0.2;
+      audioElement.volume = 0.1;
   }, []);
 
   return (
@@ -68,7 +71,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
           <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
         </div>
         <div className={style.enemieCombateATBBar}>
-          <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+          <ATBBar habilidade={enemies[enemieName].habilidade} onActionAvailable={onActionAvailable} reset={reset} />
         </div>
       </div> : null}
       <div className={`${style.containerPlanilha} ${fadeInPersonagem ? style.fadeInPlanilha : ''}`}>
