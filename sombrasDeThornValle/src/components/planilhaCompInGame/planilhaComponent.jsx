@@ -122,7 +122,7 @@ useEffect(() => {
             <button><img width={20} height={25} src={fireMagic} alt="" /></button>
             <div className={style.qtdMagic}>
             <p>x</p>
-            <input type="text" value={personagem.qtdMagia} className={style.qtdMagicBackground}/>
+            <input type="text" value={personagem.atributo.qtdMagia} className={style.qtdMagicBackground}/>
             </div>
           </div>
           <div className={style.sheetBottom}>

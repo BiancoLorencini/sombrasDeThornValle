@@ -22,7 +22,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [attckEffect, setAttackEffect] = useState(false);
   const [availableAction, setAvailableAction] = useState(false);
   const [reset, setReset] = useState(false);
-  const musicaAleatoria = [musicCombate, musicCombate01, musicCombate02]
+  const musicaAleatoria = [musicCombate, musicCombate, musicCombate01, musicCombate02]
   const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
   const [renderAtbBar, setRenderAtbBar] = useState(false);
 
@@ -61,19 +61,34 @@ const CombatePagina = ({ enemieName, onClick }) => {
       const audioElement = new Audio(musica);
       audioElement.play();
       audioElement.volume = 0.1;
+      audioElement.loop = true;
   }, []);
+
+  const anyNumber = 16;
 
   return (
     <div className={style.combatePagina}>
       <video src={particleFire} autoPlay loop muted className={style.video} />
-      {renderAtbBar ? <div className={style.containerCombateATB}>
-        <div className={style.playerCombateATBBar}>
-          <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
-        </div>
-        <div className={style.enemieCombateATBBar}>
-          <ATBBar habilidade={enemies[enemieName].habilidade} onActionAvailable={onActionAvailable} reset={reset} />
-        </div>
-      </div> : null}
+      {renderAtbBar ? 
+        <div className={style.containerCombateATB}>
+          <div className={style.playerCombateATBBar}>
+            <ATBBar habilidade={personagem.atributo.habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+          </div>
+          <div className={style.containerDiceRoll}>
+            <div className={style.diceRollPlayer}>
+              <input type="text" value={anyNumber}  readOnly />
+              <label>Resultado Player</label>
+            </div>
+            <p>VS</p>
+            <div className={style.diceRollEnemie}>
+              <input type="text" value={anyNumber}  readOnly />
+              <label>Resultado Inimigo</label>
+            </div>
+          </div>
+          <div className={style.enemieCombateATBBar}>
+            <ATBBar habilidade={enemies[enemieName].habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+          </div>
+        </div> : null}
       <div className={`${style.containerPlanilha} ${fadeInPersonagem ? style.fadeInPlanilha : ''}`}>
         <PlanilhaComponent />
       </div>
@@ -83,7 +98,6 @@ const CombatePagina = ({ enemieName, onClick }) => {
         <VideoButton onClick={onClick} title="Magia" />
         <VideoButton onClick={acerto} title="Atacar" />
       </div> : null}
-      <div className={`${style.containerCombateIcone} ${zoomIn ? style.zoomIn : ''}`}></div>
       <div className={`${style.containerEnemie} ${fadeInEnemie ? style.fadeInEnemie : ''}`}>
           <EnemiePlanilha enemieName={enemieName} />
         {attckEffect ? 
