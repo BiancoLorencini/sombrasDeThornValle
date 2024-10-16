@@ -15,6 +15,8 @@ import Freya from '../../assets/characters/freya.png'
 import Halstein from '../../assets/characters/halstein.png'
 import Dorian from '../../assets/characters/dorian.png'
 import beginningParty from '../../assets/music/beginningParty.mp3'
+import flipPage from '../../assets/sound/flipPage.mp3'
+import closingBook from '../../assets/sound/closingBook01.mp3'
 
 const FestaColheita = () => {
   const navigate = useNavigate();
@@ -41,9 +43,19 @@ const FestaColheita = () => {
   const [dorian, setDorian] = useState(false);
 
   const handlePopUp = () => {
+    if (openPopUp) {
+      const bookSound = new Audio(closeBook);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    } else {
+      const bookSound = new Audio(flipPage);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    }
     setOpenPopUp(!openPopUp);
     setFadeIn(!fadeIn);
   };
+
 
   const windowOpen1 = () => {
     setWindow01(!window01);

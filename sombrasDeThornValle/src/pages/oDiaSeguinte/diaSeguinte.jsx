@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import style from './diaSeguinte.module.css'
 import TextBackground from '../../components/textBackground/TextBackGroundComponent.jsx'
 import PlanilhaComponent from '../../components/planilhaCompInGame/planilhaComponent'
-import EnemieBackground from '../../components/backgroundEnemies/backgroundEnemies.jsx'
 import Combate from '../../components/combate/combatePagina.jsx'
-import MortePersonagem from '../../components/mortePersonagem/mortePersonagem.jsx'
 import { EnemyProvider, EnemyContext } from '../../context/enemyContext/enemyProvider.jsx';
+import flipPage from '../../assets/sound/flipPage.mp3'
+import closeBook from '../../assets/sound/closingBook01.mp3'
 
 
 const DiaSeguinte = () => {
@@ -17,8 +17,19 @@ const DiaSeguinte = () => {
   const [openPopUp, setOpenPopUp] = useState(false);
   const [combate, setCombate] = useState(false);
   const handlePopUp = () => {
+    if (openPopUp) {
+      const bookSound = new Audio(closeBook);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    } else {
+      const bookSound = new Audio(flipPage);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    }
     setOpenPopUp(!openPopUp);
+    setFadeIn(!fadeIn);
   };
+
 
   const testeCombate = () => {
     setCombate(true);

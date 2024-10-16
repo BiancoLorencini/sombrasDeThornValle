@@ -157,27 +157,27 @@ const handleMouseLeave = () => {
 
 const steps = [
   {
-    message: 'Ao clicar na imagem do seu personagem, você pode ver a sua biografia resumida...',
+    message: 'Ao clicar na imagem do seu personagem, você pode ver a biografia dele resumida...',
     position: { top: '60px', left: '150px' }
   },
   {
-    message: '...aqui estão seus atributos, HABILIDADE, INTELIGENCIA,     CONSTITUIÇÃO E SORTE...',
-    position: { top: '10px', left: '600px' }
+    message: '...aqui estão seus atributos, HABILIDADE, INTELIGENCIA,   CONSTITUIÇÃO E SORTE...',
+    position: { top: '10px', left: '300px' }
   },
   {
-    message: '...aqui é a Habilidade: competências fisica em geral(combate, arremessar, escalar etc)...',
+    message: 'Habilidade: competências fisica em geral(combate, arremessar, escalar etc) e quanto mais habilidade, mais rápido enche sua barra ATB(que é o que permite agir em combate)',
     position: { top: '20px', left: '330px' }
   },
   {
-    message: '...aqui é a Inteligência: utilizado para a a mana máxima, e para um bom observador...',
+    message: 'A Inteligência: utilizado para a a mana máxima, e para um bom observador (utilizado para perceber nuances)',
     position: { top: '80px', left: '330px' }
   },
   {
-    message: '...essa é a Constituição: utilizado para o HP (Hit Points/vida) total, e para resistencias em geral',
+    message: 'A Constituição: Melhor conhecido como pontos de vida, e para utilizado para testes de resistencias em geral',
     position: { top: '80px', left: '330px' }
   },
   {
-    message: '...e aqui é a Sorte: utilizado para fazer uma nova rolagem de dados, porém não se recupera(condição especial).',
+    message: '...e aqui é a Sorte: utilizado para fazer uma nova rolagem de dados em qualquer situação que exija, porém não se recupera(salvo algumas excessões) e não tem limite maximo.',
     position: { top: '110px', left: '330px' }
   },
   {

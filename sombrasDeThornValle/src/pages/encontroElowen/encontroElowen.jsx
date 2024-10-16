@@ -12,6 +12,7 @@ import videoEncontro from '../../assets/videoRandom/encontroElowen.mp4'
 import primeiroEncontro from '../../assets/music/firstDate.mp3'
 import flipPage from '../../assets/sound/flipPage.mp3'
 import write from '../../assets/sound/write.mp3'
+import closeBook from '../../assets/sound/closingBook01.mp3'
 
 
 const EncontroElowen = () => {
@@ -29,8 +30,18 @@ const EncontroElowen = () => {
   const [goodNight, setGoodNight] = useState(false);
   const [goodDay, setGoodDay] = useState(false);
   const handlePopUp = () => {
+    if (openPopUp) {
+      const bookSound = new Audio(closeBook);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    } else {
+      const bookSound = new Audio(flipPage);
+      bookSound.play();
+      bookSound.volume = 0.5;
+    }
     setOpenPopUp(!openPopUp);
   };
+
 
   const windowOpen1 = () => {
     setIsToggled(!isToggled);

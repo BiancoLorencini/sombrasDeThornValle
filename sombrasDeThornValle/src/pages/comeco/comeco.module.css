@@ -153,12 +153,16 @@
 }
 
 .fadeIn {
-  animation: fadeIn 0.5s forwards;
+  animation: fadeIn 0.8s forwards;
 }
 
 .fadeOut {
   animation: fadeOut 0.8s forwards;
   transition: opacity 1s ease-in-out;
+}
+
+.fadeInEntrance {
+  animation: fadeIn 1.5s ease forwards;
 }
 
 @keyframes fadeInSide {
