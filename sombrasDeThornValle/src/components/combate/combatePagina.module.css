@@ -77,6 +77,24 @@
   animation: slowFadeBloodDropDown 3s ease-in-out;
 }
 
+.enemyAttckEffect{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 80%;
+  height: 100%;
+  transform: rotate(15deg);
+  background-image: url('../../assets/fragmentImage/blood02.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 999999;
+  animation: slowFadeBloodDropDown 3s ease-in-out;
+}
+
+
+
+
+
 .attckEffect2 {
   animation: fadeOut 0.5s ease-in-out;
 }

@@ -84,7 +84,6 @@ const BackgroundEnemies = ( {enemieName} ) => {
     ? Object.entries(enemies).filter(([key, value]) => key === enemieName)
     : [];
 
-
   return (
     <>
       {filteredEnemies.length > 0 ? (filteredEnemies.map(([key, value]) => (
@@ -102,6 +101,10 @@ const BackgroundEnemies = ( {enemieName} ) => {
                       <input value={value.vida} type="number" readOnly />
                     </div>
                   </div>
+                  <div className={style.inputContainer3}>
+                      <label htmlFor="">Dano</label>
+                      <input value={value.dano} type="number" readOnly />
+                    </div>
                 </div>
                 <div className={style.containerEnemiesRight}>
                     <p>

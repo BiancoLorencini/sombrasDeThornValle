@@ -40,7 +40,7 @@ const Comeco = () => {
     setIsToggled(!isToggled);
     setWindow02(false)
     setIsToggled2(false)
-    const audio = new Audio(fliPage);
+    const audio = new Audio(flipPage);
     audio.play();
     audio.volume = 0.5;
   };

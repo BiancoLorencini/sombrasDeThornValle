@@ -19,9 +19,13 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [fadeInEnemie, setFadeInEnemie] = useState(false);
   const [zoomIn, setZoomIn] = useState(false);
   const [attack, setAttack] = useState(false);
+  const [enemyAttack, setEnemyAttack] = useState(false);
+  const [enemyAvailableAction, setEnemyAvailableAction] = useState(false);
   const [attckEffect, setAttackEffect] = useState(false);
+  const [enemyAttckEffect, setEnemyAttackEffect] = useState(false);
   const [availableAction, setAvailableAction] = useState(false);
   const [reset, setReset] = useState(false);
+  const [enemyReset, setEnemyReset] = useState(false);
   const musicaAleatoria = [musicCombate, musicCombate, musicCombate01, musicCombate02]
   const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
   const [renderAtbBar, setRenderAtbBar] = useState(false);
@@ -29,6 +33,10 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
   } , [ setAvailableAction ]);
+
+  const onEnemyActionAvailable = useCallback(() => {
+    setEnemyAvailableAction(true);
+  } , [ setEnemyAvailableAction ]);
 
   useEffect(() => {
     setFadeInPersonagem(true);
@@ -56,6 +64,29 @@ const CombatePagina = ({ enemieName, onClick }) => {
       setAttackEffect(false);
     } , 3000);
   }
+
+  useEffect(() => {
+    if ( enemyAvailableAction ) {
+      console.log('Inimigo ataca');
+      function enemyAcerto() {{
+        setEnemyAttackEffect(true);
+        setEnemyAvailableAction(false);
+        const audioElement = new Audio(audioAttack);
+        audioElement.play();
+        audioElement.volume = 0.8;
+        if (enemyAvailableAction) {
+          setEnemyReset(true);
+          setTimeout(() => {
+            setEnemyReset(false);
+          },100)
+        }
+        setTimeout(() => {
+          setEnemyAttackEffect(false);
+        } , 3000);
+      } }
+      enemyAcerto();
+    }
+  } , [ enemyAvailableAction ]);
 
   useEffect(() => {
       const audioElement = new Audio(musica);
@@ -86,11 +117,13 @@ const CombatePagina = ({ enemieName, onClick }) => {
             </div>
           </div>
           <div className={style.enemieCombateATBBar}>
-            <ATBBar habilidade={enemies[enemieName].habilidade} onActionAvailable={onActionAvailable} reset={reset} />
+            <ATBBar habilidade={enemies[enemieName].habilidade} onActionAvailable={onEnemyActionAvailable} reset={enemyReset} />
           </div>
         </div> : null}
       <div className={`${style.containerPlanilha} ${fadeInPersonagem ? style.fadeInPlanilha : ''}`}>
         <PlanilhaComponent />
+        {enemyAttckEffect ? 
+          <div className={style.enemyAttckEffect}></div> : null}
       </div>
       {attack ? 
       <div  className={`${style.ataqueButton} ${!availableAction ? style.disabled : ''} `}>
