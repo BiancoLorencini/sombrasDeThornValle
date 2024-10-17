@@ -221,7 +221,7 @@ const steps = [
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="number"  value={Number(bdHabilidade)} onChange={(e) => handleInputChange(e, setBdHabilidade)} readOnly />
+                  <input className={style.attValor} type="number"  value={Number(bdHabilidade)} onChange={(e) => handleInputChange(e, setBdHabilidade)} defaultValue={bdHabilidade} />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
@@ -229,11 +229,11 @@ const steps = [
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="number"  value={Number(bdConstituicao)} onChange={(e) => handleInputChange(e, setBdConstituicao)} readOnly />
+                <input className={style.attValor} type="number"  value={Number(bdConstituicao)} onChange={(e) => handleInputChange(e, setBdConstituicao)} defaultValue={bdConstituicao} />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="number"  value={ Number(bdSorte) } onChange={(e) => handleInputChange(e, setBdSorte)} readOnly />
+                <input className={style.attValor} type="number"  value={ Number(bdSorte) } onChange={(e) => handleInputChange(e, setBdSorte)} defaultValue={bdSorte} />
               </div>
             </div>
             <div className={style.infoSide} >

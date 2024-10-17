@@ -1,4 +1,4 @@
-import React , { useContext, useState, useEffect } from 'react'
+import React , { useContext, useState, useEffect, useRef } from 'react'
 import style from './planilhaComponent.module.css'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 import character01 from '../../assets/characters/protagonistaHomem.png'
@@ -7,6 +7,7 @@ import lightningMagic from '../../assets/characterSheet/lightningMagic.png'
 import backPack from '../../assets/characterSheet/backPack.png'
 import fireMagic from '../../assets/characterSheet/fireMagic.png'
 import iceMagic from '../../assets/characterSheet/iceMagic.png'
+
 
 
 const PlanilhaComponent = () => {
@@ -61,7 +62,7 @@ useEffect(() => {
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="text"  value={personagem.atributo.habilidade} readOnly />
+                  <input className={style.attValor} type="text"  value={personagem.atributo.habilidade} />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
@@ -69,11 +70,11 @@ useEffect(() => {
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="text"  value={personagem.atributo.constituicao} readOnly />
+                <input className={style.attValor} type="text"  value={personagem.atributo.constituicao}  readOnly />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="text"  value={personagem.atributo.sorte} readOnly />
+                <input className={style.attValor} type="text"  value={personagem.atributo.sorte} />
               </div>
             </div>
             <div className={style.infoSide} >

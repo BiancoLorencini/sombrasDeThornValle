@@ -1,4 +1,4 @@
-import React , { useState, useEffect, useCallback, useContext } from 'react'
+import React , { useState, useEffect, useCallback, useContext, useRef } from 'react'
 import style from './combatePagina.module.css'
 import particleFire from '../../assets/videoRandom/particlesFire.mp4'
 import PlanilhaComponent from '../planilhaCompInGame/planilhaComponent.jsx'
@@ -11,10 +11,14 @@ import musicCombate from '../../assets/music/combateMain.mp3'
 import musicCombate01 from '../../assets/music/combate01.mp3'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider.jsx'
+import { db } from '../../config/firebaseConfig.js'
+import { ref, set, get, update } from 'firebase/database';
 
 const CombatePagina = ({ enemieName, onClick }) => {
   const { enemies } = useContext(EnemyContext);
-  const { personagem } = useContext(PersonagemContext);
+  const { personagem, atualizarConstituicao } = useContext(PersonagemContext);
+  const danoEnemie = enemies[enemieName].dano
+  const enemieVida = enemies[enemieName].vida
   const [fadeInPersonagem, setFadeInPersonagem] = useState(false);
   const [fadeInEnemie, setFadeInEnemie] = useState(false);
   const [zoomIn, setZoomIn] = useState(false);
@@ -29,6 +33,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const musicaAleatoria = [musicCombate, musicCombate, musicCombate01, musicCombate02]
   const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
   const [renderAtbBar, setRenderAtbBar] = useState(false);
+  const [vidaPersonagem, setVidaPersonagem] = useState(personagem.atributo.constituicao);
 
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
@@ -67,26 +72,32 @@ const CombatePagina = ({ enemieName, onClick }) => {
 
   useEffect(() => {
     if ( enemyAvailableAction ) {
-      console.log('Inimigo ataca');
+
       function enemyAcerto() {{
         setEnemyAttackEffect(true);
-        setEnemyAvailableAction(false);
         const audioElement = new Audio(audioAttack);
         audioElement.play();
         audioElement.volume = 0.8;
+        console.log(vidaPersonagem - danoEnemie);
         if (enemyAvailableAction) {
-          setEnemyReset(true);
+          setTimeout(() => {
+            setEnemyReset(true);
+          } , 1000);
           setTimeout(() => {
             setEnemyReset(false);
           },100)
         }
+        setEnemyAvailableAction(false);
         setTimeout(() => {
           setEnemyAttackEffect(false);
         } , 3000);
       } }
       enemyAcerto();
+      const novoValorConstituicao = vidaPersonagem - danoEnemie;
+      atualizarConstituicao({ constituicao: novoValorConstituicao });
+      setVidaPersonagem(novoValorConstituicao);
     }
-  } , [ enemyAvailableAction ]);
+  } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem ]);
 
   useEffect(() => {
       const audioElement = new Audio(musica);

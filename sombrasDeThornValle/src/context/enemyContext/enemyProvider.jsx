@@ -14,10 +14,7 @@ const EnemyProvider = ( { children } ) => {
       try {
         const dbRef = ref(db, 'inimigo');
         const snapshot = await get(dbRef);
-        console.log('Snapshot:', snapshot);
         if (snapshot.exists()) {
-          console.log('Inimigos:', snapshot.val());
-          console.log('Dados do Firebase:', snapshot.val());
           setEnemies(snapshot.val());
         } else {
           console.log('Nenhum dado disponível');
