@@ -8,7 +8,7 @@ const PersonagemProvider = ({ children }) => {
   const [personagem, setPersonagem] = useState(null); 
 
   const atualizarConstituicao = (novaConstituicao) => {
-    const dbRef = ref(db, 'personagem/atributo/constituicao');
+    const dbRef = ref(db, 'personagem/atributo');
     update(dbRef, novaConstituicao)
       .then(() => {
         console.log('Constituição atualizada com sucesso no Firebase');
@@ -29,15 +29,14 @@ const PersonagemProvider = ({ children }) => {
 
       } else {
         console.log('Nenhum dado disponível.');
-        setPersonagem(null); // Define como null se não houver dados
+        setPersonagem(null); 
       }
     }, (error) => {
       console.error('Erro ao buscar personagem:', error);
     });
 
-    // Cleanup: remover o listener ao desmontar o componente
     return () => unsubscribe();
-  }, []); // O array de dependências é vazio, pois a função só deve rodar uma vez ao montar o componente
+  }, []);
 
   return (
     <PersonagemContext.Provider value={{ personagem, atualizarConstituicao }}>

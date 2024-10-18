@@ -97,7 +97,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
       atualizarConstituicao({ constituicao: novoValorConstituicao });
       setVidaPersonagem(novoValorConstituicao);
     }
-  } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem ]);
+  } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem, atualizarConstituicao ]);
 
   useEffect(() => {
       const audioElement = new Audio(musica);
