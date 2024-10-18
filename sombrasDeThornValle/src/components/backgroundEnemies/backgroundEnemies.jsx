@@ -1,4 +1,4 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, useRef, useContext } from 'react'
 import style from './backgroundEnemies.module.css'
 import javali from '../../assets/imgDiaSeguinte/javali.png'
 import saqueador from '../../assets/randomBandits/saqueador.png'
@@ -24,31 +24,12 @@ import soldadosDamien from '../../assets/randomBandits/soldadosDamien.png'
 import dorian from '../../assets/randomBandits/dorian.png'
 import vortigern from '../../assets/randomBandits/vortigern.png'
 import lordDamian from '../../assets/randomBandits/lordDamian.png'
-import { db } from '../../config/firebaseConfig'
-import { ref, set, get, update } from 'firebase/database';
+import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider'
 
 
 const BackgroundEnemies = ( {enemieName} ) => {
-  const [enemies, setEnemies] = useState([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const dbRef = ref(db, 'inimigo');
-        const snapshot = await get(dbRef);
-        if (snapshot.exists()) {
-          console.log('Inimigos:', snapshot.val());
-          console.log('Dados do Firebase:', snapshot.val());
-          setEnemies(snapshot.val());
-        } else {
-          console.log('Nenhum dado disponível');
-        }
-      } catch (error) {
-        console.error('Erro ao buscar inimigos:', error);
-      }
-    }
-    fetchData();
-  }, [ enemieName ]);
+  const [enemyes, setEnemies] = useState([])
+  const { enemies } = useContext(EnemyContext)
 
   const getImagemInimigo = (inimigo) => {
     const saqueadorImagens = [saqueador, saqueador01, saqueador02, saqueador03, saqueador04];

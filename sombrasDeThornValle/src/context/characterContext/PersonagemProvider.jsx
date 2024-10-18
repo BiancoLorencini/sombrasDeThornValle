@@ -22,11 +22,8 @@ const PersonagemProvider = ({ children }) => {
     const dbRef = ref(db, 'personagem');
     
     const unsubscribe = onValue(dbRef, (snapshot) => {
-      console.log('Snapshot:', snapshot);
       if (snapshot.exists()) {
         setPersonagem(snapshot.val());
-        console.log('Personagem:', snapshot.val());
-
       } else {
         console.log('Nenhum dado disponível.');
         setPersonagem(null); 
