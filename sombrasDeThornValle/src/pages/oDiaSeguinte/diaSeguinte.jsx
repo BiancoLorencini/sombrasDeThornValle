@@ -35,7 +35,7 @@ const DiaSeguinte = () => {
     setCombate(true);
   };
 
-  const javali = 'dorian';
+  const javali = 'javali';
 
   return (
     <>

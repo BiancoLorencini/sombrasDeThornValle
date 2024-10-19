@@ -27,10 +27,21 @@ import lordDamian from '../../assets/randomBandits/lordDamian.png'
 import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider'
 
 
-const BackgroundEnemies = ( {enemieName} ) => {
+
+export const receiveDmg = (vidaAtual, dmg) => {
+  return  vidaAtual - dmg;
+}
+
+const BackgroundEnemies = ( { enemieName } ) => {
   const [enemyes, setEnemies] = useState([])
   const { enemies } = useContext(EnemyContext)
+  const [vidaAtual, setVidaAtual] = useState(enemies[enemieName].vida)
 
+  useEffect(() => {
+    setVidaAtual(enemies[enemieName].vida)
+  }, [enemies])
+
+  console.log(vidaAtual)
   const getImagemInimigo = (inimigo) => {
     const saqueadorImagens = [saqueador, saqueador01, saqueador02, saqueador03, saqueador04];
     const bandidosImagens = [bandido, bandido01, bandido02, bandido03, bandido04, bandido05];
@@ -79,7 +90,7 @@ const BackgroundEnemies = ( {enemieName} ) => {
                     </div>
                     <div className={style.inputContainer2}>
                       <label htmlFor="">Vida</label>
-                      <input value={value.vida} type="number" readOnly />
+                      <input value={vidaAtual} type="number" readOnly />
                     </div>
                   </div>
                   <div className={style.inputContainer3}>
