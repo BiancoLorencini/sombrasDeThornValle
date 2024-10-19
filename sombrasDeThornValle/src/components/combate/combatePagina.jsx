@@ -34,7 +34,6 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [vidaPersonagem, setVidaPersonagem] = useState(personagem.atributo.constituicao);
 
 
-
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
   } , [ setAvailableAction ]);
@@ -45,7 +44,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
 
   const dmgEnemy = 5
 
-
+  console.log(enemieVida, 'vida do inimigo')
 
   useEffect(() => {
     setFadeInPersonagem(true);
@@ -78,14 +77,16 @@ const CombatePagina = ({ enemieName, onClick }) => {
   }
 
   useEffect(() => {
-    if ( enemyAvailableAction ) {
-
+    if ( enemyAvailableAction && enemieVida > 0) {
       function enemyAcerto() {{
         setEnemyAttackEffect(true);
         const audioElement = new Audio(audioAttack);
         audioElement.play();
         audioElement.volume = 0.8;
         console.log(vidaPersonagem - danoEnemie);
+        if (enemieVida <= 0) {
+          setEnemyAvailableAction(false);
+        }
         if (enemyAvailableAction) {
           setTimeout(() => {
             setEnemyReset(true);
