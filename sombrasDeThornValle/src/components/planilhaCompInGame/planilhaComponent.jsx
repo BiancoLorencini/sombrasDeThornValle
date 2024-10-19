@@ -97,7 +97,33 @@ useEffect(() => {
             </div>
           </div>
           <div className={style.sheetEnemies}>
-            <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
+            <div className={style.infoLeft}>
+              <div className={style.scrollFlag} ><h3>Dano Total</h3></div>
+              <div className={style.danoTotalContainer}>
+                <div className={style.somaDano}>
+                  <label>base</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{personagem.atributo.dano}</p>
+                </div>
+                <p>+</p>
+                <div className={style.somaDano}>
+                  <label>equip</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{personagem.atributo.dano}</p>
+                </div>
+                <p>=</p>
+                <div className={style.somaDano}>
+                  <label>total</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{personagem.atributo.dano}</p>
+                </div>
+              </div>
+            </div>
+            <span className={style.divider}></span>
+            <div className={style.infoRight}>
+              <div className={style.scrollFlag} ><h3>Resistência</h3></div>
+              <p>Resistencia Personagem</p>
+            </div>
           </div>
         </div>
         <div className={style.leftSheet} >

@@ -17,6 +17,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const { personagem, atualizarConstituicao } = useContext(PersonagemContext);
   const danoEnemie = enemies[enemieName].dano
   const enemieVida = enemies[enemieName].vida
+  const danoPersonagem = personagem.atributo.dano;
   const [fadeInPersonagem, setFadeInPersonagem] = useState(false);
   const [fadeInEnemie, setFadeInEnemie] = useState(false);
   const [zoomIn, setZoomIn] = useState(false);
@@ -59,7 +60,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const acerto = () => {
     setAttackEffect(true);
     setAvailableAction(false);
-    const novaVidaInimigo = receiveDmg(enemieVida, dmgEnemy);
+    const novaVidaInimigo = receiveDmg(enemieVida, danoPersonagem);
     setEnemies({ ...enemies, [enemieName]: { ...enemies[enemieName], vida: novaVidaInimigo } });
     
     const audioElement = new Audio(audioAttack);

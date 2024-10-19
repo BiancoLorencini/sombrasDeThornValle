@@ -21,22 +21,23 @@ import { DndContext } from '@dnd-kit/core'
 const Planilha = () => {
   const { personagem } = useContext(PersonagemContext);
   const { handleRoll, habilidade, inteligencia, constituicao, sorte, rollCount } = useDado();
+  const musicRef = useRef();
+  const navigate = useNavigate();
   const [isStyle, setIsStyle] = useState({});
   const [flipped, setFlipped] = useState(false);
   const [flipped2, setFlipped2] = useState(false);
   const [isFadingIn, setIsFadingIn] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [attributeName, setAttributeName] = useState('');
-  const musicRef = useRef();
-  const navigate = useNavigate();
+  const [fadeOut, setFadeOut] = useState(false);
   const [nome, setNome] = useState(personagem?.nome || '');
   const [bdHabilidade, setBdHabilidade] = useState('');
   const [bdInteligencia, setBdInteligencia] = useState('');
   const [bdConstituicao, setBdConstituicao] = useState('');
   const [bdSorte, setBdSorte] = useState('');
   const [bdMagia, setBdMagia] = useState('');
-  const [fadeOut, setFadeOut] = useState(false);
-
+  const [bdDano, setBdDano] = useState('');
+  const [bdResistencia, setBdResistencia] = useState('');
   const handleInputChange = (e, setFunction) => {
     setFunction(e.target.value);
   };
@@ -47,6 +48,7 @@ const Planilha = () => {
     setBdConstituicao(constituicao + 12);
     setBdSorte(sorte + 6);
     setBdMagia(Math.floor((inteligencia + 6) / 2));
+    setBdDano(Math.floor(((habilidade + 6) / 3)) * 2);
     
   }, [habilidade, inteligencia, constituicao, sorte]);
 
@@ -61,6 +63,8 @@ const Planilha = () => {
       constituicao: Number(bdConstituicao),
       sorte: Number(bdSorte),
       qtdMagia: Number(bdMagia),
+      dano: Number(bdDano),
+      resistencia: Number(bdResistencia),
     };
 
     if (isNaN(updatedPersonagem.habilidade) || isNaN(updatedPersonagem.inteligencia) || isNaN(updatedPersonagem.constituicao) || isNaN(updatedPersonagem.sorte) || isNaN(updatedPersonagem.qtdMagia)) {
@@ -221,7 +225,7 @@ const steps = [
               <h3>Atributos</h3>
               <div className={style.info}>
                   <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="number"  value={Number(bdHabilidade)} onChange={(e) => handleInputChange(e, setBdHabilidade)} defaultValue={bdHabilidade} />
+                  <input className={style.attValor} type="number"  value={Number(bdHabilidade)} onChange={(e) => handleInputChange(e, setBdHabilidade)} defaultValue={bdHabilidade} readOnly />
               </div>
               <div className={style.info}>
                 <label className={style.att}>INTELIGENCIA</label>
@@ -229,11 +233,11 @@ const steps = [
               </div>
               <div className={style.info}>
                 <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="number"  value={Number(bdConstituicao)} onChange={(e) => handleInputChange(e, setBdConstituicao)} defaultValue={bdConstituicao} />
+                <input className={style.attValor} type="number"  value={Number(bdConstituicao)} onChange={(e) => handleInputChange(e, setBdConstituicao)} defaultValue={bdConstituicao} readOnly />
               </div>
               <div className={style.info}>
               <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="number"  value={ Number(bdSorte) } onChange={(e) => handleInputChange(e, setBdSorte)} defaultValue={bdSorte} />
+                <input className={style.attValor} type="number"  value={ Number(bdSorte) } onChange={(e) => handleInputChange(e, setBdSorte)} defaultValue={bdSorte} readOnly />
               </div>
             </div>
             <div className={style.infoSide} >
@@ -256,7 +260,33 @@ const steps = [
             </div>
           </div>
           <div className={style.sheetEnemies}>
-            <div className={style.scrollFlag} ><h3>Inimigos</h3></div>
+            <div className={style.infoLeft}>
+              <div className={style.scrollFlag} ><h3>Dano Total</h3></div>
+              <div className={style.danoTotalContainer}>
+                <div className={style.somaDano}>
+                  <label>base</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{bdDano}</p>
+                </div>
+                <p>+</p>
+                <div className={style.somaDano}>
+                  <label>equip</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{bdDano}</p>
+                </div>
+                <p>=</p>
+                <div className={style.somaDano}>
+                  <label>total</label>
+                  <span className={style.danoTotalDivider}></span>
+                  <p>{bdDano}</p>
+                </div>
+              </div>
+            </div>
+            <span className={style.divider}></span>
+            <div className={style.infoRight}>
+              <div className={style.scrollFlag} ><h3>Resistência</h3></div>
+              <p className={style.infoRightText}>Resistencia Personagem</p>
+            </div>
           </div>
         </div>
         <div className={style.leftSheet} >
