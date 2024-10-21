@@ -14,7 +14,7 @@ const MortePersonagem = () => {
   useEffect(() => {
     const audioElement = new Audio(deathAudio);
     audioElement.play();
-    audioElement.volume = 1.0
+    audioElement.volume = 0.5
   }, [])
 
 

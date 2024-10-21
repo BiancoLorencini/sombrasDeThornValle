@@ -11,6 +11,8 @@ import musicCombate from '../../assets/music/combateMain.mp3'
 import musicCombate01 from '../../assets/music/combate01.mp3'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider.jsx'
+import MortePersonagem from '../mortePersonagem/mortePersonagem.jsx'
+import DiceStyle from '../diceStyle/DiceStyle.jsx'
 
 const CombatePagina = ({ enemieName, onClick }) => {
   const { enemies, setEnemies } = useContext(EnemyContext);
@@ -33,7 +35,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [musica, setMusica] = useState(musicaAleatoria[Math.floor(Math.random() * 3)]);
   const [renderAtbBar, setRenderAtbBar] = useState(false);
   const [vidaPersonagem, setVidaPersonagem] = useState(personagem.atributo.constituicao);
-
+  const [mortePersonagem, setMortePersonagem] = useState(false);
 
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
@@ -42,10 +44,6 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const onEnemyActionAvailable = useCallback(() => {
     setEnemyAvailableAction(true);
   } , [ setEnemyAvailableAction ]);
-
-  const dmgEnemy = 5
-
-  console.log(enemieVida, 'vida do inimigo')
 
   useEffect(() => {
     setFadeInPersonagem(true);
@@ -58,11 +56,11 @@ const CombatePagina = ({ enemieName, onClick }) => {
   }, []);
 
   const acerto = () => {
+    if (availableAction && vidaPersonagem > 0 && enemieVida > 0) {
     setAttackEffect(true);
     setAvailableAction(false);
     const novaVidaInimigo = receiveDmg(enemieVida, danoPersonagem);
     setEnemies({ ...enemies, [enemieName]: { ...enemies[enemieName], vida: novaVidaInimigo } });
-    
     const audioElement = new Audio(audioAttack);
     audioElement.play();
     audioElement.volume = 0.8;
@@ -76,18 +74,15 @@ const CombatePagina = ({ enemieName, onClick }) => {
       setAttackEffect(false);
     } , 3000);
   }
+  }
 
   useEffect(() => {
-    if ( enemyAvailableAction && enemieVida > 0) {
+    if ( enemyAvailableAction && enemieVida > 0 && vidaPersonagem > 0) {
       function enemyAcerto() {{
         setEnemyAttackEffect(true);
         const audioElement = new Audio(audioAttack);
         audioElement.play();
         audioElement.volume = 0.8;
-        console.log(vidaPersonagem - danoEnemie);
-        if (enemieVida <= 0) {
-          setEnemyAvailableAction(false);
-        }
         if (enemyAvailableAction) {
           setTimeout(() => {
             setEnemyReset(true);
@@ -106,7 +101,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
       atualizarConstituicao({ constituicao: novoValorConstituicao });
       setVidaPersonagem(novoValorConstituicao);
     }
-  } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem, atualizarConstituicao ]);
+  } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem, atualizarConstituicao, enemieVida ]);
 
   useEffect(() => {
       const audioElement = new Audio(musica);
@@ -117,7 +112,14 @@ const CombatePagina = ({ enemieName, onClick }) => {
 
   const anyNumber = 16;
 
+  useEffect(() => {
+    if (personagem.atributo.constituicao <= 0) {
+      setMortePersonagem(true);
+    }
+  }, [ personagem.atributo.constituicao ]);
+
   return (
+    <>
     <div className={style.combatePagina}>
       <video src={particleFire} autoPlay loop muted className={style.video} />
       {renderAtbBar ? 
@@ -157,6 +159,8 @@ const CombatePagina = ({ enemieName, onClick }) => {
           <div className={style.attckEffect}></div> : null}
       </div>
     </div>
+    {mortePersonagem ? <MortePersonagem /> : ''}
+    </>
   )
 }
 

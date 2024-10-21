@@ -54,112 +54,114 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
-      <div className={ style.sheet } >
-        <div>
-          <div className={style.book}>
-            <div className={style.atributeSide}>
-              <h3>Atributos</h3>
-              <div className={style.info}>
-                  <label className={style.att}>HABILIDADE</label>
-                  <input className={style.attValor} type="text"  value={personagem.atributo.habilidade} />
+    <>
+      <div className={` ${style.sheetMainContainer} ${isFadingIn ? style.fadeIn : ''}`}	>
+        <div className={ style.sheet } >
+          <div>
+            <div className={style.book}>
+              <div className={style.atributeSide}>
+                <h3>Atributos</h3>
+                <div className={style.info}>
+                    <label className={style.att}>HABILIDADE</label>
+                    <input className={style.attValor} type="text"  value={personagem.atributo.habilidade} />
+                </div>
+                <div className={style.info}>
+                  <label className={style.att}>INTELIGENCIA</label>
+                  <input className={style.attValor} type="text"  value={personagem.atributo.inteligencia} readOnly />
+                </div>
+                <div className={style.info}>
+                  <label className={style.att}>CONSTITUIÇÃO</label>
+                  <input className={style.attValor} type="text"  value={personagem.atributo.constituicao}  readOnly />
+                </div>
+                <div className={style.info}>
+                <label className={style.att}>SORTE</label>
+                  <input className={style.attValor} type="text"  value={personagem.atributo.sorte} />
+                </div>
               </div>
-              <div className={style.info}>
-                <label className={style.att}>INTELIGENCIA</label>
-                <input className={style.attValor} type="text"  value={personagem.atributo.inteligencia} readOnly />
-              </div>
-              <div className={style.info}>
-                <label className={style.att}>CONSTITUIÇÃO</label>
-                <input className={style.attValor} type="text"  value={personagem.atributo.constituicao}  readOnly />
-              </div>
-              <div className={style.info}>
-              <label className={style.att}>SORTE</label>
-                <input className={style.attValor} type="text"  value={personagem.atributo.sorte} />
+              <div className={style.infoSide} >
+                <div className={style.scrollFlag1}>
+                  <h3>Mochila</h3>
+                </div>
+                <div className={` ${style.backPack} ${flipped2 ? style.flipped : ''}`} onClick={handleClickBackPack}>
+                    <img className={style.front} src={backPack} alt="mochila" />
+                    <div className={style.backback}>
+                      <div className={style.subBackPackContainer1} >
+                        <div className={style.subBackPack} ></div>
+                        <div className={style.subBackPack}></div>
+                      </div>
+                      <div className={style.subBackPackContainer2} >
+                        <div className={style.subBackPack}></div>
+                        <div className={style.subBackPack}></div>
+                      </div>
+                    </div>
+                </div>
               </div>
             </div>
-            <div className={style.infoSide} >
-              <div className={style.scrollFlag1}>
-                <h3>Mochila</h3>
-              </div>
-              <div className={` ${style.backPack} ${flipped2 ? style.flipped : ''}`} onClick={handleClickBackPack}>
-                  <img className={style.front} src={backPack} alt="mochila" />
-                  <div className={style.backback}>
-                    <div className={style.subBackPackContainer1} >
-                      <div className={style.subBackPack} ></div>
-                      <div className={style.subBackPack}></div>
-                    </div>
-                    <div className={style.subBackPackContainer2} >
-                      <div className={style.subBackPack}></div>
-                      <div className={style.subBackPack}></div>
-                    </div>
+            <div className={style.sheetEnemies}>
+              <div className={style.infoLeft}>
+                <div className={style.scrollFlag} ><h3>Dano Total</h3></div>
+                <div className={style.danoTotalContainer}>
+                  <div className={style.somaDano}>
+                    <label>base</label>
+                    <span className={style.danoTotalDivider}></span>
+                    <p>{personagem.atributo.dano}</p>
                   </div>
+                  <p>+</p>
+                  <div className={style.somaDano}>
+                    <label>equip</label>
+                    <span className={style.danoTotalDivider}></span>
+                    <p>{personagem.atributo.dano}</p>
+                  </div>
+                  <p>=</p>
+                  <div className={style.somaDano}>
+                    <label>total</label>
+                    <span className={style.danoTotalDivider}></span>
+                    <p>{personagem.atributo.dano}</p>
+                  </div>
+                </div>
+              </div>
+              <span className={style.divider}></span>
+              <div className={style.infoRight}>
+                <div className={style.scrollFlag} ><h3>Resistência</h3></div>
+                <p>Resistencia Personagem</p>
               </div>
             </div>
           </div>
-          <div className={style.sheetEnemies}>
-            <div className={style.infoLeft}>
-              <div className={style.scrollFlag} ><h3>Dano Total</h3></div>
-              <div className={style.danoTotalContainer}>
-                <div className={style.somaDano}>
-                  <label>base</label>
-                  <span className={style.danoTotalDivider}></span>
-                  <p>{personagem.atributo.dano}</p>
-                </div>
-                <p>+</p>
-                <div className={style.somaDano}>
-                  <label>equip</label>
-                  <span className={style.danoTotalDivider}></span>
-                  <p>{personagem.atributo.dano}</p>
-                </div>
-                <p>=</p>
-                <div className={style.somaDano}>
-                  <label>total</label>
-                  <span className={style.danoTotalDivider}></span>
-                  <p>{personagem.atributo.dano}</p>
-                </div>
+          <div className={style.leftSheet} >
+            <div className={style.sheetHeader}>
+              <div className={style.scrollFlagHeader}>
+                <h2>{personagem.nome}</h2>
               </div>
             </div>
-            <span className={style.divider}></span>
-            <div className={style.infoRight}>
-              <div className={style.scrollFlag} ><h3>Resistência</h3></div>
-              <p>Resistencia Personagem</p>
+            <div className={`${style.sheetCharacterImage} ${flipped ? style.flipped : ''}`} onClick={handleClick}>
+              <img className={style.front} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={isStyle} src={character01} alt="" />
+              <div className={style.back}>
+                <p>...ele cresceu em uma aldeia simples, <br /> filho de um ex-soldado, que lutou em muitas guerras, e de uma camponesa cheia de vida e beleza. O pai lhe ensinou habilidades de combate e disciplina, enquanto a mãe lhe transmitiu o amor, o valor das pequenas coisas e a importância de cuidar dos outros. Ele foi moldado por esses ensinamentos, sempre com o desejo de explorar o mundo além dos limites de sua vila...</p>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={style.leftSheet} >
-          <div className={style.sheetHeader}>
-            <div className={style.scrollFlagHeader}>
-              <h2>{personagem.nome}</h2>
+            <div className={style.sheetMiddle}>
+              <div className={style.cardEquip} ></div>
+              <div className={style.cardEquip}></div>
+              <div className={style.cardEquip}></div>
             </div>
-          </div>
-          <div className={`${style.sheetCharacterImage} ${flipped ? style.flipped : ''}`} onClick={handleClick}>
-            <img className={style.front} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={isStyle} src={character01} alt="" />
-            <div className={style.back}>
-              <p>...ele cresceu em uma aldeia simples, <br /> filho de um ex-soldado, que lutou em muitas guerras, e de uma camponesa cheia de vida e beleza. O pai lhe ensinou habilidades de combate e disciplina, enquanto a mãe lhe transmitiu o amor, o valor das pequenas coisas e a importância de cuidar dos outros. Ele foi moldado por esses ensinamentos, sempre com o desejo de explorar o mundo além dos limites de sua vila...</p>
+            <div className={style.sheetMagic}>
+              <button><img width={20} height={25} src={iceMagic}  alt="" /></button>
+              <button><img width={20} height={25} src={lightningMagic}  alt="" /></button>
+              <button><img width={20} height={25} src={fireMagic} alt="" /></button>
+              <div className={style.qtdMagic}>
+              <p>x</p>
+              <input type="text" value={personagem.atributo.qtdMagia} className={style.qtdMagicBackground}/>
+              </div>
             </div>
-          </div>
-          <div className={style.sheetMiddle}>
-            <div className={style.cardEquip} ></div>
-            <div className={style.cardEquip}></div>
-            <div className={style.cardEquip}></div>
-          </div>
-          <div className={style.sheetMagic}>
-            <button><img width={20} height={25} src={iceMagic}  alt="" /></button>
-            <button><img width={20} height={25} src={lightningMagic}  alt="" /></button>
-            <button><img width={20} height={25} src={fireMagic} alt="" /></button>
-            <div className={style.qtdMagic}>
-            <p>x</p>
-            <input type="text" value={personagem.atributo.qtdMagia} className={style.qtdMagicBackground}/>
-            </div>
-          </div>
-          <div className={style.sheetBottom}>
-            <div className={style.scrollDecor}>
-              <img src={scrollDecoration} alt="decoração de pergaminho" />
+            <div className={style.sheetBottom}>
+              <div className={style.scrollDecor}>
+                <img src={scrollDecoration} alt="decoração de pergaminho" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

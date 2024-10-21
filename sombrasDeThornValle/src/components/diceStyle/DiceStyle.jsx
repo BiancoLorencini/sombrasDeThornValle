@@ -18,7 +18,7 @@ const DiceStyle = () => {
         setResult(dado);
     }, [dado]);
 
-
+    console.log(result);
     const handleAnimationEnd = () => {
         const face = document.querySelector('.diceStyleCube');
         face.classList.remove('animate');
