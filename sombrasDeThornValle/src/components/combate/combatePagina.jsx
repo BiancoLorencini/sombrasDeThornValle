@@ -9,6 +9,7 @@ import ATBBar from '../../components/actionTimeBar/actionTimeBar.jsx'
 import musicCombate02 from '../../assets/music/combate02.mp3'
 import musicCombate from '../../assets/music/combateMain.mp3'
 import musicCombate01 from '../../assets/music/combate01.mp3'
+import musicDeath from '../../assets/music/AfterYou.mp3'
 import { PersonagemContext } from '../../context/characterContext/PersonagemProvider.jsx'
 import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider.jsx'
 import MortePersonagem from '../mortePersonagem/mortePersonagem.jsx'
@@ -36,6 +37,8 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [renderAtbBar, setRenderAtbBar] = useState(false);
   const [vidaPersonagem, setVidaPersonagem] = useState(personagem.atributo.constituicao);
   const [mortePersonagem, setMortePersonagem] = useState(false);
+  const audioElementCombate = useRef(null);
+
 
   const onActionAvailable = useCallback(() => {
     setAvailableAction(true);
@@ -104,19 +107,36 @@ const CombatePagina = ({ enemieName, onClick }) => {
   } , [ enemyAvailableAction, setEnemyAvailableAction, danoEnemie, vidaPersonagem, atualizarConstituicao, enemieVida ]);
 
   useEffect(() => {
-      const audioElement = new Audio(musica);
-      audioElement.play();
-      audioElement.volume = 0.1;
-      audioElement.loop = true;
-  }, []);
+    if (!audioElementCombate.current) {
+      audioElementCombate.current = new Audio(musica);
+      audioElementCombate.current.loop = true;
+      audioElementCombate.current.volume = 0.1;
+      audioElementCombate.current.play();
+    }
+  }, [ musica ]);
+
+  useEffect(() => {
+    if (mortePersonagem) {
+      if (audioElementCombate.current) {
+        audioElementCombate.current.pause();
+      }
+      const audioElementDeath = new Audio(musicDeath);
+      audioElementDeath.play();
+      audioElementDeath.volume = 0.1;
+    } else {
+      if (audioElementCombate.current) {
+        audioElementCombate.current.play();
+      }
+    }
+  }, [ mortePersonagem ]);
 
   const anyNumber = 16;
 
   useEffect(() => {
-    if (personagem.atributo.constituicao <= 0) {
+    if (vidaPersonagem <= 0) {
       setMortePersonagem(true);
     }
-  }, [ personagem.atributo.constituicao ]);
+  }, [ vidaPersonagem ]);
 
   return (
     <>
