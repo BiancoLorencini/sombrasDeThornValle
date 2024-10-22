@@ -1,4 +1,5 @@
-import React , { useState, useEffect, useCallback, useContext, useRef } from 'react'
+import React , { useState, useEffect, useCallback, useContext, useRef, useReducer } from 'react'
+import { useNavigate } from 'react-router-dom'
 import style from './combatePagina.module.css'
 import particleFire from '../../assets/videoRandom/particlesFire.mp4'
 import PlanilhaComponent from '../planilhaCompInGame/planilhaComponent.jsx'
@@ -14,10 +15,13 @@ import { PersonagemContext } from '../../context/characterContext/PersonagemProv
 import { EnemyContext, EnemyProvider } from '../../context/enemyContext/enemyProvider.jsx'
 import MortePersonagem from '../mortePersonagem/mortePersonagem.jsx'
 import DiceStyle from '../diceStyle/DiceStyle.jsx'
+import musicVictory from '../../assets/sound/epicGlitchHit.mp3'
+import MorteInimigo from '../morteInimigo/morteInimigo.jsx'
 
 const CombatePagina = ({ enemieName, onClick }) => {
   const { enemies, setEnemies } = useContext(EnemyContext);
   const { personagem, atualizarConstituicao } = useContext(PersonagemContext);
+  const navigate = useNavigate();
   const danoEnemie = enemies[enemieName].dano
   const enemieVida = enemies[enemieName].vida
   const danoPersonagem = personagem.atributo.dano;
@@ -38,6 +42,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
   const [vidaPersonagem, setVidaPersonagem] = useState(personagem.atributo.constituicao);
   const [mortePersonagem, setMortePersonagem] = useState(false);
   const audioElementCombate = useRef(null);
+  const [ morteEnemy, setMorteEnemy] = useState(false);
 
 
   const onActionAvailable = useCallback(() => {
@@ -123,20 +128,33 @@ const CombatePagina = ({ enemieName, onClick }) => {
       const audioElementDeath = new Audio(musicDeath);
       audioElementDeath.play();
       audioElementDeath.volume = 0.1;
+    } else if (enemieVida <= 0) {
+      if (audioElementCombate.current) {
+        audioElementCombate.current.pause();
+      }
+      const audioElementVictory = new Audio(musicVictory);
+      audioElementVictory.play();
+      audioElementVictory.volume = 0.1;
     } else {
       if (audioElementCombate.current) {
         audioElementCombate.current.play();
       }
     }
-  }, [ mortePersonagem ]);
+  }, [ mortePersonagem, enemieVida ]);
 
   const anyNumber = 16;
 
   useEffect(() => {
     if (vidaPersonagem <= 0) {
       setMortePersonagem(true);
-    }
+    } 
   }, [ vidaPersonagem ]);
+
+  useEffect(() => {
+    if (enemieVida <= 0) {
+      setMorteEnemy(true);
+    }
+  }, [ enemieVida ]);
 
   return (
     <>
@@ -180,6 +198,7 @@ const CombatePagina = ({ enemieName, onClick }) => {
       </div>
     </div>
     {mortePersonagem ? <MortePersonagem /> : ''}
+    {morteEnemy ? <MorteInimigo /> : ''}
     </>
   )
 }

@@ -7,7 +7,6 @@ import Combate from '../../components/combate/combatePagina.jsx'
 import { EnemyProvider, EnemyContext } from '../../context/enemyContext/enemyProvider.jsx';
 import flipPage from '../../assets/sound/flipPage.mp3'
 import closeBook from '../../assets/sound/closingBook01.mp3'
-import MortePersonagem from '../../components/mortePersonagem/mortePersonagem.jsx'
 import DiceStyle from '../../components/diceStyle/DiceStyle.jsx'
 import { useDado } from '../../context/Dice/DiceContext.jsx'
 
@@ -33,11 +32,10 @@ const DiaSeguinte = () => {
     setFadeIn(!fadeIn);
   };
 
-
   const testeCombate = () => {
     setCombate(true);
   };
-
+  
   const javali = 'javali';
 
   return (

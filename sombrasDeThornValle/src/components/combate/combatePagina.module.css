@@ -91,10 +91,6 @@
   animation: slowFadeBloodDropDown 3s ease-in-out;
 }
 
-
-
-
-
 .attckEffect2 {
   animation: fadeOut 0.5s ease-in-out;
 }
@@ -231,6 +227,12 @@
   z-index: 999999;
   margin: 0 20px;
 }
+
+.fadeOutWin {
+  animation: fadeOut 3s ease-in-out;
+  transition: all 3s ease-in-out;
+}
+
 
 @keyframes fadeInTopRightToMiddleLeft {
   0% {

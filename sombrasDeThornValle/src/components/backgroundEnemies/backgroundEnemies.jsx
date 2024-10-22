@@ -33,7 +33,6 @@ export const receiveDmg = (vidaAtual, dmg) => {
 }
 
 const BackgroundEnemies = ( { enemieName } ) => {
-  const [enemyes, setEnemies] = useState([])
   const { enemies } = useContext(EnemyContext)
   const [vidaAtual, setVidaAtual] = useState(enemies[enemieName].vida)
 

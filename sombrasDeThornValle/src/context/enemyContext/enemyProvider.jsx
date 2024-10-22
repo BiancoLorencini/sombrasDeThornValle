@@ -8,8 +8,6 @@ const EnemyProvider = ( { children } ) => {
   const [enemies, setEnemies] = useState({})
   const [dmgReceived, setDmgReceived] = useState(0)
 
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
